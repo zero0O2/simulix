@@ -43,7 +43,7 @@ const CardsQuestoes = ({ card }) => {
 
                     <div className="flex min-w-[250px] overflow-x-auto h-[50px] justify-start items-center max-w-[300px] gap-[10px]">
                         {
-                            card?.tags.map((tag, index) => (
+                            card?.tags?.map((tag, index) => (
                                 <span key={index} className="bg-[var(--azulEscuro)] text-[var(--branco)] h-[30px] flex justify-center items-center px-[10px] rounded-full text-[12px]">
                                     {tag}
                                 </span>
