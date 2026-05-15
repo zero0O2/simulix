@@ -55,7 +55,7 @@ const CardsQuestoes = ({ card }) => {
                     </span>
                 </aside>
 
-                <div className="flex-1 min-h-0 flex gap-[5px] flex-col ">
+                <div className="flex-1 min-h-0 flex gap-[20px] flex-col ">
                     <p className="text-[20px]">{card?.question}</p>
 
                     <div className="flex flex-1 min-h-0 ">
@@ -67,15 +67,17 @@ const CardsQuestoes = ({ card }) => {
                                     {index == 2 && <p className="font-bold">C)</p>}
                                     {index == 3 && <p className="font-bold">D)</p>}
                                     {index == 4 && <p className="font-bold">E)</p>}
-                                    {option.text}
+
+                                    <p className={`is${isCorrect === true && option.correct ? ' text-[var(--verdeClaro)]' : ' text-[var(--textWhite)]'}`}>{option.text}</p>
+
                                     {isCorrect === true && option.correct && <FaCheckCircle className="text-[var(--verdeClaro)]"/>}
                                 </li>
                             ))}
                         </ul>
 
-                        <div className="flex-2 flex overflow-x-auto justify-start items-start pb-[20px]">
+                        <div className="flex-1 flex overflow-x-auto justify-start items-start pb-[20px]">
                             {isCorrect === false && <p className="text-red-600 w-full text-end text-[18px]">Resposta incorreta</p>}
-                            {isCorrect === true && card?.explanation && <p className="text-[var(--verdeClaro)] text-center text-[18px]">{card?.explanation} {card?.explanation}  {card.explanation}</p>} 
+                            {isCorrect === true && card?.explanation && <p className="text-[var(--verdeClaro)] text-center text-[18px]">{card?.explanation}</p>} 
                         </div>
 
                     </div>
