@@ -64,14 +64,13 @@ const QuestoesProvider = ({children}) => {
             })
             
             await BuscarQuestoesForUserId(user._id)
-            console.log(response.data)
             return response.data
         } catch (error) {
             console.error("Erro ao Deletar questão:", error.response.data)
             return error?.response
         }
     }
-    
+
     useEffect(() => {
         try {
 

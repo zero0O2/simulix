@@ -17,18 +17,19 @@ const HomeTarefas = () => {
     const {navigateOptionsForQuest,setNavigateOptionsForQuest} = useNav()
     const {user} = useAuth()
 
-    const FilterQuestions = () => {
-        if(categoriaTypes === "Todas"){
-            return questoesForUser
-        }
-
-        return questoesForUser?.filter((questao) => questao?.examType === categoriaTypes)
-        
-    }
-
+    
     useEffect(() => {
         try {
             user && BuscarQuestoesForUserId(user._id)
+            
+            const FilterQuestions = () => {
+                if(categoriaTypes === "Todas"){
+                    return questoesForUser
+                }
+        
+                return questoesForUser?.filter((questao) => questao?.examType === categoriaTypes)
+                
+            }
         } catch (error) {
             console.log(error)
         }
