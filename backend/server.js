@@ -286,6 +286,7 @@ app.post('/questions', async (req, res) => {
 
 })
 
+
 app.get('/questions/:userId', async (req, res) => {
     const {userId} = req.params
 
@@ -293,42 +294,43 @@ app.get('/questions/:userId', async (req, res) => {
         if(!userId){return res.status(404).json({message: 'Usuário não encontrado'})}
         
         const user = await User.findById(userId)
-
+        
         if(!user){
             return res.status(404).json({message: 'Usuário não encontrado'})
         }
-
+        
         const questions = await Question.find({userId})
-
+        
         res.json(questions)
     } catch (error) {
         res.status(404).json(error)
     }
-
+    
 })
+
 
 app.post('/formatOptions/:correct', async (req, res) => {
     const options = req.body
     const correct = parseInt(req.params.correct)
-
+    
     try {
-
+        
         const optionsWithoutEmpty = options.filter(option => option && option.trim() !== '')
-
+        
         if(!optionsWithoutEmpty || optionsWithoutEmpty.length === 0){
             return res.status(400).json({message: 'Opções não fornecidas'})
         }
-
+        
         if(optionsWithoutEmpty.length > 5 || optionsWithoutEmpty.length < 2){
             return res.status(400).json({message: 'Opções devem ter no máximo 5 e no minimo 2 alternativas'})
         }
-
+        
         if(!correct){
             return res.status(400).json({message: 'Correta não fornecida'})
         }
-
-
-
+        
+        
+        
         if(!optionsWithoutEmpty.some((e,index) => correct === index + 1)){
             return res.status(400).json({message: 'A opção correta deve estar entre as opções fornecidas'})
         }
@@ -340,15 +342,61 @@ app.post('/formatOptions/:correct', async (req, res) => {
                 correct:index + 1 === correct ? true : false
             }
         ))
-
+        
         res.json(optionsFormated)
     } catch (error) {
         res.status(400).json(error)
     }
+    
+})
+
+app.delete('/questions/:questionId', async (req, res) => {
+    let userId = null
+    const idQuestion = req.params.questionId
+
+    try {
+        const bearer = req.headers.authorization
+        if (!bearer) {
+            return res.status(401).json({ message: 'Token não fornecido' })
+        }
+        const tokenJwt = bearer.split(' ')[1]
+        
+        if (!tokenJwt) {
+            return res.status(401).json({ message: 'Token mal formatado' })
+        }
+        
+        const token = jwt.verify(tokenJwt, process.env.JWT_SECRET)
+        
+        userId = token
+
+    } catch (error) {
+        res.status(400).json(error)
+    }
+    
+    
+    try {
+        const question = await Question.findById(idQuestion).populate('userId')
+
+        if(!question){
+            return res.status(404).json({message: 'Questão não encontrada'})
+        }
+
+        const userQuestion = await User.findById(question.userId)
+
+        if(userQuestion._id.toString() !== userId.id){
+            return res.status(403).json({message: 'A questão não pertence ao usuário'})
+        }
+
+        await Question.findByIdAndDelete(idQuestion)
+
+        res.json({message: 'Questão deletada com sucesso'})
+
+    } catch (error) {
+        res.status(404).json(error)
+    }
 
 })
 
-
 app.listen(PORT, () => {
-  console.log(`Servidor escutando na porta http://localhost:${PORT}`);
+    console.log(`Servidor escutando na porta http://localhost:${PORT}`);
 });

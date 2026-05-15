@@ -3,11 +3,13 @@ import { FaCheckCircle } from "react-icons/fa";
 import { IoReload } from "react-icons/io5";
 import LoadCircle from "./LoadCircle";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { useQuestoes } from "../contexts/QuestoesProvider";
 
 const CardsQuestoes = ({ card }) => {
     const [isCorrect, setIsCorrect] = useState(null)
 
     const timeOutRef = useRef(null)
+    const {DeletarQuestoesForUserId} = useQuestoes()
 
 
     const VerifyQuest = (option) => {
@@ -84,21 +86,26 @@ const CardsQuestoes = ({ card }) => {
                 </div>
 
                 <div className="flex items-center absolute right-2 cursor-pointer bottom-2 justify-center gap-[18px] py-[2px]">
+
                     <button onClick={() => {
                         setIsCorrect(null)
                         clearTimeout(timeOutRef.current)
-                    }} className="flex items-center cursor-pointer bottom-2 justify-center gap-[8px] py-[2px]">
+                    }} className="flex items-center cursor-pointer bottom-2 hover:scale-[1.03] justify-center gap-[8px] py-[2px]">
                         <IoReload />
                         <span>Reiniciar</span>
                     </button>
-                    <button onClick={() => {
+
+                    <button onClick={async () => {
                         setIsCorrect(null)
                         clearTimeout(timeOutRef.current)
-                        console.log(card._id)
-                    }} className="flex items-center cursor-pointer bottom-2 justify-center items-center gap-[8px] py-[2px]">
+                        
+                        await DeletarQuestoesForUserId(card._id)
+
+                    }} className="flex items-center cursor-pointer bottom-2 justify-center hover:scale-[1.03] hover:text-red-600 duration-300 items-center gap-[8px] py-[2px]">
                         <FaRegTrashAlt />
                         <span>Excluir</span>
                     </button>
+
                 </div>
 
             </div>

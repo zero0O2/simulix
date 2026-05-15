@@ -9,7 +9,7 @@ const QuestoesContext = createContext();
 const QuestoesProvider = ({children}) => {
 
     const {user} = useAuth()
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+    const API_URL = import.meta.env.VITE_API_URL_LOCAL || import.meta.env.VITE_API_URL_LOCAL
 
     const [questoesForUser, setQuestoesForUser] = useState([])
     const [categoriaTypes, setCategoriaTypes] = useState("Todas")
@@ -23,7 +23,7 @@ const QuestoesProvider = ({children}) => {
                 }
             })
             
-            BuscarQuestoesForUserId(user._id)
+            await BuscarQuestoesForUserId(user._id)
             return response.data
         } catch (error) {
             console.error("Erro ao Criar questão:", error.response)
@@ -31,6 +31,7 @@ const QuestoesProvider = ({children}) => {
         }
     }
 
+    
     const FormatOptionsForQuestoes = async (options,correct) => {
         try {
             const response = await axios.post(`${API_URL}/formatOptions/${correct}`,options)
@@ -49,10 +50,28 @@ const QuestoesProvider = ({children}) => {
         } catch (error) {
             console.error("Erro ao buscar questões:", error?.response)
             return error?.response
-
+            
         }
     }
-
+    
+    const DeletarQuestoesForUserId = async (IdForQuest) => {
+        console.log(IdForQuest)
+        try {
+            const response = await axios.delete(`${API_URL}/questions/${IdForQuest}`,{
+                headers:{
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            
+            await BuscarQuestoesForUserId(user._id)
+            console.log(response.data)
+            return response.data
+        } catch (error) {
+            console.error("Erro ao Deletar questão:", error.response.data)
+            return error?.response
+        }
+    }
+    
     useEffect(() => {
         try {
 
@@ -73,7 +92,7 @@ const QuestoesProvider = ({children}) => {
 
     return (
         <>
-            <QuestoesContext.Provider value={{questoesForUser, setQuestoesForUser,BuscarQuestoesForUserId,CriarQuestoesForUserId,FormatOptionsForQuestoes,categoriaTypes, setCategoriaTypes}}>
+            <QuestoesContext.Provider value={{questoesForUser,DeletarQuestoesForUserId , setQuestoesForUser,BuscarQuestoesForUserId,CriarQuestoesForUserId,FormatOptionsForQuestoes,categoriaTypes, setCategoriaTypes}}>
                 {children}
             </QuestoesContext.Provider>
         </>

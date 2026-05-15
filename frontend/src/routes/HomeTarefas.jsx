@@ -44,7 +44,7 @@ const HomeTarefas = () => {
 
                         {
                             typesJson.types.map((e)=>{
-                                return <CardsCategorias option={e}/>
+                                return <CardsCategorias key={e} option={e}/>
                             })
                         }
 
