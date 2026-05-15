@@ -62,7 +62,7 @@ const CardsQuestoes = ({ card }) => {
 
                     <div className="flex flex-1 min-h-0 ">
                         <ul className="flex flex-1 flex-col gap-[8px] text-[18px] text-[var(--verdeClaro)]">
-                            {card?.options.map((option, index) => (
+                            {card?.options?.map((option, index) => (
                                 <li onClick={() => VerifyQuest(option)} className="cursor-pointer flex items-center transition-all text-[18px] duration-300 gap-[8px] py-[2px]" key={index}>
                                     {index == 0 && <p className="font-bold">A)</p>}
                                     {index == 1 && <p className="font-bold">B)</p>}
