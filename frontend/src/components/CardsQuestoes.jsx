@@ -2,7 +2,7 @@ import { use, useEffect, useRef, useState } from "react"
 import { FaCheckCircle } from "react-icons/fa";
 import { IoReload } from "react-icons/io5";
 import LoadCircle from "./LoadCircle";
-
+import { FaRegTrashAlt } from "react-icons/fa";
 
 const CardsQuestoes = ({ card }) => {
     const [isCorrect, setIsCorrect] = useState(null)
@@ -27,7 +27,7 @@ const CardsQuestoes = ({ card }) => {
     return (
         <>  
 
-            <div className={`w-full max-w-full flex flex-col relative border-[var(--azulEscuro)] p-[10px_20px] gap-[10px] border-2 rounded-[10px] ${isCorrect === true ? 'border-[var(--verdeClaro)]' : isCorrect === false ? 'border-red-600' : ''}`}>
+            <div className={`w-full max-w-[1000px] flex flex-col relative border-[var(--azulEscuro)] p-[10px_20px] gap-[10px] border-2 rounded-[10px] ${isCorrect === true ? 'border-[var(--verdeClaro)]' : isCorrect === false ? 'border-red-600' : ''}`}>
 
                 {card === null &&
                     <div className="flex justify-center items-center w-[40px] h-[40px]">
@@ -61,7 +61,7 @@ const CardsQuestoes = ({ card }) => {
                     <div className="flex flex-1 min-h-0 ">
                         <ul className="flex flex-1 flex-col gap-[8px] text-[18px] text-[var(--verdeClaro)]">
                             {card?.options.map((option, index) => (
-                                <li onClick={() => VerifyQuest(option)} className="cursor-pointer flex items-center transition-all text-[17px] duration-300 gap-[8px] py-[2px]" key={index}>
+                                <li onClick={() => VerifyQuest(option)} className="cursor-pointer flex items-center transition-all text-[18px] duration-300 gap-[8px] py-[2px]" key={index}>
                                     {index == 0 && <p className="font-bold">A)</p>}
                                     {index == 1 && <p className="font-bold">B)</p>}
                                     {index == 2 && <p className="font-bold">C)</p>}
@@ -82,14 +82,24 @@ const CardsQuestoes = ({ card }) => {
 
                     </div>
                 </div>
-                
-                <button onClick={() => {
-                    setIsCorrect(null)
-                    clearTimeout(timeOutRef.current)
-                }} className="flex items-center absolute right-2 cursor-pointer bottom-2 justify-center gap-[8px] py-[2px]">
-                    <IoReload />
-                    <span>Reiniciar</span>
-                </button>
+
+                <div className="flex items-center absolute right-2 cursor-pointer bottom-2 justify-center gap-[18px] py-[2px]">
+                    <button onClick={() => {
+                        setIsCorrect(null)
+                        clearTimeout(timeOutRef.current)
+                    }} className="flex items-center cursor-pointer bottom-2 justify-center gap-[8px] py-[2px]">
+                        <IoReload />
+                        <span>Reiniciar</span>
+                    </button>
+                    <button onClick={() => {
+                        setIsCorrect(null)
+                        clearTimeout(timeOutRef.current)
+                        console.log(card._id)
+                    }} className="flex items-center cursor-pointer bottom-2 justify-center items-center gap-[8px] py-[2px]">
+                        <FaRegTrashAlt />
+                        <span>Excluir</span>
+                    </button>
+                </div>
 
             </div>
         </>
