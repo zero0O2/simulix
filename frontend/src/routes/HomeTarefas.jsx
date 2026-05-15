@@ -53,7 +53,7 @@ const HomeTarefas = () => {
                     <main className="flex-1 min-h-0 overflow-y-auto justify-start items-center no-scrollbar flex flex-col gap-[20px]">
 
                         {
-                            FilterQuestions().map((questao) => (
+                            FilterQuestions()?.map((questao) => (
                                 <CardsQuestoes key={questao._id} card={questao} />
                             ))
                         }
