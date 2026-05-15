@@ -33,8 +33,8 @@ const HomeTarefas = () => {
     return (
         <>
             <div className="flex-1 min-h-0 gap-[20px] flex ">
-                <div className="flex-2 flex min-h-0 flex-col gap-[10px] ">
-                    <aside className="w-full h-[60px] flex items-center justify-center gap-[20px] px-[20px]">
+                <div className="flex-2 flex min-h-0 flex-col gap-[20px] ">
+                    <aside className="w-full flex items-center max-[1120px]:flex-wrap justify-center gap-[20px] max-[1120px]:gap-[10px] max-[1120px]:justify-between max-[1120px]:px-[0px] px-[20px]">
 
                         <CardsCategorias option={"Todas"}/>
 

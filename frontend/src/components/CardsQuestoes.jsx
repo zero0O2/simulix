@@ -29,7 +29,7 @@ const CardsQuestoes = ({ card }) => {
     return (
         <>  
 
-            <div className={`w-full max-w-[1000px] flex flex-col relative border-[var(--azulEscuro)] p-[10px_20px] gap-[10px] border-2 rounded-[10px] ${isCorrect === true ? 'border-[var(--verdeClaro)]' : isCorrect === false ? 'border-red-600' : ''}`}>
+            <div className={`w-full max-w-[1000px] flex flex-col relative border-[var(--azulEscuro)] p-[10px_20px_50px_20px] gap-[10px] border-2 rounded-[10px] ${isCorrect === true ? 'border-[var(--verdeClaro)]' : isCorrect === false ? 'border-red-600' : ''}`}>
 
                 {card === null &&
                     <div className="flex justify-center items-center w-[40px] h-[40px]">
@@ -39,17 +39,18 @@ const CardsQuestoes = ({ card }) => {
                 }
 
                 <aside className="w-full flex  justify-between gap-[20px]">
-                    <h1 className="text-[18px] min-h-[50px] flex items-center">{card?.title || "Questão"}</h1>
+                    <h1 className="text-[18px] min-h-[50px] font-bold flex items-center">{card?.title || "Questão"}</h1>
 
-                    <div className="flex min-w-[250px] overflow-x-auto h-[50px] justify-start items-center max-w-[300px] gap-[10px]">
-                        {
-                            card?.tags?.map((tag, index) => (
-                                <span key={index} className="bg-[var(--azulEscuro)] text-[var(--branco)] h-[30px] flex justify-center items-center px-[10px] rounded-full text-[12px]">
-                                    {tag}
-                                </span>
+                    {card?.tags && (
+                        <div className="flex max-w-[290px] max-[700px]:hidden overflow-x-auto h-[50px] justify-start items-center gap-[10px]">
+                            {
+                                card?.tags?.map((tag, index) => (
+                                    <span key={index} className="bg-[var(--azulEscuro)] text-nowrap text-[var(--branco)] h-[30px] flex justify-center items-center px-[10px] rounded-full text-[12px]">
+                                        {tag}
+                                    </span>
                             ))
                         }
-                    </div>
+                    </div>)}
 
                     <span className="flex justify-center h-[50px] items-center gap-[10px]">
                         <p className="text-[14px]">{card?.subject}</p>
@@ -70,14 +71,13 @@ const CardsQuestoes = ({ card }) => {
                                     {index == 3 && <p className="font-bold">D)</p>}
                                     {index == 4 && <p className="font-bold">E)</p>}
 
-                                    <p className={`is${isCorrect === true && option.correct ? ' text-[var(--verdeClaro)]' : ' text-[var(--textWhite)]'}`}>{option.text}</p>
-
+                                    <p className={`${isCorrect === true && option.correct ? ' text-[var(--verdeClaro)]' : ' text-[var(--textWhite)]'}`}>{option.text}</p>
                                     {isCorrect === true && option.correct && <FaCheckCircle className="text-[var(--verdeClaro)]"/>}
                                 </li>
                             ))}
                         </ul>
 
-                        <div className="flex-1 flex overflow-x-auto justify-start items-start pb-[20px]">
+                        <div className="flex-1 flex overflow-x-auto justify-start items-start max-[700px]:hidden pb-[20px]">
                             {isCorrect === false && <p className="text-red-600 w-full text-end text-[18px]">Resposta incorreta</p>}
                             {isCorrect === true && card?.explanation && <p className="text-[var(--verdeClaro)] w-full text-end text-[18px]">{card?.explanation} </p>} 
                         </div>
