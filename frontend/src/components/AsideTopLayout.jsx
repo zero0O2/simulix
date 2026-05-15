@@ -14,8 +14,9 @@ const AsideTopLayout = () => {
         <>
 
             <header className="w-full h-[60px] max-[1220px]:h-[80px] flex items-center max-[1220px]:justify-between justify-end px-[20px]">
-                <div className="min-[1220px]:hidden">
-                    Simulix
+                <div className="min-[1220px]:hidden flex justify-center gap-[10px] items-center">
+                    <img className="object-cover w-[40px] h-[40px] rounded-[10px]" src="/images/logoSite.jpg" alt="Logo" />
+                    <h1 className="text-[20px]">Simulix</h1>
                 </div>
                 <div className="h-full min-[1220px]:hidden min-h-[80px] py-[10px]">
                     <div className="w-full h-full z-0 relative flex min-w-[110px] bg-[white] gap-[5px] rounded-full items-center overflow-hidden justify-start px-[10px]">

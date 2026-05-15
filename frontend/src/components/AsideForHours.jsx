@@ -39,7 +39,7 @@ const AsideForHours = () => {
     return (
         <>
 
-            <nav className="w-full h-[130px] transition-all duration-200 z-0 relative flex items-center overflow-hidden rounded-[20px] ">
+            <nav className="w-full h-[130px] max-[1220px]:hidden transition-all duration-200 z-0 relative flex items-center overflow-hidden rounded-[20px] ">
                 <img className="w-full h-full object-cover object-[0_calc(100%+20px)] absolute" src="./images/fundo1.jpeg" alt="Logo" />
                 <div className="bg-linear-90 absolute w-full h-full from-[#00000077] to-transparent"></div>
                 <div className=" flex h-full w-full gap-[20px] justify-between z-10 p-[20px]">
