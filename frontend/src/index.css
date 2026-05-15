@@ -1,0 +1,67 @@
+@import "tailwindcss";
+@font-face {
+    font-family: 'Citizen';
+    src: url('./assets/fonts/CitizenSans-Public.otf') format("opentype");
+}
+
+
+
+:root{
+    --verdeClaro:#919E6C;
+    --cinza:#6D6A63;
+    --bege:#E8CA94;
+    --marromEscuro:#160F0B;
+    --Preto:#070707;
+    --azulCeu:#3F677F;
+    --azulEscuro:#2C344B;
+
+
+    --textWhite:#ebebeb;
+
+
+    --Citizen:'Citizen';
+}
+
+body{
+    font-family: var(--Citizen);
+}
+
+.citizen{
+    font-family: var(--Citizen);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1f1f1f;
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3F677F;
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4d7d99;
+}
+
+.crescimentoHorizontal{
+    animation: crescimentoHorizontal 0.5s ease-in-out;
+}
+
+@keyframes crescimentoHorizontal {
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 100%;
+    }
+}
