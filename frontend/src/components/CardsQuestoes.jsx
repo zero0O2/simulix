@@ -77,7 +77,7 @@ const CardsQuestoes = ({ card }) => {
 
                         <div className="flex-1 flex overflow-x-auto justify-start items-start pb-[20px]">
                             {isCorrect === false && <p className="text-red-600 w-full text-end text-[18px]">Resposta incorreta</p>}
-                            {isCorrect === true && card?.explanation && <p className="text-[var(--verdeClaro)] text-center text-[18px]">{card?.explanation}</p>} 
+                            {isCorrect === true && card?.explanation && <p className="text-[var(--verdeClaro)] w-full text-end text-[18px]">{card?.explanation} </p>} 
                         </div>
 
                     </div>
