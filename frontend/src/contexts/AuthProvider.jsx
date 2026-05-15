@@ -7,6 +7,8 @@ const AuthContext = createContext()
 
 const AuthProvider = ({children}) => {
 
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+
     const [access,setAccess] = useState(null)
     const [user,setUser] = useState(null)
 
@@ -18,7 +20,7 @@ const AuthProvider = ({children}) => {
 
     const CarregarUserForId = async (id) => {
         try {
-            const response = await axios.get(`http://localhost:3000/users/${id}`)
+            const response = await axios.get(`${API_URL}/users/${id}`)
             setUser(response.data)
         } catch (error) {
             console.error("Erro ao carregar usuário:", error)
@@ -33,7 +35,7 @@ const AuthProvider = ({children}) => {
                 throw new Error("Token não encontrado")
             }
 
-            const response = await axios.get('http://localhost:3000/authorization', {
+            const response = await axios.get(`${API_URL}/authorization`, {
                 headers:{
                     Authorization: `Bearer ${token}`
                 }
@@ -51,7 +53,7 @@ const AuthProvider = ({children}) => {
 
     const CreatedUser = async (data) => {
         try {
-            const response = await axios.post('http://localhost:3000/cadastro', data)
+            const response = await axios.post(`${API_URL}/cadastro`, data)
             return response.data
         } catch (error) {
             return error?.response?.data
@@ -60,7 +62,7 @@ const AuthProvider = ({children}) => {
 
     const Login = async (formDataUser) => {
         try {
-            const response = await axios.post('http://localhost:3000/login', formDataUser)
+            const response = await axios.post(`${API_URL}/login`, formDataUser)
             
             return response.data
 
