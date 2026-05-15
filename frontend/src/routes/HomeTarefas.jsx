@@ -22,7 +22,7 @@ const HomeTarefas = () => {
             return questoesForUser
         }
 
-        return questoesForUser.filter((questao) => questao.examType === categoriaTypes)
+        return questoesForUser?.filter((questao) => questao?.examType === categoriaTypes)
         
     }
 
