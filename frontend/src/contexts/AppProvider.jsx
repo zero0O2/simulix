@@ -10,7 +10,6 @@ const AppContext = createContext();
 const AppProvider = ({children}) => {
 
     const [hoursNow,setHoursNow] = useState(new Date().toLocaleTimeString("pt-br"))
-    console.log(hoursNow)
 
     useEffect(() => {
 
