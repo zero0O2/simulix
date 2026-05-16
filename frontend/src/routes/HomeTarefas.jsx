@@ -41,7 +41,7 @@ const HomeTarefas = () => {
 
                     <AsideOptionsForMobile/>
 
-                    <main className="flex-1 min-h-0 overflow-y-auto justify-start items-center no-scrollbar flex flex-col gap-[20px]">
+                    <main className="flex-1 min-h-0 w-full overflow-y-auto justify-start items-center no-scrollbar flex flex-col gap-[20px]">
 
                         {
                             FilterQuestions()?.map((questao) => (
