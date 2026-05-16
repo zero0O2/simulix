@@ -8,7 +8,6 @@ import OptionsForQuest from "./OptionsForQuest"
 const AsideOptionsForMobile = () => {
     const {setNavigateOptionsForQuest, navigateOptionsForQuest} = useNav()
 
-console.log(navigateOptionsForQuest)
 
 
     return(
