@@ -89,11 +89,11 @@ const HomeOptiosCreateQuest = () => {
                         <input onChange={(e) => {
                             setTitle(e.target.value)
                         }} value={title} className=" peer w-full h-[40px] outline-none backdrop-brightness-60 border-[2px] border-[var(--verdeClaro)] rounded-[6px] px-[10px] flex justify-center items-center" type="text"/>
-                        <span className={`font-bold text-[var(--bege)] text-[18px] transition-all duration-300 absolute peer-focus:-top-3 -translate-y-1/2 ${title ? 'left-0 -top-3' : 'left-[13px] top-1/2'}`} >Título da questão</span>
+                        <span className={`text-[var(--white)] text-[18px] transition-all duration-300 absolute peer-focus:-top-3 -translate-y-1/2 ${title ? 'left-0 -top-3' : 'left-[13px] top-1/2'}`} >Título da questão</span>
                     </label>
 
                     <ul className="flex flex-col gap-[10px]">
-                        <span className={`text-[var(--bege)] text-[18px] transition-all font-bold duration-300 `} >Tipo da questão (obrigatória)</span>
+                        <span className={`text-[var(--white)] text-[18px] transition-all  duration-300 `} >Tipo da questão (obrigatória)</span>
                         <div className="flex flex-wrap justify-between
                          gap-[10px]">
 
@@ -119,7 +119,7 @@ const HomeOptiosCreateQuest = () => {
                         <span onClick={()=>{
                             setDisplayMateria(prev=>!prev)}
 
-                            } className={`text-[var(--bege)] font-bold border-2 border-[var(--verdeClaro)] p-[6px] rounded-[6px] items-center cursor-pointer text-[18px] flex justify-between transition-all duration-300 `}>
+                            } className={`text-[var(--white)] border-2 border-[var(--verdeClaro)] p-[6px] rounded-[6px] items-center cursor-pointer text-[18px] flex justify-between transition-all duration-300 `}>
                             <h1>{subject ? subject: "Matéria (obrigatória)"}</h1>
                             <IoIosArrowDown className={`${displayMateria ? 'rotate-180' : ''} transition-all duration-300 text-[25px]`}/>
                         </span>
@@ -147,11 +147,11 @@ const HomeOptiosCreateQuest = () => {
                         <textarea onChange={(e) => {
                             setQuestion(e.target.value)
                         }} value={question} className=" peer w-full resize-none h-[80px] backdrop-brightness-60 outline-none border-[2px] border-[var(--verdeClaro)] rounded-[6px] px-[10px] flex justify-center items-center" type="text"/>
-                        <span className={`text-[var(--bege)] font-bold text-[18px] transition-all duration-300 absolute peer-focus:-top-3 -translate-y-1/2 ${question ? 'left-0 -top-3' : 'left-[13px] top-1/2'}`} >Enunciado da questão (obrigatório)</span>
+                        <span className={`text-[var(--white)] text-[18px] transition-all duration-300 absolute peer-focus:-top-3 -translate-y-1/2 ${question ? 'left-0 -top-3' : 'left-[13px] top-1/2'}`} >Enunciado da questão (obrigatório)</span>
                     </label>
                     
                     <div className="flex flex-col gap-[10px]">
-                        <h1 className="text-[18px]">Alternativas</h1>
+                        <h1 className="text-[18px] text-[var(--white)]">Alternativas</h1>
                         <div className="flex relative w-full">
                             <input onChange={(e)=>{
                                 setOptions1(e.target.value)
@@ -193,7 +193,7 @@ const HomeOptiosCreateQuest = () => {
 
 
                         <div className=" flex flex-col gap-[10px] p-[5px] ">
-                            <h1 className="text-[18px]">Opção correta</h1>
+                            <h1 className="text-[18px] text-[var(--white)]">Opção correta</h1>
                             <div className="flex gap-[10px]">
 
                                 <label>
@@ -229,7 +229,7 @@ const HomeOptiosCreateQuest = () => {
                     </div>
 
                     <div className="flex flex-col gap-[15px]">
-                        <h1 className="text-[18px]">Adicionar Tags</h1>
+                        <h1 className="text-[18px] text-[var(--white)]">Adicionar Tags</h1>
                         <div className="flex gap-[10px] flex-wrap">
                             {tags.map((tag, index) => (
                                 <div key={index} className="bg-[var(--azulEscuro)] text-[var(--branco)] h-[40px] hover:bg-[var(--azulCeu)] h-[30px] flex justify-center items-center px-[10px] rounded-full text-[16px] gap-[5px]">

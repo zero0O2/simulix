@@ -58,7 +58,7 @@ const HomeTarefas = () => {
                     </main>
                 </div>
                 
-                <div className={`flex relative max-[1180px]:hidden ${asideDisplay ? "max-[1450px]:max-w-[0] max-[1450px]:overflow-hidden " : " max-[1450px]:max-w-[560px]"} flex-1 transition-all flex-1 duration-[800ms]`}>
+                <div className={`flex relative max-[1180px]:hidden ${asideDisplay ? "max-[1450px]:max-w-[0] max-[140px]:overflow-hidden " : " max-[1450px]:max-w-[560px]"} flex-1 transition-all flex-1 duration-[800ms]`}>
                     <AsideNavigateOptionsQuest/>
                 </div>
 
