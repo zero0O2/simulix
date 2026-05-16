@@ -9,7 +9,7 @@ const CardsQuestoes = ({ card }) => {
     const [isCorrect, setIsCorrect] = useState(null)
 
     const timeOutRef = useRef(null)
-    const {DeletarQuestoesForUserId} = useQuestoes()
+    const {DeletarQuestoesForUserId,setQuestoesForUser} = useQuestoes()
 
 
     const VerifyQuest = (option) => {
@@ -98,7 +98,9 @@ const CardsQuestoes = ({ card }) => {
                     <button onClick={async () => {
                         setIsCorrect(null)
                         clearTimeout(timeOutRef.current)
-                        
+
+                        setQuestoesForUser((prev)=> prev?.filter((e) => e._id != card._id ))
+
                         await DeletarQuestoesForUserId(card._id)
 
                     }} className="flex items-center cursor-pointer bottom-2 justify-center hover:scale-[1.03] hover:text-red-600 duration-300 items-center gap-[8px] py-[2px]">

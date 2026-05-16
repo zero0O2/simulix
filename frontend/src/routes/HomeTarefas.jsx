@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import CardsCategorias from "../components/CardsCategorias"
 import CardsQuestoes from "../components/CardsQuestoes"
 import { useQuestoes } from "../contexts/QuestoesProvider"
@@ -15,6 +15,9 @@ const HomeTarefas = () => {
 
     const {questoesForUser,BuscarQuestoesForUserId,categoriaTypes, setCategoriaTypes} = useQuestoes()
     const {navigateOptionsForQuest,setNavigateOptionsForQuest,asideDisplay,setAsideDisplay} = useNav()
+
+    const [questoesFilter,setQuestoesFilter] = useState([])
+
     const {user} = useAuth()
 
     const FilterQuestions = () => {
@@ -31,6 +34,9 @@ const HomeTarefas = () => {
             console.log(error)
         }
     }, [])
+    useEffect(() => {
+        setQuestoesFilter(FilterQuestions())
+    }, [questoesForUser])
 
     return (
         <>
@@ -43,13 +49,13 @@ const HomeTarefas = () => {
 
                     <main className="flex-1 min-h-0 w-full overflow-y-auto justify-start items-center no-scrollbar flex flex-col gap-[20px]">
 
-                        {
-                            FilterQuestions()?.map((questao) => (
+                        {questoesFilter?.length > 0 &&
+                            questoesFilter?.map((questao) => (
                                 <CardsQuestoes key={questao._id} card={questao} />
                             ))
                         }
 
-                        {questoesForUser?.length === 0 && (
+                        {questoesFilter?.length === 0 && (
                             <div className="flex justify-center">
                                 <p>Nenhuma questão encontrada</p>
                             </div>

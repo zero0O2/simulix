@@ -55,7 +55,6 @@ const QuestoesProvider = ({children}) => {
     }
     
     const DeletarQuestoesForUserId = async (IdForQuest) => {
-        console.log(IdForQuest)
         try {
             const response = await axios.delete(`${API_URL}/questions/${IdForQuest}`,{
                 headers:{
