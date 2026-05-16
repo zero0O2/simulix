@@ -1,11 +1,41 @@
+import { useNav } from "../contexts/NavigationProvider"
+import HomeOptiosCreateQuest from "../routes/HomeOptiosCreateQuest"
+import HomeOptiosFilterQuests from "../routes/HomeOptiosFilterQuests"
+import OptionsForQuest from "./OptionsForQuest"
 
 
 
 const AsideOptionsForMobile = () => {
+    const {setNavigateOptionsForQuest, navigateOptionsForQuest} = useNav()
+
+console.log(navigateOptionsForQuest)
+
+
     return(
         <>
-            <div className="bg-amber-700 min-[620px]:hidden w-full h-[40px]">
+            <div className=" flex min-[1180px]:hidden w-full gap-[10px] h-[30px]">
                 
+                <OptionsForQuest text="Criar Questao" path={"/create-quest"}/>
+                <OptionsForQuest text="Filtrar" path={"/filter-questions"}/>
+
+
+                {navigateOptionsForQuest != "/home" &&                
+                    <div onClick={()=>setNavigateOptionsForQuest("/home")} className="w-full h-full left-0 top-0 p-[10px] flex items-center absolute z-10">
+                        <div onClick={(e)=>e.stopPropagation()} className="backdrop-blur-2xl w-full gap-[10px] flex flex-col items-center h-[80%] p-[10px] rounded-[20px]">
+                            <div className="flex w-full px-[20px] justify-between items-center">
+                                <h1 className="text-[17px]">Controle total da sua preparação</h1>
+                                <OptionsForQuest text="Voltar" path={"/home"}/>
+                            </div>
+                            {navigateOptionsForQuest == "/create-quest" &&
+                                <HomeOptiosCreateQuest/>
+                            }
+                            {navigateOptionsForQuest == "/filter-questions" &&
+                                <HomeOptiosFilterQuests/>
+                            }
+                        </div>  
+                    </div>
+                }
+
             </div>
         </>
     )
