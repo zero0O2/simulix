@@ -47,8 +47,8 @@ const AsideForHours = () => {
                         <h1 className="text-[25px] text-nowrap">{message}</h1>
                         <p className="text-[20px]">{navigateInHome?.split("/")}</p>
                     </div>
-                    <div className="max-w-[500px] w-full h-full rounded-[20px] flex justify-center items-center backdrop-blur-3xl ">
-                        <h1 className="text-[50px] max-[950px]:text-[40px]">{hoursNow}</h1>
+                    <div className="max-w-[500px] max-[900px]:max-w-[300px] max-[570px]:max-w-[200px] w-full h-full rounded-[20px] flex justify-center items-center backdrop-blur-3xl ">
+                        <h1 className="text-[50px] max-[950px]:text-[40px] max-[800px]:text-[30px]">{hoursNow}</h1>
                     </div>
                 </div>
             </nav>
