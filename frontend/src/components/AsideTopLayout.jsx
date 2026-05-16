@@ -19,8 +19,8 @@ const AsideTopLayout = () => {
                     <h1 className="text-[20px] max-[480px]:hidden">Simulix</h1>
                 </div>
                 <div className="h-full min-[1180px]:hidden min-h-[80px] py-[10px]">
-                    <div className="w-full h-full z-0 relative flex min-w-[110px] bg-[white] gap-[5px] rounded-full items-center overflow-hidden justify-start px-[10px]">
 
+                    <div className="w-full h-full z-0 relative flex min-w-[110px] bg-[#e4e4e4] gap-[5px] rounded-full items-center overflow-hidden justify-start px-[10px]">
                         <button onClick={()=>setNavigateInHome("/home")} className={`text-[16px] h-[45px] gap-[6px] min-w-[45px] p-[10px] flex justify-center items-center transition-all duration-300 ${navigateInHome == "/home" ? "bg-[var(--azulCeu)] text-[white]" : "bg-transparent text-[var(--azulCeu)]"} cursor-pointer rounded-full`}>
                             <p className="flex gap-[10px]">
                                 <AiOutlineHome className="text-[18px]"/>
@@ -39,9 +39,9 @@ const AsideTopLayout = () => {
                             </p>
                             {navigateInHome == "/configs" && <p>Configs</p>}
                         </button>
-
-
                     </div>
+
+
                 </div>
                 <div className="h-full flex items-center gap-[20px]">
                     <span className="text-[14px] flex gap-[10px] justify-center items-center">
