@@ -16,7 +16,7 @@ const AsideNavigate = () => {
 
     return (
         <>
-            <aside className={`${asideDisplay ? 'w-[400px]' : 'w-0'} transition-all duration-700 overflow-hidden relative flex flex-col h-full `}>
+            <aside className={`${asideDisplay ? 'w-[400px]' : 'w-0'} transition-all z-10 duration-700 overflow-hidden relative flex flex-col h-full `}>
                 <img className="absolute w-full h-full object-cover" src="./images/fundo1.jpeg" alt="" />
                 <div className="absolute w-full h-full backdrop-blur-[40px] backdrop-brightness-45"></div>
                 

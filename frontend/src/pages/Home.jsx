@@ -22,7 +22,7 @@ const Home = () => {
     return (
         <>
             <div className="w-[100dvw] z-0 h-[100dvh] bg-[var(--Preto)] text-[var(--textWhite)] flex">
-                <div className="relative z-0 max-[1220px]:hidden">
+                <div className="relative z-10 max-[1180px]:hidden">
                     <button onClick={()=>setAsideDisplay(prev => !prev)} className="w-[60px] h-[50px] rounded-r-[10px] top-[10px] left-full bg-[var(--azulEscuro)] absolute flex justify-center items-center duration-300 cursor-pointer">
                         <IoCaretBackOutline className={`text-[20px] transition-all duration-700 ${!asideDisplay ? 'rotate-180' : "rotate-0"}`} />
                     </button>
