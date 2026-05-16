@@ -21,8 +21,10 @@ console.log(navigateOptionsForQuest)
 
                 {navigateOptionsForQuest != "/home" &&                
                     <div onClick={()=>setNavigateOptionsForQuest("/home")} className="w-full h-full left-0 top-0 p-[10px] flex items-center absolute z-10">
-                        <div onClick={(e)=>e.stopPropagation()} className="backdrop-blur-2xl w-full gap-[10px] flex flex-col items-center h-[80%] p-[10px] rounded-[20px]">
-                            <div className="flex w-full px-[20px] justify-between items-center">
+                        <div onClick={(e)=>e.stopPropagation()} className="backdrop-blur-2xl w-full overflow-hidden gap-[10px] flex flex-col items-center h-[80%] rounded-[20px]">
+                            <img className="absolute z-[-1] w-full h-full object-cover " src="./images/fundo3.png" alt="" />
+                            <div className="absolute z-[-1] w-full h-full backdrop-blur-[30px] backdrop-brightness-45"></div>
+                            <div className="flex w-full p-[10px_20px] justify-between items-center">
                                 <h1 className="text-[17px]">Controle total da sua preparação</h1>
                                 <OptionsForQuest text="Voltar" path={"/home"}/>
                             </div>
