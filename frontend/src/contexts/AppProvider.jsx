@@ -10,11 +10,12 @@ const AppContext = createContext();
 const AppProvider = ({children}) => {
 
     const [hoursNow,setHoursNow] = useState(new Date().toLocaleTimeString("pt-br"))
+    console.log(hoursNow)
 
     useEffect(() => {
 
         const interval = setInterval(() => {
-            setHoursNow(new Date().toLocaleTimeString())
+            setHoursNow(new Date().toLocaleTimeString("pt-br"))
             
         }, 1000)
         
