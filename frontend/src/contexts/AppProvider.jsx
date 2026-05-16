@@ -9,7 +9,7 @@ const AppContext = createContext();
 
 const AppProvider = ({children}) => {
 
-    const [hoursNow,setHoursNow] = useState(new Date().toLocaleTimeString())
+    const [hoursNow,setHoursNow] = useState(new Date().toLocaleTimeString("pt-br"))
 
     useEffect(() => {
 
