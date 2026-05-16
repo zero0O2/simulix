@@ -8,6 +8,7 @@ import OptionsForQuest from "../components/OptionsForQuest"
 import { MdOutlineCreate } from "react-icons/md";
 import typesJson from "../assets/json/typesQuestions.json"
 import AsideNavigateOptionsQuest from "../components/AsideNavigateOptionsQuest"
+import AsideCardsCategoria from "../components/AsideCardsCategoria"
 
 const HomeTarefas = () => {
 
@@ -33,18 +34,11 @@ const HomeTarefas = () => {
     return (
         <>
             <div className="flex-1 min-h-0 gap-[20px] flex ">
-                <div className="flex-2 flex min-h-0 flex-col gap-[20px] ">
-                    <aside className="w-full flex items-center max-[1120px]:flex-wrap justify-center gap-[20px] max-[1120px]:gap-[10px] max-[1120px]:justify-between max-[1120px]:px-[0px] px-[20px]">
+                <div className="flex-2 flex min-h-0 min-w-0 items-center flex-col gap-[20px] ">
 
-                        <CardsCategorias option={"Todas"}/>
+                    <AsideCardsCategoria/>
 
-                        {
-                            typesJson.types.map((e)=>{
-                                return <CardsCategorias key={e} option={e}/>
-                            })
-                        }
-
-                    </aside>
+                    <AsideOptionsForMobile/>
 
                     <main className="flex-1 min-h-0 overflow-y-auto justify-start items-center no-scrollbar flex flex-col gap-[20px]">
 
