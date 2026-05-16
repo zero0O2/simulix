@@ -9,6 +9,7 @@ import { MdOutlineCreate } from "react-icons/md";
 import typesJson from "../assets/json/typesQuestions.json"
 import AsideNavigateOptionsQuest from "../components/AsideNavigateOptionsQuest"
 import AsideCardsCategoria from "../components/AsideCardsCategoria"
+import AsideOptionsForMobile from "../components/AsideOptionsForMobile"
 
 const HomeTarefas = () => {
 
