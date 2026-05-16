@@ -35,7 +35,7 @@ const HomeTarefas = () => {
     return (
         <>
             <div className="flex-1 min-h-0 gap-[20px] flex ">
-                <div className="flex-2 flex min-h-0 min-w-0 items-center flex-col gap-[20px] ">
+                <div className="flex-2 flex min-h-0 min-w-0 max-[800px]:gap-[15px] items-center flex-col gap-[20px] ">
 
                     <AsideCardsCategoria/>
 
