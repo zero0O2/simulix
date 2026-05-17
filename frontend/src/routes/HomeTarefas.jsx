@@ -24,6 +24,7 @@ const HomeTarefas = () => {
         if(categoriaTypes === "Todas"){
             return questoesForUser
         }
+        console.log(categoriaTypes)
         return questoesForUser?.filter((questao) => questao?.examType === categoriaTypes)
     }
     
@@ -34,9 +35,12 @@ const HomeTarefas = () => {
             console.log(error)
         }
     }, [])
+
     useEffect(() => {
         setQuestoesFilter(FilterQuestions())
-    }, [questoesForUser])
+    }, [questoesForUser,categoriaTypes])
+    
+
 
     return (
         <>
