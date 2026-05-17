@@ -31,8 +31,6 @@ const HomeTarefas = () => {
     useEffect(() => {
         FilterQuestions()
     }, [questoesForUser,categoriaTypes,categoriaMateria])
-    
-
 
     return (
         <>

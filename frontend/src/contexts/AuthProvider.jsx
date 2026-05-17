@@ -76,6 +76,7 @@ const AuthProvider = ({children}) => {
         CarregarUserToken()
     }, [])
 
+
     return(
         <AuthContext.Provider value={{access,setAccess,CreatedUser,Login,CarregarUserToken,Loggout,CarregarUserForId,user}}>
             {children}

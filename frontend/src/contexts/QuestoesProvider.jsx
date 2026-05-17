@@ -8,7 +8,7 @@ const QuestoesContext = createContext();
 
 const QuestoesProvider = ({children}) => {
 
-    const {user} = useAuth()
+    const {user,access} = useAuth()
     const API_URL = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_URL_LOCAL
 
     const [questoesForUser, setQuestoesForUser] = useState([])
@@ -74,29 +74,21 @@ const QuestoesProvider = ({children}) => {
             return error?.response
         }
     }
-
-    useEffect(() => {
-        try {
-
-            BuscarQuestoesForUserId(user._id)
-            
-        } catch (error) {
-            setQuestoesForUser([])
-        }
-    }, [])
     
     useEffect(() => {
         try {
+            setCategoriaTypes("Todas")
+            setCategoriaMateria([])
             BuscarQuestoesForUserId(user._id)
         } catch (error) {
             setQuestoesForUser([])
         }
-    }, [user])
+    }, [user,access])
 
     const FilterQuestions = () => {
         let arrayQuestions = questoesForUser
 
-        if(categoriaTypes !== "Todas"){
+        if(categoriaTypes !== "Todas" || categoriaTypes === ""){
             arrayQuestions = arrayQuestions?.filter(questao => questao?.examType === categoriaTypes)
         }
         
@@ -106,6 +98,7 @@ const QuestoesProvider = ({children}) => {
 
         setQuestoesFilter(arrayQuestions)
     }
+
 
     return (
         <>
