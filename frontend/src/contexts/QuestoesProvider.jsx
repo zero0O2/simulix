@@ -79,6 +79,7 @@ const QuestoesProvider = ({children}) => {
         try {
             setCategoriaTypes("Todas")
             setCategoriaMateria([])
+
             BuscarQuestoesForUserId(user._id)
         } catch (error) {
             setQuestoesForUser([])
@@ -89,7 +90,7 @@ const QuestoesProvider = ({children}) => {
         let arrayQuestions = questoesForUser
 
         if(categoriaTypes !== "Todas" || categoriaTypes === ""){
-            arrayQuestions = arrayQuestions?.filter(questao => questao?.examType === categoriaTypes)
+            return setQuestoesFilter(arrayQuestions?.filter(questao => questao?.examType === categoriaTypes))
         }
         
         if(categoriaMateria?.length !== 0){
