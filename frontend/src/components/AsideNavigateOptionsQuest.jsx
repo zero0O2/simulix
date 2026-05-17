@@ -14,7 +14,7 @@ const AsideNavigateOptionsQuest = () => {
             <div className={`w-full z-0 flex relative transition-all overflow-hidden duration-[800ms] flex-col gap-[20px]`}>
                 
                 <img className="absolute w-full h-full object-cover " src="./images/fundo3.png" alt="" />
-                <div className="absolute w-full h-full backdrop-blur-[30px] backdrop-brightness-45"></div>
+                <div className="absolute w-full h-full backdrop-blur-[150px] backdrop-brightness-45"></div>
                 
                 <div className="flex-1 z-10 min-y-0 flex flex-col items-center overflow-hidden py-[20px] gap-[10px]">
                     <aside className="flex h-[40px] justify-center w-full items-center px-[10px] gap-[10px]">

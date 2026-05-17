@@ -12,7 +12,12 @@ const QuestoesProvider = ({children}) => {
     const API_URL = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_URL_LOCAL
 
     const [questoesForUser, setQuestoesForUser] = useState([])
+    const [questoesFilter,setQuestoesFilter] = useState([])
+
+
+
     const [categoriaTypes, setCategoriaTypes] = useState("Todas")
+    const [categoriaMateria, setCategoriaMateria] = useState([])
 
 
     const CriarQuestoesForUserId = async (dadosForQuest) => {
@@ -23,8 +28,8 @@ const QuestoesProvider = ({children}) => {
                 }
             })
             
-            await BuscarQuestoesForUserId(user._id)
-            return response.data
+            setQuestoesForUser(prev => [...prev,response.data])
+            return console.log(response.status)
         } catch (error) {
             console.error("Erro ao Criar questão:", error.response)
             return error?.response
@@ -88,9 +93,23 @@ const QuestoesProvider = ({children}) => {
         }
     }, [user])
 
+    const FilterQuestions = () => {
+        let arrayQuestions = questoesForUser
+
+        if(categoriaTypes !== "Todas"){
+            arrayQuestions = arrayQuestions?.filter(questao => questao?.examType === categoriaTypes)
+        }
+        
+        if(categoriaMateria?.length !== 0){
+            arrayQuestions = arrayQuestions?.filter(questao => categoriaMateria?.includes(questao.subject))
+        }
+
+        setQuestoesFilter(arrayQuestions)
+    }
+
     return (
         <>
-            <QuestoesContext.Provider value={{questoesForUser,DeletarQuestoesForUserId , setQuestoesForUser,BuscarQuestoesForUserId,CriarQuestoesForUserId,FormatOptionsForQuestoes,categoriaTypes, setCategoriaTypes}}>
+            <QuestoesContext.Provider value={{questoesForUser,FilterQuestions, categoriaMateria,setCategoriaMateria,DeletarQuestoesForUserId,questoesFilter,setQuestoesFilter ,setQuestoesForUser,BuscarQuestoesForUserId,CriarQuestoesForUserId,FormatOptionsForQuestoes,categoriaTypes, setCategoriaTypes}}>
                 {children}
             </QuestoesContext.Provider>
         </>

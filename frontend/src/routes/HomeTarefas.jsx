@@ -13,20 +13,12 @@ import AsideOptionsForMobile from "../components/AsideOptionsForMobile"
 
 const HomeTarefas = () => {
 
-    const {questoesForUser,BuscarQuestoesForUserId,categoriaTypes, setCategoriaTypes} = useQuestoes()
+    const {questoesForUser,BuscarQuestoesForUserId,categoriaMateria ,categoriaTypes,questoesFilter,setQuestoesFilter,FilterQuestions} = useQuestoes()
     const {navigateOptionsForQuest,setNavigateOptionsForQuest,asideDisplay,setAsideDisplay} = useNav()
 
-    const [questoesFilter,setQuestoesFilter] = useState([])
 
     const {user} = useAuth()
 
-    const FilterQuestions = () => {
-        if(categoriaTypes === "Todas"){
-            return questoesForUser
-        }
-        console.log(categoriaTypes)
-        return questoesForUser?.filter((questao) => questao?.examType === categoriaTypes)
-    }
     
     useEffect(() => {
         try {
@@ -37,8 +29,8 @@ const HomeTarefas = () => {
     }, [])
 
     useEffect(() => {
-        setQuestoesFilter(FilterQuestions())
-    }, [questoesForUser,categoriaTypes])
+        FilterQuestions()
+    }, [questoesForUser,categoriaTypes,categoriaMateria])
     
 
 

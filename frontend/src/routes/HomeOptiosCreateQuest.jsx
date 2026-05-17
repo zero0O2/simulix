@@ -6,6 +6,7 @@ import { useQuestoes } from "../contexts/QuestoesProvider";
 import { IoMdAdd } from "react-icons/io";
 import { FaCheck } from "react-icons/fa";
 import { FaRegTrashAlt } from "react-icons/fa";
+import LoadCircle from "../components/LoadCircle";
 
 const HomeOptiosCreateQuest = () => {
 
@@ -13,6 +14,7 @@ const HomeOptiosCreateQuest = () => {
     const {FormatOptionsForQuestoes, CriarQuestoesForUserId} = useQuestoes()
     const [adicionarTag, setAdicionarTag] = useState("")
     const [adicionarTagDisplay, setAdicionarTagDisplay] = useState(false)
+    const [load, setLoad] = useState(false)
 
     const [title, setTitle] = useState('')
     const [question, setQuestion] = useState('')
@@ -33,12 +35,15 @@ const HomeOptiosCreateQuest = () => {
 
     const Submit = async (event) => {
         event.preventDefault()
+
+        setLoad(true)
         try {
             
             const formatOptions = await FormatOptionsForQuestoes([options1, options2, options3, options4, options5],correct)
     
 
             if(formatOptions?.status >= 400 && formatOptions.status < 500){
+                setLoad(false)
                 return alert(formatOptions?.data?.message)
             }
             
@@ -55,6 +60,7 @@ const HomeOptiosCreateQuest = () => {
             const res = await CriarQuestoesForUserId(dados)
             
             if(res?.status >= 400 && res.status < 500){
+                setLoad(false)
                 return alert(res?.data?.message)
             }
 
@@ -73,7 +79,11 @@ const HomeOptiosCreateQuest = () => {
             setOptions4('')
             setOptions5('')
             setCorrect(null)
+
+            setLoad(false)
+            
         } catch (error) {
+            setLoad(false)
             console.error("Erro ao criar questão:", error.response)
         }
         
@@ -271,8 +281,10 @@ const HomeOptiosCreateQuest = () => {
                         <input onChange={(e)=>setExplanation(e.target.value)} value={explanation} type="text" className="w-full outline-none border-2 border-[var(--verdeClaro)] backdrop-brightness-60 p-[5px_10px] rounded-[8px]" placeholder="Explicaçao (opcional)"/>
                     </div>
                     
-                    <button type="submit" className="bg-[var(--verdeClaro)] text-[var(--azulEscuro)] font-bold py-[10px] px-[20px] rounded-full hover:bg-[var(--bege)] cursor-pointer transition-all duration-300">
-                        Criar Questão
+                    <button type="submit" className="bg-[var(--verdeClaro)] text-[var(--azulEscuro)] h-[50px] font-bold py-[10px] px-[20px] rounded-full hover:bg-[var(--bege)] cursor-pointer transition-all duration-300">
+                        {!load ? 
+                        <p>Criar Questão</p>
+                        : <p className="w-full h-full flex justify-center text-[30px] items-center"><LoadCircle/></p>}
                     </button>
 
                 </form>

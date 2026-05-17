@@ -5,8 +5,8 @@ const LoadCircle = () => {
 
         <>
 
-                    <div className="w-full h-screen flex items-center justify-center">
-                        <LuLoaderCircle className="animate-spin text-[50px]"/>
+                    <div className="w-full h-full flex items-center justify-center">
+                        <LuLoaderCircle className="animate-spin"/>
                     </div>
         </>
     )

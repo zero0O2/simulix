@@ -5,7 +5,7 @@ import LoadCircle from "./LoadCircle"
 const PrivateRoute = ({children,loggedIn = "all",local}) => {
     const {access} = useAuth()
 
-    if(access === null){return <div className="absolute w-[100dvw] h-[100dvh] flex justify-center items-center"><LoadCircle/></div>}
+    if(access === null){return <div className="absolute w-[100dvw] h-[100dvh] flex justify-center text-[50px] items-center"><LoadCircle/></div>}
 
     if(loggedIn === "all"){return children}
 
