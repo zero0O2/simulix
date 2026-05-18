@@ -39,7 +39,6 @@ const HomeTarefas = () => {
 
 
         
-    console.log(questoesFoco)
     
     return (
         <>

@@ -15,12 +15,12 @@ const HomeOptiosFilterQuests = () => {
 
                 <div className="flex min-w-0 gap-[10px] backdrop-brightness-50 p-[10px] rounded-[10px] flex-wrap">
                     {typesQuestions?.types?.map(types => (
-                        <CardsCategorias index={types} option={types}/>
+                        <CardsCategorias key={types} option={types}/>
                     ))}
                 </div>
                 <div className="flex min-w-0 gap-[10px] backdrop-brightness-50 p-[10px] rounded-[10px] flex-wrap">
                     {subjectQuestion?.subject?.map(types => (
-                        <CardsCategoriasMaterias index={types} option={types}/>
+                        <CardsCategoriasMaterias key={types} option={types}/>
                     ))}
                 </div>
                 
