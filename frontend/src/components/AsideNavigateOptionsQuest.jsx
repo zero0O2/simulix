@@ -18,7 +18,7 @@ const AsideNavigateOptionsQuest = () => {
                 
                 <div className="flex-1 z-10 min-y-0 flex flex-col items-center overflow-hidden py-[20px] gap-[10px]">
                     <aside className="flex h-[40px] justify-center w-full items-center px-[10px] gap-[10px]">
-                        <h1 className="text-[20px] font-bold text-nowrap text-white">Controle total da sua preparação</h1>
+                        <h1 className="text-[20px] font-bold text-white">Controle total da sua preparação</h1>
                         {navigateOptionsForQuest !== "/home" && (
                             <button onClick={()=>setNavigateOptionsForQuest("/home")} className="bg-[var(--azulEscuro)] hover:bg-[var(--verdeClaro)] text-white duration-300 cursor-pointer p-[5px_10px] rounded-[5px]">Voltar</button>
                         )}

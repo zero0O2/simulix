@@ -12,7 +12,7 @@ const AsideOptionsForMobile = () => {
 
     return(
         <>
-            <div className=" flex min-[1180px]:hidden w-full gap-[10px] h-[30px]">
+            <div className=" flex min-[1180px]:hidden gap-[10px] h-[30px]">
                 
                 <OptionsForQuest text="Criar Questao" path={"/create-quest"}/>
                 <OptionsForQuest text="Filtrar" path={"/filter-questions"}/>

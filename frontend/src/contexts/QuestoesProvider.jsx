@@ -29,6 +29,7 @@ const QuestoesProvider = ({children}) => {
             })
             
             setQuestoesForUser(prev => [...prev,response.data])
+            await BuscarQuestoesForUserId(user._id)
             return console.log(response.status)
         } catch (error) {
             console.error("Erro ao Criar questão:", error.response)
@@ -89,7 +90,7 @@ const QuestoesProvider = ({children}) => {
     const FilterQuestions = () => {
         let arrayQuestions = questoesForUser
 
-        if(categoriaTypes !== "Todas" || categoriaTypes === ""){
+        if(categoriaTypes !== "Todas" && categoriaTypes !== ""){
             return setQuestoesFilter(arrayQuestions?.filter(questao => questao?.examType === categoriaTypes))
         }
         

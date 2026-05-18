@@ -18,7 +18,6 @@ const Home = () => {
     const {asideDisplay, setAsideDisplay,navigateInHome,setNavigateInHome} = useNav()
 
 
-
     return (
         <>
             <div className="w-[100dvw] z-0 h-[100dvh] bg-[var(--Preto)] overflow-hidden text-[var(--textWhite)] flex">
@@ -32,7 +31,7 @@ const Home = () => {
                 <main className="flex flex-1 min-h-0 flex-col">
                     <AsideTopLayout/>
 
-                    <div className=" flex-1 min-h-0 p-[20px] max-[800px]:p-[5px_20px] flex flex-col gap-[20px]">
+                    <div className=" flex-1 min-h-0 p-[20px] max-[800px]:p-[0px_20px] flex flex-col gap-[20px]">
 
                         <AsideForHours/>
 

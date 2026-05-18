@@ -9,12 +9,13 @@ const NavigationProvider = ({children}) => {
     const [navigateInHome, setNavigateInHome] = useState("/home")
     const [navigateOptionsForQuest, setNavigateOptionsForQuest] = useState("/home")
     const [asideDisplay, setAsideDisplay] = useState(true)
+    const [questoesFoco, setQuestoesFoco] = useState(false)
 
 
 
     return (
         <>
-            <NavigationContext.Provider value={{navigateInHome, setNavigateInHome, navigateOptionsForQuest, setNavigateOptionsForQuest, asideDisplay, setAsideDisplay}}>
+            <NavigationContext.Provider value={{navigateInHome,questoesFoco,setQuestoesFoco, setNavigateInHome, navigateOptionsForQuest, setNavigateOptionsForQuest, asideDisplay, setAsideDisplay}}>
                 {children}
             </NavigationContext.Provider>
         </>

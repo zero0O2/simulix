@@ -39,7 +39,7 @@ const CardsQuestoes = ({ card }) => {
                 }
 
                 <aside className="w-full flex  justify-between gap-[20px]">
-                    <h1 className="text-[18px] min-h-[50px] font-bold flex items-center">{card?.title || "Questão"}</h1>
+                    <h1 className="text-[18px] max-[800px]:text-[17px] min-h-[50px] font-bold flex items-center indent-[20px] max-w-[600px] whitespace-pre-wrap break-normal hyphens-auto">{card?.title || "Questão"}</h1>
 
                     {card?.tags && (
                         <div className="flex max-w-[290px] max-[700px]:hidden overflow-x-auto h-[50px] justify-start items-center gap-[10px]">
@@ -53,16 +53,16 @@ const CardsQuestoes = ({ card }) => {
                     </div>)}
 
                     <span className="flex justify-center h-[50px] items-center gap-[10px]">
-                        <p className="text-[14px]">{card?.subject}</p>
+                        <p className="text-[14px] max-[800px]:text-[13px]">{card?.subject}</p>
                         <p className="text-[var(--verdeClaro)]">{card?.examType}</p>
                     </span>
                 </aside>
 
                 <div className="flex-1 min-h-0 flex gap-[20px] flex-col ">
-                    <p className="text-[20px]">{card?.question}</p>
+                    <p className="text-[20px] indent-[20px] max-w-[600px] whitespace-pre-wrap break-normal hyphens-auto max-[800px]:text-[17px]">{card?.question}</p>
 
                     <div className="flex flex-1 min-h-0 ">
-                        <ul className="flex flex-1 flex-col gap-[8px] text-[18px] text-[var(--verdeClaro)]">
+                        <ul className="flex flex-1 flex-col gap-[8px] text-[18px]  text-[var(--verdeClaro)]">
                             {card?.options?.map((option, index) => (
                                 <li onClick={() => VerifyQuest(option)} className="cursor-pointer flex items-center transition-all text-[18px] duration-300 gap-[8px] py-[2px]" key={index}>
                                     {index == 0 && <p className="font-bold">A)</p>}
@@ -71,7 +71,7 @@ const CardsQuestoes = ({ card }) => {
                                     {index == 3 && <p className="font-bold">D)</p>}
                                     {index == 4 && <p className="font-bold">E)</p>}
 
-                                    <p className={`${isCorrect === true && option.correct ? ' text-[var(--verdeClaro)]' : ' text-[var(--textWhite)]'}`}>{option.text}</p>
+                                    <p className={`${isCorrect === true && option.correct ? ' text-[var(--verdeClaro)]' : ' text-[var(--textWhite)]'} max-[800px]:text-[16px]`}>{option.text}</p>
                                     {isCorrect === true && option.correct && <FaCheckCircle className="text-[var(--verdeClaro)]"/>}
                                 </li>
                             ))}

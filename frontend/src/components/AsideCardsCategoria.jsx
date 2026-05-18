@@ -7,12 +7,14 @@ const AsideCardsCategoria = () => {
     return (
         <>
 
-            <aside className=" max-[1180px]:hidden flex items-center flex-nowrap max-[700px]:justify-between max-[630px]:gap-[10px] max-[700px]:px-0 justify-center gap-[20px] px-[20px]">
+            <aside className=" max-[1180px]:hidden flex overflow-x-scroll no-scrollbar items-center flex-nowrap max-[700px]:justify-between max-[630px]:gap-[10px] max-[700px]:px-0 justify-center gap-[20px]">
+                
                 {
                     typesJson.types.map((e)=>{
                         return <CardsCategorias key={e} option={e}/>
                     })
                 }
+                
             </aside>
 
         </>
