@@ -89,7 +89,6 @@ const QuestoesProvider = ({children}) => {
 
     const FilterQuestions = () => {
         let arrayQuestions = questoesForUser
-        console.log(categoriaMateria,categoriaTypes)
 
         if(categoriaTypes !== "Todas"){
             arrayQuestions = arrayQuestions?.filter(questao => questao?.examType === categoriaTypes)
@@ -101,6 +100,12 @@ const QuestoesProvider = ({children}) => {
 
         setQuestoesFilter(arrayQuestions)
     }
+
+    useEffect(() => {
+        
+        FilterQuestions()
+        
+    }, [questoesForUser,categoriaTypes,categoriaMateria])
 
 
     return (
