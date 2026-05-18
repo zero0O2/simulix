@@ -39,7 +39,7 @@ const HomeTarefas = () => {
 
 
         
-    
+    console.log(questoesFoco)
     
     return (
         <>
@@ -71,7 +71,7 @@ const HomeTarefas = () => {
                     </main>
                 </div>
                 
-                <div className={`flex relative max-[1180px]:hidden ${asideDisplay ? "max-[1450px]:max-w-[0] max-[140px]:overflow-hidden " : " max-[1450px]:max-w-[500px]"} flex-1 max-w-[500px] transition-all flex-1 duration-[800ms]`}>
+                <div className={`flex relative max-[1180px]:hidden ${ questoesFoco ? "max-w-[0]" : "max-w-[500px]"} ${(asideDisplay || questoesFoco) ? "max-[1450px]:max-w-[0]" : " max-[1450px]:max-w-[500px]"} flex-1 transition-all flex-1 duration-[700ms]`}>
                     <AsideNavigateOptionsQuest/>
                 </div>
 
