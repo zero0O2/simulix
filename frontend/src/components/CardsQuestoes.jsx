@@ -59,7 +59,7 @@ const CardsQuestoes = ({ card }) => {
                 </aside>
 
                 <div className="flex-1 min-h-0 flex gap-[20px] flex-col ">
-                    <p className="text-[20px] indent-[20px] max-w-[600px] whitespace-pre-wrap break-normal hyphens-auto max-[800px]:text-[17px]">{card?.question}</p>
+                    <p className="text-[19px] indent-[20px] max-w-[600px] whitespace-pre-wrap break-normal hyphens-auto max-[800px]:text-[17px]">{card?.question}</p>
 
                     <div className="flex flex-1 min-h-0 ">
                         <ul className="flex flex-1 flex-col gap-[8px] text-[18px]  text-[var(--verdeClaro)]">
@@ -71,7 +71,7 @@ const CardsQuestoes = ({ card }) => {
                                     {index == 3 && <p className="font-bold">D)</p>}
                                     {index == 4 && <p className="font-bold">E)</p>}
 
-                                    <p className={`${isCorrect === true && option.correct ? ' text-[var(--verdeClaro)]' : ' text-[var(--textWhite)]'} max-[800px]:text-[16px]`}>{option.text}</p>
+                                    <p className={`${isCorrect === true && option.correct ? ' text-[var(--verdeClaro)]' : ' text-[var(--textWhite)]'} text-[18px] max-[800px]:text-[16px]`}>{option.text}</p>
                                     {isCorrect === true && option.correct && <FaCheckCircle className="text-[var(--verdeClaro)]"/>}
                                 </li>
                             ))}

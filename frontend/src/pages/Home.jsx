@@ -31,7 +31,7 @@ const Home = () => {
                 <main className="flex flex-1 min-h-0 flex-col">
                     <AsideTopLayout/>
 
-                    <div className=" flex-1 min-h-0 p-[20px] max-[800px]:p-[0px_20px] flex flex-col gap-[20px]">
+                    <div className=" flex-1 min-h-0 p-[0_20px] max-[800px]:p-[0px_20px] flex flex-col gap-[20px]">
 
                         <AsideForHours/>
 

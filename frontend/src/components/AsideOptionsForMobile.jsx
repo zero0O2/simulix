@@ -30,6 +30,7 @@ const AsideOptionsForMobile = () => {
                                 <h1 className="text-[17px] text-[var(--white)]">Controle total da sua preparação</h1>
                                 <OptionsForQuest text="Voltar" path={"/home"}/>
                             </div>
+
                             {navigateOptionsForQuest == "/create-quest" &&
                                 <HomeOptiosCreateQuest/>
                             }
