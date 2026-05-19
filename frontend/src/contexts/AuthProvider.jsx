@@ -7,7 +7,7 @@ const AuthContext = createContext()
 
 const AuthProvider = ({children}) => {
     
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+    const API_URL = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_URL_LOCAL
     
     const [access,setAccess] = useState(null)
     const [user,setUser] = useState(null)
@@ -23,7 +23,7 @@ const AuthProvider = ({children}) => {
             const response = await axios.get(`${API_URL}/users/${id}`)
             setUser(response.data)
         } catch (error) {
-            console.error("Erro ao carregar usuário:", error)
+            return error
         }
     }
     
@@ -40,13 +40,13 @@ const AuthProvider = ({children}) => {
                     Authorization: `Bearer ${token}`
                 }
             })
+
             setAccess(true)
 
             await CarregarUserForId(response.data.id)
-
             
         } catch (error) {
-            Loggout()
+            return Loggout()
         }
     }
     
