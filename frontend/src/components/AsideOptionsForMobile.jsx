@@ -12,13 +12,18 @@ const AsideOptionsForMobile = () => {
 
     return(
         <>
-            <div className=" flex min-[1180px]:hidden gap-[10px] h-[30px]">
+            <div className={`flex ${navigateOptionsForQuest == "/simulado-questions" ? "" : "min-[1180px]:hidden"} gap-[10px] h-[30px]`}>
                 
-                <OptionsForQuest text="Criar Questao" path={"/create-quest"}/>
-                <OptionsForQuest text="Filtrar" path={"/filter-questions"}/>
+                
+                {navigateOptionsForQuest !== "/home" ?
+                    <OptionsForQuest text="Voltar" path={"/home"}/>
+                    :<>
+                    <OptionsForQuest text="Criar Questao" path={"/create-quest"}/>
+                    <OptionsForQuest text="Filtrar" path={"/filter-questions"}/>
+                    <OptionsForQuest text="Simulado" path={"/simulado-questions"}/>
+                </>}
 
-
-                {navigateOptionsForQuest != "/home" &&                
+                {(navigateOptionsForQuest != "/home" && navigateOptionsForQuest !== "/simulado-questions") &&                
                     <div onClick={()=>setNavigateOptionsForQuest("/home")} className="w-full h-full left-0 top-0 flex items-center absolute z-10">
                         <div onClick={(e)=>e.stopPropagation()} className="backdrop-blur-2xl w-full overflow-hidden gap-[10px] flex flex-col items-center h-[100%]">
                             <img className="absolute z-[-1] w-full h-full object-cover " src="./images/fundo3.png" alt="" />
