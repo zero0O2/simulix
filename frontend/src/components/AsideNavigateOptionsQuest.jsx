@@ -3,6 +3,7 @@ import { useNav } from "../contexts/NavigationProvider"
 import HomeOptiosForQuest from "../routes/HomeOptiosForQuest"
 import HomeOptiosCreateQuest from "../routes/HomeOptiosCreateQuest"
 import HomeOptiosFilterQuests from "../routes/HomeOptiosFilterQuests"
+import HomeOptionSimulado from "../routes/HomeOptionSimulado"
 
 const AsideNavigateOptionsQuest = () => {
 
@@ -26,6 +27,8 @@ const AsideNavigateOptionsQuest = () => {
                     {navigateOptionsForQuest === "/home" && <HomeOptiosForQuest />}
                     {navigateOptionsForQuest === "/create-quest" && <HomeOptiosCreateQuest />}
                     {navigateOptionsForQuest === "/filter-questions" && <HomeOptiosFilterQuests />}
+                    {navigateOptionsForQuest === "/simulado-questions" && <HomeOptionSimulado />}
+                    
 
                 </div>
             </div>

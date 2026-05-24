@@ -48,6 +48,10 @@ const Home = () => {
                                 <HomeTarefas/>             
                             }
 
+
+                            {navigateInHome === "/configs" &&
+                                <p className="text-center">Área de configuracao em desenvolvimento</p>            
+                            }
                             
                         </div>
                     </div>

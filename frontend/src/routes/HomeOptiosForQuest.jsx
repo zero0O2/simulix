@@ -1,6 +1,8 @@
 
 import OptionsForQuest from "../components/OptionsForQuest"
 import { MdOutlineCreate } from "react-icons/md";
+import { CiFilter } from "react-icons/ci";
+import { BiTask } from "react-icons/bi";
 
 const HomeOptiosForQuest = () => {
 
@@ -13,7 +15,10 @@ const HomeOptiosForQuest = () => {
                     <MdOutlineCreate className="text-[20px]" />
                 </OptionsForQuest>
                 <OptionsForQuest text="Filtrar Questões" path="/filter-questions">
-                    <MdOutlineCreate className="text-[20px]" />
+                    <CiFilter className="text-[20px]" />
+                </OptionsForQuest>
+                <OptionsForQuest text="Simulado" path="/simulado-questions" info={"Cria um simulado com as questões filtradas"}>
+                    <BiTask className="text-[20px]" />
                 </OptionsForQuest>
 
             </nav>
