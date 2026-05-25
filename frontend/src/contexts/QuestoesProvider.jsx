@@ -31,7 +31,6 @@ const QuestoesProvider = ({children}) => {
             
             setQuestoesForUser(prev => [...prev,response.data])
             await BuscarQuestoesForUserId(user._id)
-            return console.log(response.status)
         } catch (error) {
             console.error("Erro ao Criar questão:", error.response)
             return error?.response
