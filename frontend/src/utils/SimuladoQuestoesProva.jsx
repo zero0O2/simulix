@@ -126,7 +126,7 @@ const SimuladoQuestoesProva = ({questoes}) => {
                 <main className="w-full">
                     <h1 className="text-[18px] flex items-center gap-[10px]">
                         <span>Porcentagem de Acertos:</span>
-                        <span className="text-[20px] text-[var(--verdeClaro)]">  {dadosDesempenho.correctCount}/{dadosDesempenho.correctCount + dadosDesempenho.incorrectCount} | {(dadosDesempenho.correctCount * 100) / (dadosDesempenho.correctCount + dadosDesempenho.incorrectCount)}%</span>
+                        <span className="text-[20px] text-[var(--verdeClaro)]">  {dadosDesempenho.correctCount}/{dadosDesempenho.correctCount + dadosDesempenho.incorrectCount} | {Number.parseInt((dadosDesempenho.correctCount * 100) / (dadosDesempenho.correctCount + dadosDesempenho.incorrectCount))}%</span>
                     </h1>
                 </main>
 
