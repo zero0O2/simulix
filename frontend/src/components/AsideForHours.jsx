@@ -8,10 +8,22 @@ import { useNav } from "../contexts/NavigationProvider";
 
 const AsideForHours = () => {
 
-    const {hoursNow} = useApp()
+    
     const {navigateInHome,setQuestoesFoco,questoesFoco} = useNav()
+    const [message,setMessage] = useState("")
 
-    const [message,setMessage] = useState()
+    const [hoursNow,setHoursNow] = useState(new Date().toLocaleTimeString("pt-br"))
+
+    useEffect(() => {
+
+        const interval = setInterval(() => {
+            setHoursNow(new Date().toLocaleTimeString("pt-br"))
+            
+        }, 1000)
+        
+        return () => clearInterval(interval)
+        
+    }, [])
 
     const GetMessageForHours = () => {
         const hour = Number(hoursNow.split(":")[0]) 

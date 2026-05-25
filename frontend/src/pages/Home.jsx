@@ -14,7 +14,6 @@ import AsideTopLayout from "../components/AsideTopLayout";
 
 const Home = () => {
 
-    const {hoursNow} = useApp()
     const {asideDisplay, setAsideDisplay,navigateInHome,setNavigateInHome} = useNav()
 
 

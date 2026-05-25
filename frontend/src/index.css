@@ -7,16 +7,19 @@
 
 
 :root{
-    --verdeClaro:#919E6C;
+    --verdeClaro:#ADC178;
+    --verdeEscuro:#1B512D;  
     --cinza:#6D6A63;
     --bege:#E8CA94;
     --marromEscuro:#271a12;
     --Preto:#070707;
     --azulCeu:#3F677F;
     --azulEscuro:#2C344B;
-
+    
+    --black01:#2C2C2C;
 
     --white:#efefef;
+    --whiteCream:#F8EFDA;
     --textWhite:#bebebe;
     --textBlack:#181818;
 

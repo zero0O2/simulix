@@ -397,6 +397,48 @@ app.delete('/questions/:questionId', async (req, res) => {
 
 })
 
+app.post("/gabaritoInfos", async (req,res) => {
+    const gabaritoArray = req.body
+
+    try {
+        const questoesBanco = await Question.find()
+        const gabaritoIdArray = gabaritoArray.map(gabarito => gabarito.id)
+
+        if(!gabaritoIdArray){return res.status(404).json({message:"Gabarito não encontrado"})}
+        
+        const questoesInGabarito = questoesBanco.filter(questao => {
+            return gabaritoIdArray.includes(questao._id.toString())
+        })
+
+        if(!questoesInGabarito > 0){return res.status(404).json({message:"Nenhuma Questao encontrada"})}
+
+        const desempenho = questoesInGabarito.map(questao => {
+            const correct = questao.options.find(option => option.correct === true)
+            const gabaritoForQuest = gabaritoArray.find(e => e.id === questao._id.toString())
+            const isCorrect = correct.id === gabaritoForQuest.check
+
+            return {
+                id:questao._id,
+                isCorrect,
+                optionCheck:gabaritoForQuest.check,
+                optionCorrect:correct.id
+            }
+        })
+
+        const correctCount = desempenho.filter(e =>  e.isCorrect === true).length
+        const incorrectCount = desempenho.filter(e =>  e.isCorrect === false).length
+
+        res.json({desempenho,correctCount,incorrectCount})
+        
+    } catch (error) {
+        res.json(error) 
+        
+    }
+
+})
+
+
+
 app.listen(PORT, () => {
     console.log(`Servidor escutando na porta http://localhost:${PORT}`);
 });

@@ -7,7 +7,7 @@ const AuthContext = createContext()
 
 const AuthProvider = ({children}) => {
     
-    const API_URL = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_URL_LOCAL
+    const API_URL = import.meta.env.VITE_API_URL_LOCAL || import.meta.env.VITE_API_URL_LOCAL
     
     const [access,setAccess] = useState(null)
     const [user,setUser] = useState(null)

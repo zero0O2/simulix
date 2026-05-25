@@ -9,11 +9,12 @@ const QuestoesContext = createContext();
 const QuestoesProvider = ({children}) => {
 
     const {user,access} = useAuth()
-    const API_URL = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_URL_LOCAL
+    const API_URL = import.meta.env.VITE_API_URL_LOCAL || import.meta.env.VITE_API_URL_LOCAL
 
     const [questoesForUser, setQuestoesForUser] = useState([])
     const [questoesFilter,setQuestoesFilter] = useState([])
-
+    
+    const [gabaritoForSimulado,setGabaritoForSimulado] = useState([])
 
 
     const [categoriaTypes, setCategoriaTypes] = useState("Todas")
@@ -110,7 +111,7 @@ const QuestoesProvider = ({children}) => {
 
     return (
         <>
-            <QuestoesContext.Provider value={{questoesForUser,FilterQuestions, categoriaMateria,setCategoriaMateria,DeletarQuestoesForUserId,questoesFilter,setQuestoesFilter ,setQuestoesForUser,BuscarQuestoesForUserId,CriarQuestoesForUserId,FormatOptionsForQuestoes,categoriaTypes, setCategoriaTypes}}>
+            <QuestoesContext.Provider value={{setGabaritoForSimulado,gabaritoForSimulado, questoesForUser,FilterQuestions, categoriaMateria,setCategoriaMateria,DeletarQuestoesForUserId,questoesFilter,setQuestoesFilter ,setQuestoesForUser,BuscarQuestoesForUserId,CriarQuestoesForUserId,FormatOptionsForQuestoes,categoriaTypes, setCategoriaTypes}}>
                 {children}
             </QuestoesContext.Provider>
         </>
