@@ -30,7 +30,7 @@ const SimuladoQuestoesProva = ({questoes}) => {
         setLoad(true)
         try {
 
-            const res = await axios.post(`${import.meta.env.VITE_API_URL_LOCAL}/gabaritoInfos`, gabarito )
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/gabaritoInfos`, gabarito )
 
             setDadosDesempenho(res.data)
             

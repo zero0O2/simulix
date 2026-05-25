@@ -9,7 +9,7 @@ const QuestoesContext = createContext();
 const QuestoesProvider = ({children}) => {
 
     const {user,access} = useAuth()
-    const API_URL = import.meta.env.VITE_API_URL_LOCAL || import.meta.env.VITE_API_URL_LOCAL
+    const API_URL = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_URL_LOCAL
 
     const [questoesForUser, setQuestoesForUser] = useState([])
     const [questoesFilter,setQuestoesFilter] = useState([])
