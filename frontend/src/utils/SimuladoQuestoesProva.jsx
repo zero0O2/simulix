@@ -141,7 +141,7 @@ const SimuladoQuestoesProva = ({questoes}) => {
                         const checkResposta = question?.options?.find(option => option?.id === e?.optionCheck)
                         
                         return (
-                            <div key={index} className="w-full bg-[var(--black01)] flex flex-col gap-[20px] p-[10px] rounded-[8px]">
+                            <div key={index} className={`w-full ${correctResposta === checkResposta ? "border-[var(--verdeClaro)] border-2" : ""} bg-[var(--black01)] flex flex-col gap-[20px] p-[10px] rounded-[8px]`}>
                                 <div className="w-full flex justify-between">
 
                                     <p className="text-[14px] gap-[10px] flex">
