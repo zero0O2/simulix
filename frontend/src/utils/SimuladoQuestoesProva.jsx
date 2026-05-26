@@ -104,10 +104,10 @@ const SimuladoQuestoesProva = ({questoes}) => {
                         ))}
                     </div>
 
-                    <div className="flex items-center z-0 justify-center absolute right-0 gap-[20px]">
+                    <div className="flex items-center justify-center absolute right-0 gap-[20px]">
                         <div className="relative">
-                            <div onClick={()=>EnviarGabarito()} className="peer relative z-20 p-[10px_15px] cursor-pointer hover:bg-[var(--azulCeu)] duration-300 bg-[var(--azulEscuro)] rounded-full"> {load ? <LoadCircle/> : "Enviar Gabarito"} </div>
-                            <span className="absolute z-[-10] peer-hover:opacity-100 duration-200 peer-hover:bottom-[calc(100%+5px)] bottom-[calc(40%+5px)] opacity-0 bg-[var(--bege)] rounded-[8px] text-[14px] text-[var(--textBlack)] p-[6px_10px] w-[200px]">Envie o gabarito após fazer todas as questões, Todas serão avaliadas</span>
+                            <div onClick={()=>EnviarGabarito()} className="peer relative z-30 p-[10px_15px] cursor-pointer hover:bg-[var(--azulCeu)] duration-300 bg-[var(--azulEscuro)] rounded-full"> {load ? <LoadCircle/> : "Enviar Gabarito"} </div>
+                            <span className="absolute z-[-10] peer-hover:z-10 peer-hover:opacity-100 duration-200 peer-hover:bottom-[calc(100%+5px)] bottom-[calc(40%+5px)] opacity-0 bg-[var(--bege)] rounded-[8px] text-[14px] text-[var(--textBlack)] p-[6px_10px] w-[200px]">Envie o gabarito após fazer todas as questões, Todas serão avaliadas</span>
                         </div>
 
                         <button onClick={()=>{
