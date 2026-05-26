@@ -9,12 +9,13 @@ const AppContext = createContext();
 
 const AppProvider = ({children}) => {
 
+    const API_URL = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_URL_LOCAL
     
 
 
     return (
         <>
-            <AppContext.Provider value={{}}>
+            <AppContext.Provider value={{API_URL}}>
                 <AuthProvider>
                 <NavigationProvider>
                 <QuestoesProvider>

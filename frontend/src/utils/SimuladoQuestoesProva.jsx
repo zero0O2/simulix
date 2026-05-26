@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { MdNavigateNext } from "react-icons/md";
 import { BiBookBookmark } from "react-icons/bi";
 import axios from "axios";
+import { useApp } from "../contexts/AppProvider";
 
 
 const SimuladoQuestoesProva = ({questoes}) => {
@@ -10,6 +11,7 @@ const SimuladoQuestoesProva = ({questoes}) => {
     const [gabaritoDisplay,setGabaritoDisplay] = useState(false)
     const [load,setLoad] = useState(false)
     
+    const {API_URL} = useApp()
     
     const [gabarito,setGabarito] = useState(()=>{ 
         const gabaritoInicial = questoes.map(e => {
@@ -30,7 +32,7 @@ const SimuladoQuestoesProva = ({questoes}) => {
         setLoad(true)
         try {
 
-            const res = await axios.post(`${import.meta.env.VITE_API_URL}/gabaritoInfos`, gabarito )
+            const res = await axios.post(`${API_URL}/gabaritoInfos`, gabarito )
 
             setDadosDesempenho(res.data)
             

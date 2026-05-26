@@ -208,29 +208,29 @@ const HomeOptiosCreateQuest = () => {
 
                                 <label>
                                     <input onChange={()=>setCorrect(1)} checked={correct === 1} className="peer hidden" type="radio" name="correct" id="option1" />
-                                    <div className={`${correct === 1 ? 'bg-[var(--verdeClaro)] text-[var(--marromEscuro)]' : ''} w-[30px] h-[30px] flex justify-center items-center h-[20px] border-2 border-[var(--verdeClaro)] peer-checked:text-[var(--marromEscuro)] rounded-full peer-checked:bg-[var(--verdeClaro)]`}>1</div>
+                                    <div className={`${correct === 1 ? 'bg-[var(--verdeClaro)] text-[var(--marromEscuro)]' : ''} cursor-pointer w-[30px] h-[30px] flex justify-center items-center h-[20px] border-2 border-[var(--verdeClaro)] peer-checked:text-[var(--marromEscuro)] rounded-full peer-checked:bg-[var(--verdeClaro)]`}>1</div>
                                 </label>
 
                                 <label>
                                     <input onChange={()=>setCorrect(2)} checked={correct === 2} className="peer hidden" type="radio" name="correct" id="option1" />
-                                    <div className={`${correct === 2 ? 'bg-[var(--verdeClaro)] text-[var(--marromEscuro)]' : ''} w-[30px] h-[30px] flex justify-center items-center h-[20px] border-2 border-[var(--verdeClaro)] peer-checked:text-[var(--marromEscuro)] rounded-full peer-checked:bg-[var(--verdeClaro)]`}>2</div>
+                                    <div className={`${correct === 2 ? 'bg-[var(--verdeClaro)] text-[var(--marromEscuro)]' : ''} cursor-pointer w-[30px] h-[30px] flex justify-center items-center h-[20px] border-2 border-[var(--verdeClaro)] peer-checked:text-[var(--marromEscuro)] rounded-full peer-checked:bg-[var(--verdeClaro)]`}>2</div>
                                 </label>
                                 {(options2 && options1 && options3) && (
                                     <label>
                                         <input onChange={()=>setCorrect(3)} checked={correct === 3} className="peer hidden" type="radio" name="correct" id="option2" />
-                                        <div className={`${correct === 3 ? 'bg-[var(--verdeClaro)] text-[var(--marromEscuro)]' : ''} w-[30px] h-[30px] flex justify-center items-center h-[20px] border-2 border-[var(--verdeClaro)] peer-checked:text-[var(--marromEscuro)] rounded-full peer-checked:bg-[var(--verdeClaro)]`}>3</div>
+                                        <div className={`${correct === 3 ? 'bg-[var(--verdeClaro)] text-[var(--marromEscuro)]' : ''} cursor-pointer w-[30px] h-[30px] flex justify-center items-center h-[20px] border-2 border-[var(--verdeClaro)] peer-checked:text-[var(--marromEscuro)] rounded-full peer-checked:bg-[var(--verdeClaro)]`}>3</div>
                                     </label>
                                 )}
                                 {(options3 && options4) && (
                                     <label>
                                         <input onChange={()=>setCorrect(4)} checked={correct === 4} className="peer hidden" type="radio" name="correct" id="option3" />
-                                        <div className={`${correct === 4 ? 'bg-[var(--verdeClaro)] text-[var(--marromEscuro)]' : ''} w-[30px] h-[30px] flex justify-center items-center h-[20px] border-2 border-[var(--verdeClaro)] peer-checked:text-[var(--marromEscuro)] rounded-full peer-checked:bg-[var(--verdeClaro)]`}>4</div>
+                                        <div className={`${correct === 4 ? 'bg-[var(--verdeClaro)] text-[var(--marromEscuro)]' : ''} cursor-pointer w-[30px] h-[30px] flex justify-center items-center h-[20px] border-2 border-[var(--verdeClaro)] peer-checked:text-[var(--marromEscuro)] rounded-full peer-checked:bg-[var(--verdeClaro)]`}>4</div>
                                     </label>
                                 )}
                                 {(options4 && options5) && (
                                     <label>
                                         <input onChange={()=>setCorrect(5)} checked={correct === 5} className="peer hidden" type="radio" name="correct" id="option4" />
-                                        <div className={`${correct === 5 ? 'bg-[var(--verdeClaro)] text-[var(--marromEscuro)]' : ''} w-[30px] h-[30px] flex justify-center items-center h-[20px] border-2 border-[var(--verdeClaro)] peer-checked:text-[var(--marromEscuro)] rounded-full peer-checked:bg-[var(--verdeClaro)]`}>5</div>
+                                        <div className={`${correct === 5 ? 'bg-[var(--verdeClaro)] text-[var(--marromEscuro)]' : ''} cursor-pointer w-[30px] h-[30px] flex justify-center items-center h-[20px] border-2 border-[var(--verdeClaro)] peer-checked:text-[var(--marromEscuro)] rounded-full peer-checked:bg-[var(--verdeClaro)]`}>5</div>
                                     </label>
                                 )}
                             </div>

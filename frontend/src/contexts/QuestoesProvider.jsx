@@ -3,13 +3,14 @@ import { createContext, useContext, useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { useAuth } from "./AuthProvider.jsx";
+import { useApp } from "./AppProvider.jsx";
 
 const QuestoesContext = createContext();
 
 const QuestoesProvider = ({children}) => {
 
     const {user,access} = useAuth()
-    const API_URL = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_URL_LOCAL
+    const {API_URL} = useApp()
 
     const [questoesForUser, setQuestoesForUser] = useState([])
     const [questoesFilter,setQuestoesFilter] = useState([])

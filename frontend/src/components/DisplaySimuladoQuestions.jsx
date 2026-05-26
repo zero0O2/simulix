@@ -14,7 +14,7 @@ const DisplaySimuladoQuestions = () => {
     const [questionarioDisplay,setQuestionarioDisplay] = useState(false)
 
     const [questoesForQuestionario,setQuestoesForQuestionario] = useState([])
-    
+
     const IniciarQuestionario = () => {
 
         let questoesEmbaralhadas = [...questoesFilter]
@@ -28,9 +28,21 @@ const DisplaySimuladoQuestions = () => {
             
         }
 
+        questoesEmbaralhadas = questoesEmbaralhadas?.map(e => {
+            let options = [...e.options]
+            
+            for(let i = 0 ; i <= options.length - 1 ; i++){
+                let r = Math.floor(Math.random()*options.length)
+
+                let e = options[i]
+                options[i] = options[r]
+                options[r] = e
+            }
+            
+            return {...e,options}
+        })
+
         setQuestoesForQuestionario(questoesEmbaralhadas)
-
-
         setQuestionarioDisplay(true)
 
     }
