@@ -52,7 +52,7 @@ const SimuladoQuestoesProva = ({questoes}) => {
     return(
         <>
 
-            {!gabaritoDisplay && <div className="flex flex-col bg-[var(--black01)] max-w-[800px] min-h-[600px] h-min  p-[14px_20px] gap-[20px] w-full rounded-[12px] text-[var(--whiteCream)]">
+            {!gabaritoDisplay && <div className="flex z-0 flex-col bg-[var(--black01)] max-w-[800px] min-h-[600px] h-min  p-[14px_20px] gap-[20px] w-full rounded-[12px] text-[var(--whiteCream)]">
                 <main className="flex-1 flex flex-col gap-[20px]">
 
                     <aside className=" flex justify-between items-center w-full">
