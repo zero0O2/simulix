@@ -7,6 +7,7 @@ import { FaTasks,FaCog } from "react-icons/fa";
 import { useState } from "react";
 import { useNav } from "../contexts/NavigationProvider";
 import { useAuth } from "../contexts/AuthProvider";
+import MsgSpanConfirm from "../utils/MsgSpanConfirm";
 
 
 const AsideNavigate = () => {
@@ -14,8 +15,13 @@ const AsideNavigate = () => {
     const {Loggout} = useAuth()
     const {asideDisplay, setAsideDisplay,navigateInHome} = useNav()
 
+    const [displaySpan,setDisplaySpan] = useState(false)
+    const [span,setSpan] = useState({msg:"",confirmation:"Confirmar"})
+
     return (
         <>
+            {displaySpan && <MsgSpanConfirm func={Loggout} title={span.msg} confirmation={span.confirmation} setSpan={setSpan} setState={setDisplaySpan}/>}
+
             <aside className={`${asideDisplay ? 'w-[400px]' : 'w-0'} transition-all z-10 duration-700 overflow-hidden relative flex flex-col h-full `}>
                 <img className="absolute w-full h-full object-cover" src="./images/fundo1.jpeg" alt="" />
                 <div className="absolute w-full h-full backdrop-blur-[40px] backdrop-brightness-45"></div>
@@ -49,7 +55,10 @@ const AsideNavigate = () => {
                             <HomeAsideRedirect path="/configs" text="Configurações" >
                                 <FaCog />
                             </HomeAsideRedirect>
-                            <button onClick={()=> Loggout()} className="relative flex rounded-[10px] justify-center backdrop-brightness-75 items-center hover:backdrop-brightness-45 duration-300 ease-in-out overflow-hidden z-0 cursor-pointer w-full h-[40px]">
+                            <button onClick={()=> {
+                                    setSpan({msg:"Sair da Conta",confirmation:"Sair"})
+                                    setDisplaySpan(true)
+                                }} className="relative flex rounded-[10px] justify-center backdrop-brightness-75 items-center hover:backdrop-brightness-45 duration-300 ease-in-out overflow-hidden z-0 cursor-pointer w-full h-[40px]">
                                 <h1 className="z-10 flex text-[17px]">Sair da conta</h1>
                             </button> 
                         </nav>

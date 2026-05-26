@@ -14,6 +14,7 @@ import { MdFullscreen } from "react-icons/md";
 import { MdFullscreenExit } from "react-icons/md";
 import DisplayFilterQuestions from "../components/DisplayFilterQuestions"
 import DisplaySimuladoQuestions from "../components/DisplaySimuladoQuestions"
+import MsgSpanConfirm from "../utils/MsgSpanConfirm"
 
 
 
@@ -58,7 +59,6 @@ const HomeTarefas = () => {
                         <DisplaySimuladoQuestions/>
                         
                     </> }
-
                 </div>
                 
                 <div className={`flex relative max-[1180px]:hidden ${ questoesFoco || navigateOptionsForQuest == "/simulado-questions" ? "max-w-[0]" : "max-w-[500px]"} ${(asideDisplay || questoesFoco || navigateOptionsForQuest == "/simulado-questions") ? "max-[1450px]:max-w-[0]" : " max-[1450px]:max-w-[500px]"} flex-1 transition-all flex-1 duration-[700ms]`}>
