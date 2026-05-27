@@ -314,8 +314,8 @@ app.post('/formatOptions/:correct', async (req, res) => {
     const correct = parseInt(req.params.correct)
     
     try {
-        
-        const optionsWithoutEmpty = options.filter(option => option && option.trim() !== '')
+        const optionsid = options.map((e,index) => ( { text:e , id:index + 1 } ) )
+        const optionsWithoutEmpty = optionsid.filter(option => option && option.text.trim() !== '')
         
         if(!optionsWithoutEmpty || optionsWithoutEmpty.length === 0){
             return res.status(400).json({message: 'Opções não fornecidas'})
@@ -329,17 +329,15 @@ app.post('/formatOptions/:correct', async (req, res) => {
             return res.status(400).json({message: 'Correta não fornecida'})
         }
         
-        
-        
-        if(!optionsWithoutEmpty.some((e,index) => correct === index + 1)){
+        if(!optionsWithoutEmpty.some((e,index) => e.id === correct )){
             return res.status(400).json({message: 'A opção correta deve estar entre as opções fornecidas'})
         }
 
         const optionsFormated = optionsWithoutEmpty.map((option, index) => (
             {
                 id:index + 1,
-                text:option,
-                correct:index + 1 === correct ? true : false
+                text:option.text,
+                correct:option.id === correct ? true : false
             }
         ))
         

@@ -46,7 +46,7 @@ const HomeOptiosCreateQuest = () => {
                 setLoad(false)
                 return alert(formatOptions?.data?.message)
             }
-            
+
             const dados = {
                 title,
                 question,
@@ -98,7 +98,7 @@ const HomeOptiosCreateQuest = () => {
                     <label className="flex relative flex-col ">
                         <input onChange={(e) => {
                             setTitle(e.target.value)
-                        }} value={title} className=" peer w-full h-[40px] outline-none backdrop-brightness-60 border-[2px] border-[var(--verdeClaro)] rounded-[6px] px-[10px] flex justify-center items-center" type="text"/>
+                        }} value={title} className=" peer w-full h-[40px] outline-none backdrop-brightness-60 border-[2px] border-[var(--azulCeu)] rounded-[6px] px-[10px] flex justify-center items-center" type="text"/>
                         <span className={`text-[var(--white)] text-[18px] transition-all duration-300 absolute peer-focus:-top-3 -translate-y-1/2 ${title ? 'left-0 -top-3' : 'left-[13px] top-1/2'}`} >Título da questão</span>
                     </label>
 
@@ -113,7 +113,7 @@ const HomeOptiosCreateQuest = () => {
                                         <input onChange={() => {
                                             setExamType(type)
                                         }} className="peer hidden" type="radio" checked={examType === type} name="type" id={type} />
-                                        <div className={`peer-checked:bg-[var(--verdeClaro)] cursor-pointer border-2 border-[var(--verdeClaro)] rounded-full peer-checked:text-[var(--azulEscuro)] text-[17px] p-[5px_10px]`}>
+                                        <div className={`peer-checked:bg-[var(--azulEscuro)] cursor-pointer border-2 border-[var(--azulCeu)] rounded-full peer-checked:text-[var(--whiteCream)] text-[17px] p-[5px_10px]`}>
                                             <p>{type}</p>
                                         </div>
                                     </label>
@@ -129,7 +129,7 @@ const HomeOptiosCreateQuest = () => {
                         <span onClick={()=>{
                             setDisplayMateria(prev=>!prev)}
 
-                            } className={`text-[var(--white)] border-2 border-[var(--verdeClaro)] p-[6px] rounded-[6px] items-center cursor-pointer text-[18px] flex justify-between transition-all duration-300 `}>
+                            } className={`text-[var(--white)] border-2 border-[var(--azulCeu)] p-[6px] rounded-[6px] items-center cursor-pointer text-[18px] flex justify-between transition-all duration-300 `}>
                             <h1>{subject ? subject: "Matéria (obrigatória)"}</h1>
                             <IoIosArrowDown className={`${displayMateria ? 'rotate-180' : ''} transition-all duration-300 text-[25px]`}/>
                         </span>
@@ -143,7 +143,7 @@ const HomeOptiosCreateQuest = () => {
                                         <input onChange={() => {
                                             setSubject(item)
                                         }} className="peer hidden" type="radio" checked={subject === item} name="subject" id={item} />
-                                        <div className="peer-checked:bg-[var(--verdeClaro)] cursor-pointer border-2 border-[var(--verdeClaro)] rounded-full peer-checked:text-[var(--azulEscuro)] text-[17px] p-[5px_10px]">
+                                        <div className="peer-checked:bg-[var(--azulEscuro)] cursor-pointer border-2 border-[var(--azulCeu)] rounded-full peer-checked:text-[var(--whiteCream)] text-[17px] p-[5px_10px]">
                                             <p>{item}</p>
                                         </div>
                                     </label>
@@ -156,7 +156,7 @@ const HomeOptiosCreateQuest = () => {
                     <label className="flex relative mt-[20px] flex-col ">
                         <textarea onChange={(e) => {
                             setQuestion(e.target.value)
-                        }} value={question} className=" peer w-full resize-none h-[80px] backdrop-brightness-60 outline-none border-[2px] border-[var(--verdeClaro)] rounded-[6px] px-[10px] flex justify-center items-center" type="text"/>
+                        }} value={question} className=" peer w-full resize-none h-[80px] backdrop-brightness-60 outline-none border-[2px] border-[var(--azulCeu)] rounded-[6px] px-[10px] flex justify-center items-center" type="text"/>
                         <span className={`text-[var(--white)] text-[18px] transition-all duration-300 absolute peer-focus:-top-3 -translate-y-1/2 ${question ? 'left-0 -top-3' : 'left-[13px] top-1/2'}`} >Enunciado da questão (obrigatório)</span>
                     </label>
                     
@@ -165,38 +165,38 @@ const HomeOptiosCreateQuest = () => {
                         <div className="flex relative w-full">
                             <input onChange={(e)=>{
                                 setOptions1(e.target.value)
-                            }} value={options1} className="p-[5px_10px] w-full text-[17px] backdrop-brightness-60 outline-none border-2 border-[var(--verdeClaro)] rounded-full" type="text"  />
+                            }} value={options1} className="p-[5px_10px] w-full text-[17px] backdrop-brightness-60 outline-none border-2 border-[var(--azulCeu)] rounded-full" type="text"  />
                             <h1 className={`text-[var(--bege)] text-[18px] transition-all duration-300 ${options1 ? 'left-[-13px] text-[var(--bege)] ' : 'left-[13px] text-[var(--cinza)]'} top-1/2 absolute -translate-y-1/2`} >1</h1>
                         </div>
 
                         <div className="flex relative w-full">
                             <input onChange={(e)=>{
                                 setOptions2(e.target.value)
-                            }} value={options2} className="p-[5px_10px] w-full text-[17px] backdrop-brightness-60 outline-none border-2 border-[var(--verdeClaro)] rounded-full" type="text"  />
+                            }} value={options2} className="p-[5px_10px] w-full text-[17px] backdrop-brightness-60 outline-none border-2 border-[var(--azulCeu)] rounded-full" type="text"  />
                             <h1 className={`text-[var(--bege)] text-[18px] transition-all duration-300 ${options2 ? 'left-[-13px] text-[var(--bege)] ' : 'left-[13px] text-[var(--cinza)]'} top-1/2 absolute -translate-y-1/2`} >2</h1>
                         </div>
 
-                        {(options2 && options1) && (
+                        {((options2 && options1) || options3) && (
                             <div className="flex relative w-full">
                                 <input onChange={(e)=>{
                                     setOptions3(e.target.value)
-                                }} value={options3} className="p-[5px_10px] w-full text-[17px] backdrop-brightness-60 outline-none border-2 border-[var(--verdeClaro)] rounded-full" type="text"  />
+                                }} value={options3} className="p-[5px_10px] w-full text-[17px] backdrop-brightness-60 outline-none border-2 border-[var(--azulCeu)] rounded-full" type="text"  />
                                 <h1 className={`text-[var(--bege)] text-[18px] transition-all duration-300 ${options3 ? 'left-[-13px] text-[var(--bege)] ' : 'left-[13px] text-[var(--cinza)]'} top-1/2 absolute -translate-y-1/2`} >3</h1>
                             </div>
                         )}
-                        {options3 && (
+                        {((options3 && options2) || options4) && (
                             <div className="flex relative w-full">
                                 <input onChange={(e)=>{
                                     setOptions4(e.target.value)
-                                }} value={options4} className="p-[5px_10px] w-full text-[17px] backdrop-brightness-60 outline-none border-2 border-[var(--verdeClaro)] rounded-full" type="text"  />
+                                }} value={options4} className="p-[5px_10px] w-full text-[17px] backdrop-brightness-60 outline-none border-2 border-[var(--azulCeu)] rounded-full" type="text"  />
                                 <h1 className={`text-[var(--bege)] text-[18px] transition-all duration-300 ${options4 ? 'left-[-13px] text-[var(--bege)] ' : 'left-[13px] text-[var(--cinza)]'} top-1/2 absolute -translate-y-1/2`} >4</h1>
                             </div>
                         )}
-                        {options4 && (
+                        {((options4 && options3) || options5) && (
                             <div className="flex relative w-full">
                                 <input onChange={(e)=>{
                                     setOptions5(e.target.value)
-                                }} value={options5} className="p-[5px_10px] w-full text-[17px] backdrop-brightness-60 outline-none border-2 border-[var(--verdeClaro)] rounded-full" type="text"  />
+                                }} value={options5} className="p-[5px_10px] w-full text-[17px] backdrop-brightness-60 outline-none border-2 border-[var(--azulCeu)] rounded-full" type="text"  />
                                 <h1 className={`text-[var(--bege)] text-[18px] transition-all duration-300 ${options5 ? 'left-[-13px] text-[var(--bege)] ' : 'left-[13px] text-[var(--cinza)]'} top-1/2 absolute -translate-y-1/2`} >5</h1>
                             </div>
                         )}
@@ -205,32 +205,35 @@ const HomeOptiosCreateQuest = () => {
                         <div className=" flex flex-col gap-[10px] p-[5px] ">
                             <h1 className="text-[18px] text-[var(--white)]">Opção correta</h1>
                             <div className="flex gap-[10px]">
+                                {(options1) && (
+                                    <label>
+                                        <input onChange={()=>setCorrect(1)} checked={correct === 1} className="peer hidden" type="radio" name="correct" id="option1" />
+                                        <div className={`${correct === 1 ? 'bg-[var(--azulEscuro)] text-[var(--whiteCream)] scale-[1.1]' : ''} cursor-pointer w-[30px] h-[30px] flex justify-center items-center h-[20px] border-2 border-[var(--azulCeu)] peer-checked:text-[var(--whiteCream)] rounded-full peer-checked:bg-[var(--azulEscuro)]`}>1</div>
+                                    </label>
+                                )}
+                                {(options2) && (
+                                    <label>
+                                        <input onChange={()=>setCorrect(2)} checked={correct === 2} className="peer hidden" type="radio" name="correct" id="option1" />
+                                        <div className={`${correct === 2 ? 'bg-[var(--azulEscuro)] text-[var(--whiteCream)] scale-[1.1]' : ''} cursor-pointer w-[30px] h-[30px] flex justify-center items-center h-[20px] border-2 border-[var(--azulCeu)] peer-checked:text-[var(--whiteCream)] rounded-full peer-checked:bg-[var(--azulEscuro)]`}>2</div>
+                                    </label>
+                                )}
 
-                                <label>
-                                    <input onChange={()=>setCorrect(1)} checked={correct === 1} className="peer hidden" type="radio" name="correct" id="option1" />
-                                    <div className={`${correct === 1 ? 'bg-[var(--verdeClaro)] text-[var(--marromEscuro)]' : ''} cursor-pointer w-[30px] h-[30px] flex justify-center items-center h-[20px] border-2 border-[var(--verdeClaro)] peer-checked:text-[var(--marromEscuro)] rounded-full peer-checked:bg-[var(--verdeClaro)]`}>1</div>
-                                </label>
-
-                                <label>
-                                    <input onChange={()=>setCorrect(2)} checked={correct === 2} className="peer hidden" type="radio" name="correct" id="option1" />
-                                    <div className={`${correct === 2 ? 'bg-[var(--verdeClaro)] text-[var(--marromEscuro)]' : ''} cursor-pointer w-[30px] h-[30px] flex justify-center items-center h-[20px] border-2 border-[var(--verdeClaro)] peer-checked:text-[var(--marromEscuro)] rounded-full peer-checked:bg-[var(--verdeClaro)]`}>2</div>
-                                </label>
-                                {(options2 && options1 && options3) && (
+                                {(options3) && (
                                     <label>
                                         <input onChange={()=>setCorrect(3)} checked={correct === 3} className="peer hidden" type="radio" name="correct" id="option2" />
-                                        <div className={`${correct === 3 ? 'bg-[var(--verdeClaro)] text-[var(--marromEscuro)]' : ''} cursor-pointer w-[30px] h-[30px] flex justify-center items-center h-[20px] border-2 border-[var(--verdeClaro)] peer-checked:text-[var(--marromEscuro)] rounded-full peer-checked:bg-[var(--verdeClaro)]`}>3</div>
+                                        <div className={`${correct === 3 ? 'bg-[var(--azulEscuro)] text-[var(--whiteCream)] scale-[1.1]' : ''} cursor-pointer w-[30px] h-[30px] flex justify-center items-center h-[20px] border-2 border-[var(--azulCeu)] peer-checked:text-[var(--whiteCream)] rounded-full peer-checked:bg-[var(--azulEscuro)]`}>3</div>
                                     </label>
                                 )}
-                                {(options3 && options4) && (
+                                {(options4) && (
                                     <label>
                                         <input onChange={()=>setCorrect(4)} checked={correct === 4} className="peer hidden" type="radio" name="correct" id="option3" />
-                                        <div className={`${correct === 4 ? 'bg-[var(--verdeClaro)] text-[var(--marromEscuro)]' : ''} cursor-pointer w-[30px] h-[30px] flex justify-center items-center h-[20px] border-2 border-[var(--verdeClaro)] peer-checked:text-[var(--marromEscuro)] rounded-full peer-checked:bg-[var(--verdeClaro)]`}>4</div>
+                                        <div className={`${correct === 4 ? 'bg-[var(--azulEscuro)] text-[var(--whiteCream)] scale-[1.1]' : ''} cursor-pointer w-[30px] h-[30px] flex justify-center items-center h-[20px] border-2 border-[var(--azulCeu)] peer-checked:text-[var(--whiteCream)] rounded-full peer-checked:bg-[var(--azulEscuro)]`}>4</div>
                                     </label>
                                 )}
-                                {(options4 && options5) && (
+                                {(options5) && (
                                     <label>
                                         <input onChange={()=>setCorrect(5)} checked={correct === 5} className="peer hidden" type="radio" name="correct" id="option4" />
-                                        <div className={`${correct === 5 ? 'bg-[var(--verdeClaro)] text-[var(--marromEscuro)]' : ''} cursor-pointer w-[30px] h-[30px] flex justify-center items-center h-[20px] border-2 border-[var(--verdeClaro)] peer-checked:text-[var(--marromEscuro)] rounded-full peer-checked:bg-[var(--verdeClaro)]`}>5</div>
+                                        <div className={`${correct === 5 ? 'bg-[var(--azulEscuro)] text-[var(--whiteCream)] scale-[1.1]' : ''} cursor-pointer w-[30px] h-[30px] flex justify-center items-center h-[20px] border-2 border-[var(--azulCeu)] peer-checked:text-[var(--whiteCream)] rounded-full peer-checked:bg-[var(--azulEscuro)]`}>5</div>
                                     </label>
                                 )}
                             </div>
@@ -278,7 +281,7 @@ const HomeOptiosCreateQuest = () => {
                     </div>
 
                     <div className="flex">
-                        <input onChange={(e)=>setExplanation(e.target.value)} value={explanation} type="text" className="w-full outline-none border-2 border-[var(--verdeClaro)] backdrop-brightness-60 p-[5px_10px] rounded-[8px]" placeholder="Explicaçao (opcional)"/>
+                        <input onChange={(e)=>setExplanation(e.target.value)} value={explanation} type="text" className="w-full outline-none border-2 border-[var(--azulCeu)] backdrop-brightness-60 p-[5px_10px] rounded-[8px]" placeholder="Explicaçao (opcional)"/>
                     </div>
                     
                     <button type="submit" className="bg-[var(--verdeClaro)] text-[var(--azulEscuro)] h-[50px] font-bold py-[10px] px-[20px] rounded-full hover:bg-[var(--bege)] cursor-pointer transition-all duration-300">
