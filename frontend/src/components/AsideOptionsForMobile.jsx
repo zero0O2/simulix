@@ -27,10 +27,8 @@ const AsideOptionsForMobile = () => {
 
                 {(navigateOptionsForQuest != "/home" && navigateOptionsForQuest !== "/simulado-questions") &&                
                     <div onClick={()=>setNavigateOptionsForQuest("/home")} className="w-full h-full left-0 top-0 flex items-center absolute z-10">
-                        <div onClick={(e)=>e.stopPropagation()} className="backdrop-blur-2xl w-full overflow-hidden gap-[10px] flex flex-col items-center h-[100%]">
-                            <img className="absolute z-[-1] w-full h-full object-cover " src="./images/fundo3.png" alt="" />
-                            <div className="absolute z-[-1] w-full h-full bg-[#78787892]"></div>
-                            <div className="absolute z-[-1] w-full h-full backdrop-blur-[200px]  backdrop-brightness-40"></div>
+                        <div onClick={(e)=>e.stopPropagation()} className=" bg-[var(--black01)] w-full overflow-hidden gap-[10px] flex flex-col items-center h-[100%]">
+                            
 
 
                             <div className="flex w-full p-[10px_20px] justify-between items-center">
