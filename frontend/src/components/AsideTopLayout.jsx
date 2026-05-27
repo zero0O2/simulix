@@ -47,7 +47,7 @@ const AsideTopLayout = () => {
                     <span className="text-[14px] flex gap-[10px] justify-center items-center">
                         <p className="text-[14px] max-[660px]:hidden">Olá, como vai </p>
                         <h1 className="text-[18px] max-[560px]:hidden">{user?.name?.split(' ').slice(0,2).join(' ')}</h1> 
-                        <img className="w-[50px] h-[50px] rounded-full object-cover" src="https://i.pinimg.com/736x/bd/c7/81/bdc781b471ebd825a6ab5a40e36e0f8e.jpg" alt="" />
+                        <img className="w-[50px] h-[50px] rounded-full object-cover" src={user?.avatar} alt="" />
                     </span>
                 </div>
             </header>
