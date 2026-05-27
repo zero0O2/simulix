@@ -2,7 +2,7 @@ import { useNav } from "../contexts/NavigationProvider"
 import HomeOptiosCreateQuest from "../routes/HomeOptiosCreateQuest"
 import HomeOptiosFilterQuests from "../routes/HomeOptiosFilterQuests"
 import OptionsForQuest from "./OptionsForQuest"
-
+import { MdOutlinePostAdd } from "react-icons/md";
 
 
 const AsideOptionsForMobile = () => {
@@ -18,7 +18,9 @@ const AsideOptionsForMobile = () => {
                 {navigateOptionsForQuest !== "/home" ?
                     <OptionsForQuest text="Voltar" path={"/home"}/>
                     :<>
-                    <OptionsForQuest text="Criar Questao" path={"/create-quest"}/>
+                    <OptionsForQuest text={"Criar Questao"} path={"/create-quest"}>
+                        <MdOutlinePostAdd/>
+                    </OptionsForQuest>
                     <OptionsForQuest text="Filtrar" path={"/filter-questions"}/>
                     <OptionsForQuest text="Simulado" path={"/simulado-questions"}/>
                 </>}

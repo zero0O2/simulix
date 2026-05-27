@@ -4,11 +4,13 @@ import { useNav } from "../contexts/NavigationProvider";
 import { AiOutlineHome } from "react-icons/ai";
 import { FaCog, FaTasks } from "react-icons/fa";
 import { useAuth } from "../contexts/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const AsideTopLayout = () => {
 
     const {navigateInHome,setNavigateInHome} = useNav()
     const {user} = useAuth()
+    const navigation = useNavigate()
 
     return (
         <>
@@ -33,11 +35,10 @@ const AsideTopLayout = () => {
                             </p>
                             {navigateInHome == "/tarefas" && <p>Tarefas</p>}
                         </button>
-                        <button onClick={()=>setNavigateInHome("/configs")} className={`text-[16px] gap-[6px] h-[45px] min-w-[45px] p-[10px] flex justify-center items-center transition-all duration-300 ${navigateInHome == "/configs" ? "bg-[var(--azulCeu)] text-[white]" : "bg-transparent text-[var(--azulCeu)]"} cursor-pointer rounded-full`}>
+                        <button onClick={()=> navigation('configuracao')} className={`text-[16px] gap-[6px] h-[45px] min-w-[45px] p-[10px] flex justify-center items-center transition-all duration-300 ${navigateInHome == "/configs" ? "bg-[var(--azulCeu)] text-[white]" : "bg-transparent text-[var(--azulCeu)]"} cursor-pointer rounded-full`}>
                             <p className="flex gap-[10px]">
                                 <FaCog className="text-[18px]"/>
                             </p>
-                            {navigateInHome == "/configs" && <p>Configs</p>}
                         </button>
                     </div>
 

@@ -16,7 +16,6 @@ const Home = () => {
 
     const {asideDisplay, setAsideDisplay,navigateInHome,setNavigateInHome} = useNav()
 
-
     return (
         <>
             <div className="w-[100dvw] z-0 h-[100dvh] bg-[var(--Preto)] overflow-hidden text-[var(--textWhite)] flex">
@@ -48,10 +47,6 @@ const Home = () => {
                             }
 
 
-                            {navigateInHome === "/configs" &&
-                               <p className="text-center">Área de configuracao em desenvolvimento</p>            
-                            }
-                            
                         </div>
                     </div>
                 </main>
