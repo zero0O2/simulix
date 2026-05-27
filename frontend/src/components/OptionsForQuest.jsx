@@ -18,10 +18,10 @@ const OptionsForQuest = ({ text, children, path, info }) => {
                     <span className="peer absolute right-[10px]">
                         <IoInformationCircleOutline className="text-[20px]"/>
                     </span>
-                    <div className="peer-hover:opacity-100 opacity-0 max-w-[350px] duration-300 ease-in-out absolute right-0 top-[100%] bg-[var(--bege)] text-[var(--textBlack)] p-[10px] rounded-[8px]">
+                    <div className=" peer-hover:opacity-100 opacity-0 max-w-[350px] duration-300 ease-in-out absolute right-0 top-[100%] bg-[var(--bege)] text-[var(--textBlack)] p-[10px] rounded-[8px]">
                         {info}
                     </div>
-                </>}
+                </>} 
             </button>
         </>
     )
