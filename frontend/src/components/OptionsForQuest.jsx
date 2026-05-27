@@ -13,7 +13,7 @@ const OptionsForQuest = ({ text, children, path, info }) => {
                 onClick={() => setNavigateOptionsForQuest(path)}
             >   
                 <p className={`${children && "max-[500px]:hidden"}`}>{text}</p>
-                <span className="max-[1180px]:hidden max-[500px]:block">{children}</span>
+                {children && <span className="max-[1180px]:hidden max-[500px]:block">{children}</span>}
 
                 {info && <>
                     <span className="peer absolute right-[10px]">
