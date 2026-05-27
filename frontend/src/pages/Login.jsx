@@ -3,6 +3,7 @@ import { useAuth } from "../contexts/AuthProvider.jsx"
 import HeaderAccess from "../components/HeaderAccess.jsx"
 import axios from "axios"
 import { useState } from "react"
+import LoadCircle from "../components/LoadCircle.jsx"
 
 const Login = () => {
 
@@ -10,34 +11,40 @@ const Login = () => {
 
     const [ emailUser, setEmailUser ] = useState("")
     const [ senhaUser, setSenhaUser ] = useState("")
-
+    
     const [ erros, setErros ] = useState({})
-
+    
+    const [ load, setLoad ] = useState(false)
 
     const Submit = async (event) => {
         event.preventDefault()
-
+        setLoad(true)
+        
         const formDataUser = {
             email: emailUser,
             password: senhaUser
         }
-
+        
         const response = await Login(formDataUser)
         
         if(response.token){
-
+            
             localStorage.setItem("token", response.token)
-
-            return await CarregarUserToken()
-
+            
+            await CarregarUserToken()
+            setLoad(false)
+            
+            return 
         }
+
+        setLoad(false)
         return setErros(response)
     }
 
     return (
         <>
-            <div className="w-[100dvw] z-0 h-[100dvh] bg-[var(--cinza)] p-[10px] flex items-center justify-center">
-                <div className="w-full h-full relative bg-[var(--verdeClaro)] overflow-hidden rounded-[30px] flex items-center justify-center">
+            <div className="w-[100dvw] z-0 h-[100dvh] bg-[var(--cinza)] flex items-center justify-center">
+                <div className="w-full h-full relative bg-[var(--verdeClaro)] overflow-hidden flex items-center justify-center">
                     <img className="w-full h-full absolute top-0 left-0 object-cover" src="./images/fundo.jpeg" alt="" />
                     <div className="w-full h-full absolute backdrop-brightness-60"></div>
                     <div className="z-10 w-full h-full flex-col citizen flex text-[var(--textWhite)]">
@@ -90,7 +97,7 @@ const Login = () => {
                                             {erros?.erros?.password && <p className="text-red-500 absolute -bottom-1/2 text-[14px]">{erros?.erros?.password}</p>}
                                         </label>
                                         {erros?.message && <p className="text-red-500  bottom-0 text-[14px]">{erros?.message}</p>}
-                                        <button type="submit" className="w-[300px] border-[var(--azulCeu)] h-[40px] border-2 rounded-[10px] hover:bg-[var(--azulEscuro)] duration-300 cursor-pointer">Entrar</button>
+                                        <button type="submit" className="w-[300px] border-[var(--azulCeu)] h-[40px] border-2 rounded-[10px] hover:bg-[var(--azulEscuro)] duration-300 cursor-pointer">{load ? <LoadCircle/> : "Entrar"}</button>
                                     </form>
                                     <p>Não tem uma conta? <Link to="/cadastro" className="text-[var(--verde)] hover:underline">Cadastre-se</Link></p>
 

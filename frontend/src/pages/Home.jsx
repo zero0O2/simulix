@@ -49,7 +49,7 @@ const Home = () => {
 
 
                             {navigateInHome === "/configs" &&
-                                <p className="text-center">Área de configuracao em desenvolvimento</p>            
+                               <p className="text-center">Área de configuracao em desenvolvimento</p>            
                             }
                             
                         </div>

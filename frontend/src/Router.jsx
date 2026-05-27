@@ -5,6 +5,7 @@ import PrivateRoute from './components/PrivateRoute.jsx'
 import Page404 from './pages/Page404.jsx'
 import Login from './pages/Login.jsx'
 import Cadastro from './pages/Cadastro.jsx'
+import Configuracao from './pages/Configuracao.jsx'
 
 
 const Router = () => {
@@ -36,6 +37,17 @@ const Router = () => {
                         </PrivateRoute>
                         } 
                     />
+
+                    <Route
+                        path='/configuracao'
+                        element={
+                            <PrivateRoute local={"bem-vindo"} loggedIn={true}>
+                                <Configuracao/>
+                            </PrivateRoute>
+                        }
+                    >
+
+                    </Route>
 
                     <Route 
                         path='/login' 

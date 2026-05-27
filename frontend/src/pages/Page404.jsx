@@ -9,10 +9,10 @@ const Page404 = () => {
 
     return (
         <>
-            <div className="w-[100dvw] z-0 h-[100dvh] bg-[var(--cinza)] p-[10px] flex items-center justify-center">
-                <div className="w-full h-full relative bg-[var(--verdeClaro)] overflow-hidden rounded-[30px] flex items-center justify-center">
+            <div className="w-[100dvw] z-0 h-[100dvh] bg-[var(--cinza)] flex items-center justify-center">
+                <div className="w-full h-full relative bg-[var(--verdeClaro)] overflow-hidden flex items-center justify-center">
                     <img className="w-full h-full absolute top-0 left-0 object-cover" src="./images/fundo.jpeg" alt="" />
-                    <div className="w-full h-full absolute backdrop-brightness-60"></div>
+                    <div className="w-full h-full absolute backdrop-brightness-45"></div>
                     <div className="z-10 w-full h-full flex-col p-[20px] citizen flex text-[var(--textWhite)]">
 
                         <HeaderAccess/>

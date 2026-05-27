@@ -51,10 +51,11 @@ const AsideNavigate = () => {
                     <footer className="w-full flex flex-col gap-[20px]">
                         <div className="w-full crescimentoHorizontal h-[4px] bg-[var(--azulCeu)]"></div>
                         
-                        <nav className=" flex flex-col w-full gap-[10px] px-[20px]">
-                            <HomeAsideRedirect path="/configs" text="Configurações" >
+                        <nav className=" flex flex-col w-full gap-[20px] px-[20px]">
+                            <Link to={"/configuracao"} className="flex text-[18px] items-center hover:text-[var(--azulCeu)] duration-300 gap-[10px]">
                                 <FaCog />
-                            </HomeAsideRedirect>
+                                <p>Configurações</p>
+                            </Link>
                             <button onClick={()=> {
                                     setSpan({msg:"Sair da Conta",confirmation:"Sair"})
                                     setDisplaySpan(true)
