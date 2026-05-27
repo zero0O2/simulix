@@ -3,6 +3,7 @@ import { IoInformationCircleOutline } from "react-icons/io5";
 
 
 const OptionsForQuest = ({ text, children, path, info }) => {
+    
     const {setNavigateOptionsForQuest} = useNav()
 
     return (
