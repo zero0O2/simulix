@@ -10,11 +10,20 @@ import { IoCaretBackOutline } from "react-icons/io5";
 
 import { AiOutlineHome } from "react-icons/ai";
 import { FaCog, FaTasks } from "react-icons/fa";
+import { CiTimer } from "react-icons/ci";
+import { CiStopwatch } from "react-icons/ci";
+
 import AsideTopLayout from "../components/AsideTopLayout";
+import { useAcess } from "../contexts/AcessibilityProvider";
+import Cronograma from "../utils/Cronograma";
 
 const Home = () => {
 
-    const {asideDisplay, setAsideDisplay,navigateInHome,setNavigateInHome} = useNav()
+    const {
+        asideDisplay, setAsideDisplay,
+        navigateInHome,setNavigateInHome
+    } = useNav()
+
 
     return (
         <>
@@ -35,10 +44,25 @@ const Home = () => {
 
                         <div className="flex-1 min-h-0 flex flex-col">
 
-
                             {navigateInHome === "/home" &&
-                                <div className="flex-1 flex text-center flex-col">
-                                    nenhuma opção encontrada <br /> clique em tarefas para criar uma nova tarefa ou ver as tarefas criadas
+                                <div className="flex-1 grid grid-cols-2 grid-rows-2 max-[1000px]:grid-cols-1 max-[1000px]:grid-rows-3  gap-[10px] mb-[15px] flex-col">
+
+                                    
+                                    <div className="col-span-1 row-span-1 p-[15px] rounded-[10px] flex flex-1">
+                                        <p className="w-full text-center">Em desenvolvimento ...</p>
+                                    </div>
+
+                                    <div className="col-span-1 row-span-1 flex flex-1">
+
+                                        <Cronograma/>
+
+                                    </div>
+
+                                    <div className=" max-[1000px]:col-span-1 col-span-2 p-[15px] row-span-1 rounded-[10px] flex flex-1 bg-[var(--black01)]">
+                                        <p className=" w-full text-center">Em desenvolvimento ...</p>
+                                    </div>
+                                    
+
                                 </div>
                             }
 

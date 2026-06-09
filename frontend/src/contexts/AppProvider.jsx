@@ -3,13 +3,14 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { AuthProvider } from "./AuthProvider.jsx";
 import { NavigationProvider } from "./NavigationProvider.jsx";
 import { QuestoesProvider } from "./QuestoesProvider.jsx";
+import { AcessibilityProvider } from "./AcessibilityProvider.jsx";
 
 
 const AppContext = createContext();
 
 const AppProvider = ({children}) => {
 
-    const API_URL = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_URL_LOCAL
+    const API_URL = import.meta.env.VITE_API_URL_LOCAL || import.meta.env.VITE_API_URL_LOCAL
     
 
 
@@ -19,7 +20,9 @@ const AppProvider = ({children}) => {
                 <AuthProvider>
                 <NavigationProvider>
                 <QuestoesProvider>
+                <AcessibilityProvider>
                     {children}
+                </AcessibilityProvider>
                 </QuestoesProvider>
                 </NavigationProvider>
                 </AuthProvider>

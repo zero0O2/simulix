@@ -3,11 +3,20 @@ import { Link } from "react-router-dom"
 import { useApp } from "../contexts/AppProvider";
 import { useEffect, useState } from "react";
 import { useNav } from "../contexts/NavigationProvider";
+import { useAcess } from "../contexts/AcessibilityProvider";
 
 
 
 const AsideForHours = () => {
 
+    const {
+        typeForCronograma,
+        FormatNumberTime,
+        hoursCronometro,minutosCronometro,secondsCronometro,
+        cronometroExist,
+        timerExist
+    } = useAcess()
+    
     
     const {navigateInHome,setQuestoesFoco,questoesFoco} = useNav()
     const [message,setMessage] = useState("")
@@ -48,6 +57,8 @@ const AsideForHours = () => {
         setMessage(GetMessageForHours())
     },[hoursNow])
 
+
+    
     return (
         <>
 
@@ -59,8 +70,14 @@ const AsideForHours = () => {
                         <h1 className="text-[25px] text-nowrap">{message}</h1>
                         <p className="text-[20px]">{navigateInHome?.split("/")}</p>
                     </div>
-                    <div className="max-w-[500px] max-[900px]:max-w-[300px] max-[570px]:max-w-[200px] w-full h-full rounded-[20px] flex justify-center items-center backdrop-blur-3xl ">
-                        <h1 className="text-[50px] max-[950px]:text-[40px] max-[800px]:text-[30px]">{hoursNow}</h1>
+                    <div className="max-w-[500px] relative max-[900px]:max-w-[300px] max-[570px]:max-w-[200px] w-full h-full rounded-[20px] flex justify-center items-center backdrop-blur-3xl ">
+                        {(cronometroExist && navigateInHome != "/home") && <span className="absolute bottom-0 right-3 text-[14px]">{typeForCronograma}</span>}
+                        {(!cronometroExist || (cronometroExist && navigateInHome == "/home")) && <h1 className="text-[50px] max-[950px]:text-[40px] max-[800px]:text-[30px]">{hoursNow}</h1>}
+
+                        {(typeForCronograma == "cronometro" && cronometroExist && navigateInHome !== "/home") && <h1 className="text-[50px] max-[950px]:text-[40px] max-[800px]:text-[30px]">{FormatNumberTime(hoursCronometro)}:{FormatNumberTime(minutosCronometro)}:{FormatNumberTime(secondsCronometro)}</h1>}
+                        {(typeForCronograma == "timer" && timerExist && navigateInHome !== "/home") && <h1 className="text-[50px] max-[950px]:text-[40px] max-[800px]:text-[30px]">{FormatNumberTime(hoursCronometro)}:{FormatNumberTime(minutosCronometro)}:{FormatNumberTime(secondsCronometro)}</h1>}
+                        
+
                     </div>
                 </div>
             </nav>
