@@ -25,7 +25,6 @@ const Home = () => {
     } = useNav()
 
 
-    console.log("teste")
 
     return (
         <>
