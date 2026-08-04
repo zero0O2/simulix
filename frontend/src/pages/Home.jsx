@@ -25,6 +25,8 @@ const Home = () => {
     } = useNav()
 
 
+    console.log("teste")
+
     return (
         <>
             <div className="w-[100dvw] z-0 h-[100dvh] bg-[var(--Preto)] overflow-hidden text-[var(--textWhite)] flex">

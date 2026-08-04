@@ -10,7 +10,7 @@ const AppContext = createContext();
 
 const AppProvider = ({children}) => {
 
-    const API_URL = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_URL_LOCAL
+    const API_URL = import.meta.env.VITE_API_URL_LOCAL || import.meta.env.VITE_API_URL_LOCAL
     
 
 

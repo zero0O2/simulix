@@ -73,7 +73,7 @@ const AsideForHours = () => {
                     <div className="max-w-[500px] relative max-[900px]:max-w-[300px] max-[570px]:max-w-[200px] w-full h-full rounded-[20px] flex justify-center items-center backdrop-blur-3xl ">
                         {(cronometroExist && navigateInHome != "/home") && <span className="absolute bottom-0 right-3 text-[14px]">{typeForCronograma}</span>}
                         {(!cronometroExist || (cronometroExist && navigateInHome == "/home")) && <h1 className="text-[50px] max-[950px]:text-[40px] max-[800px]:text-[30px]">{hoursNow}</h1>}
-
+                
                         {(typeForCronograma == "cronometro" && cronometroExist && navigateInHome !== "/home") && <h1 className="text-[50px] max-[950px]:text-[40px] max-[800px]:text-[30px]">{FormatNumberTime(hoursCronometro)}:{FormatNumberTime(minutosCronometro)}:{FormatNumberTime(secondsCronometro)}</h1>}
                         {(typeForCronograma == "timer" && timerExist && navigateInHome !== "/home") && <h1 className="text-[50px] max-[950px]:text-[40px] max-[800px]:text-[30px]">{FormatNumberTime(hoursCronometro)}:{FormatNumberTime(minutosCronometro)}:{FormatNumberTime(secondsCronometro)}</h1>}
                         

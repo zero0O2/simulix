@@ -17,10 +17,6 @@ const Cronograma = () => {
         buttonCronometro,setButtonCronometro
     } = useAcess()
     
-    
-
-
-    console.log()
 
 
 
@@ -33,7 +29,9 @@ const Cronograma = () => {
                         <button onClick={()=>{
                             setTypeForCronograma("cronometro")
                         }} className={`${typeForCronograma == "cronometro" ? "bg-[var(--azulCeu)]" : "" } duration-200 p-[5px_10px] rounded-full cursor-pointer text-[var(--whiteCream)] hover:bg-[var(--cinza)] flex items-center gap-[5px]`} >Cronômetro <CiStopwatch/></button>
-                        
+                        <button onClick={()=>{
+                            setTypeForCronograma("timer")
+                        }} className={`${typeForCronograma == "timer" ? "bg-(--azulCeu)" : "" } duration-200 p-[5px_10px] rounded-full cursor-pointer text-[var(--whiteCream)] hover:bg-[var(--cinza)] flex items-center gap-[5px]`} >Timer <CiTimer /></button>
                     </span>
                 </aside>
 
