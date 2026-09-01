@@ -3,6 +3,7 @@ import { useNav } from "../contexts/NavigationProvider"
 import HomeOptiosForQuest from "../routes/HomeOptiosForQuest"
 import HomeOptiosCreateQuest from "../routes/HomeOptiosCreateQuest"
 import HomeOptiosFilterQuests from "../routes/HomeOptiosFilterQuests"
+import HomeOptiosExportQuestions from "../routes/HomeOptiosExportQuestions"
 
 const AsideNavigateOptionsQuest = () => {
 
@@ -20,10 +21,14 @@ const AsideNavigateOptionsQuest = () => {
                             <button onClick={()=>setNavigateOptionsForQuest("/home")} className="bg-[var(--azulEscuro)] hover:bg-[var(--verdeClaro)] text-white duration-300 cursor-pointer p-[5px_10px] rounded-[5px]">Voltar</button>
                         )}
                     </aside>
+                    
                     {navigateOptionsForQuest === "/home" && <HomeOptiosForQuest />}
+                    
                     {navigateOptionsForQuest === "/create-quest" && <HomeOptiosCreateQuest />}
+                    
                     {navigateOptionsForQuest === "/filter-questions" && <HomeOptiosFilterQuests />}
                     
+                    {navigateOptionsForQuest === "/export-questions" && <HomeOptiosExportQuestions/>}
 
                 </div>
             </div>

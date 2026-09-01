@@ -38,6 +38,21 @@ const QuestoesProvider = ({children}) => {
         }
     }
 
+    const CriarQuestoesForJSON = async (jsonDATA) => {
+        try {
+            const response = await axios.post(`${API_URL}/jsonQuestions`,jsonDATA,{
+                headers:{
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            
+            return response.data
+        } catch (error) {
+            console.error("Erro ao Ler JSON da questão:", error.response)
+            return error?.response
+        }
+    }
+
     
     const FormatOptionsForQuestoes = async (options,correct) => {
         try {
@@ -111,7 +126,7 @@ const QuestoesProvider = ({children}) => {
 
     return (
         <>
-            <QuestoesContext.Provider value={{setGabaritoForSimulado,gabaritoForSimulado, questoesForUser,FilterQuestions, categoriaMateria,setCategoriaMateria,DeletarQuestoesForUserId,questoesFilter,setQuestoesFilter ,setQuestoesForUser,BuscarQuestoesForUserId,CriarQuestoesForUserId,FormatOptionsForQuestoes,categoriaTypes, setCategoriaTypes}}>
+            <QuestoesContext.Provider value={{CriarQuestoesForJSON,setGabaritoForSimulado,gabaritoForSimulado, questoesForUser,FilterQuestions, categoriaMateria,setCategoriaMateria,DeletarQuestoesForUserId,questoesFilter,setQuestoesFilter ,setQuestoesForUser,BuscarQuestoesForUserId,CriarQuestoesForUserId,FormatOptionsForQuestoes,categoriaTypes, setCategoriaTypes}}>
                 {children}
             </QuestoesContext.Provider>
         </>

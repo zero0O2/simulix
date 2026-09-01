@@ -435,6 +435,39 @@ app.post("/gabaritoInfos", async (req,res) => {
 
 })
 
+app.post("/jsonQuestions",(req,res)=>{
+    let userId = null
+    
+    try {
+        const bearer = req.headers.authorization
+        if (!bearer) {
+            return res.status(401).json({ message: 'Token não fornecido' })
+        }
+        const tokenJwt = bearer.split(' ')[1]
+
+        if (!tokenJwt) {
+            return res.status(401).json({ message: 'Token mal formatado' })
+        }
+
+        const token = jwt.verify(tokenJwt, process.env.JWT_SECRET)
+
+        userId = token.id
+
+    } catch (error) {
+        res.status(400).json(error)
+    }
+
+    const questionsJson = req.body
+
+    const questionsJsonFormated = questionsJson.map((e)=>{
+        const optionsFormated = e.options.map((e,index) => ({id:index + 1,...e}))
+
+        return {...e, options:optionsFormated}
+    })
+
+    res.status(202).json(questionsJsonFormated)
+})
+
 
 
 app.listen(PORT, () => {

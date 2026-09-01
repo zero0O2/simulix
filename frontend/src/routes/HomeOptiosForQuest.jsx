@@ -14,6 +14,9 @@ const HomeOptiosForQuest = () => {
                 <OptionsForQuest text="Criar Questão" path="/create-quest">
                     <MdOutlineCreate className="text-[20px]" />
                 </OptionsForQuest>
+                <OptionsForQuest text="Exportar questões" path="/export-questions" info={"Para exportação de questões é necessario o uso de um txt em formato json"}>
+                    <MdOutlineCreate className="text-[20px]" />
+                </OptionsForQuest>
                 <OptionsForQuest text="Filtrar Questões" path="/filter-questions">
                     <CiFilter className="text-[20px]" />
                 </OptionsForQuest>
