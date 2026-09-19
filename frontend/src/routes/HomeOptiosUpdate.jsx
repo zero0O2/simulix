@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useState } from "react"
 import typeQuestion from "../assets/json/typesQuestions.json"
 import subjectQuestion from "../assets/json/subjectQuestion.json"
@@ -7,31 +8,57 @@ import { IoMdAdd } from "react-icons/io";
 import { FaCheck } from "react-icons/fa";
 import { FaRegTrashAlt } from "react-icons/fa";
 import LoadCircle from "../components/LoadCircle";
+import { useEffect } from "react";
+import { useNav } from "../contexts/NavigationProvider";
 
-const HomeOptiosCreateQuest = () => {
-
+const HomeOptiosUpdate = () => {
     const [displayMateria, setDisplayMateria] = useState(false)
-    const {FormatOptionsForQuestoes, CriarQuestoesForUserId} = useQuestoes()
+    const {FormatOptionsForQuestoes, UpdateQuestoesForUserId,questionForUpdate} = useQuestoes()
+    const {setNavigateOptionsForQuest} = useNav()
     const [adicionarTag, setAdicionarTag] = useState("")
     const [adicionarTagDisplay, setAdicionarTagDisplay] = useState(false)
     const [load, setLoad] = useState(false)
 
-    const [title, setTitle] = useState('')
-    const [question, setQuestion] = useState('')
-    const [examType, setExamType] = useState('')
-    const [subject, setSubject] = useState('')
-    const [tags, setTags] = useState([])
-    const [explanation, setExplanation] = useState('')
-
-    const [options1, setOptions1] = useState("")
-    const [options2, setOptions2] = useState("")
-    const [options3, setOptions3] = useState("")
-    const [options4, setOptions4] = useState("")
-    const [options5, setOptions5] = useState("")
+    const [title, setTitle] = useState(questionForUpdate.title || '')
+    const [question, setQuestion] = useState(questionForUpdate.question || '')
+    const [examType, setExamType] = useState(questionForUpdate.examType || '')
+    const [subject, setSubject] = useState(questionForUpdate.subject || '')
+    const [tags, setTags] = useState(questionForUpdate.tags || [])
+    const [explanation, setExplanation] = useState(questionForUpdate.explanation)
     
-    const [correct, setCorrect] = useState(null)
+    const [options1, setOptions1] = useState(questionForUpdate.options[0]?.text || '')
+    const [options2, setOptions2] = useState(questionForUpdate.options[1]?.text || '')
+    const [options3, setOptions3] = useState(questionForUpdate.options[2]?.text || '')
+    const [options4, setOptions4] = useState(questionForUpdate.options[3]?.text || '')
+    const [options5, setOptions5] = useState(questionForUpdate.options[4]?.text || '')
+    
+    const correctDefault = questionForUpdate.options.find((e) => e.correct)
+    const [correct, setCorrect] = useState(correctDefault.id || null)
+    const ResetForm = () => {
+        setTitle(questionForUpdate.title)
+        setQuestion(questionForUpdate.question)
+        setExamType(questionForUpdate.examType)
+        setSubject(questionForUpdate.subject)
+        setExplanation(questionForUpdate.explanation)
+        setAdicionarTag('')
+        setTags(questionForUpdate.tags)
+        setAdicionarTagDisplay(false)
 
+        setOptions1(questionForUpdate.options[0]?.text || '')
+        setOptions2(questionForUpdate.options[1]?.text || '')
+        setOptions3(questionForUpdate.options[2]?.text || '')
+        setOptions4(questionForUpdate.options[3]?.text || '')
+        setOptions5(questionForUpdate.options[4]?.text || '')
+        setCorrect(correctDefault.id || null)
+    }
+ 
 
+    useEffect(()=>{
+        ResetForm()
+    },[questionForUpdate])
+
+    
+    
 
     const Submit = async (event) => {
         event.preventDefault()
@@ -56,36 +83,21 @@ const HomeOptiosCreateQuest = () => {
                 explanation,
                 options: formatOptions
             }
-            console.log(dados)
             
-            const res = await CriarQuestoesForUserId(dados)
+            const res = await UpdateQuestoesForUserId(dados,questionForUpdate._id)
             
             if(res?.status >= 400 && res.status < 500){
                 setLoad(false)
                 return alert(res?.data?.message)
             }
 
-            setTitle('')
-            setQuestion('')
-            setExamType('')
-            setSubject('')
-            setExplanation('')
-            setAdicionarTag([])
-            setTags([])
-            setAdicionarTagDisplay(false)
-
-            setOptions1('')
-            setOptions2('')
-            setOptions3('')
-            setOptions4('')
-            setOptions5('')
-            setCorrect(null)
-
+            setNavigateOptionsForQuest("/home")
             setLoad(false)
+
             
         } catch (error) {
             setLoad(false)
-            console.error("Erro ao criar questão:", error.response)
+            console.error("Erro ao Editar questão:", error.response)
         }
         
     }
@@ -94,8 +106,7 @@ const HomeOptiosCreateQuest = () => {
         <>
             <div onClick={()=>setDisplayMateria(false)} className="w-full h-full min-y-0 overflow-y-scroll flex flex-col">
                 <form onSubmit={Submit} className="flex flex-col gap-[30px] p-[20px] min-y-0 ">
-                    <h1 className="text-[25px]">Criar Questão</h1>
-
+                    <h1 className="text-[25px]">Atualizar Questão</h1>
                     <label className="flex relative flex-col ">
                         <input onChange={(e) => {
                             setTitle(e.target.value)
@@ -287,7 +298,7 @@ const HomeOptiosCreateQuest = () => {
                     
                     <button type="submit" className="bg-[var(--verdeClaro)] text-[var(--azulEscuro)] h-[50px] font-bold py-[10px] px-[20px] rounded-full hover:bg-[var(--bege)] cursor-pointer transition-all duration-300">
                         {!load ? 
-                        <p>Criar Questão</p>
+                        <p>Atualizar Questão</p>
                         : <p className="w-full h-full flex justify-center text-[30px] items-center"><LoadCircle/></p>}
                     </button>
 
@@ -297,4 +308,4 @@ const HomeOptiosCreateQuest = () => {
     )
 }
 
-export default HomeOptiosCreateQuest
+export default HomeOptiosUpdate

@@ -5,12 +5,14 @@ import { useQuestoes } from "../contexts/QuestoesProvider"
 const DisplayFilterQuestions = () => {
 
     const {questoesFilter} = useQuestoes()
-            
+    
+    const questaoFilterReverse = [...questoesFilter].reverse()
+
     return (
         <>
 
             {questoesFilter?.length > 0 &&
-                questoesFilter?.map((questao) => (
+                questaoFilterReverse?.map((questao) => (
                     <CardsQuestoes key={questao._id} card={questao} />
                 ))
             }

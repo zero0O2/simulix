@@ -1,14 +1,13 @@
-import { useAuth } from "../contexts/AuthProvider"
 import { useNav } from "../contexts/NavigationProvider"
 import HomeOptiosForQuest from "../routes/HomeOptiosForQuest"
 import HomeOptiosCreateQuest from "../routes/HomeOptiosCreateQuest"
 import HomeOptiosFilterQuests from "../routes/HomeOptiosFilterQuests"
 import HomeOptiosExportQuestions from "../routes/HomeOptiosExportQuestions"
+import HomeOptiosUpdate from "../routes/HomeOptiosUpdate"
 
 const AsideNavigateOptionsQuest = () => {
 
-    const {navigateOptionsForQuest,setNavigateOptionsForQuest,asideDisplay} = useNav()
-    const {user} = useAuth()
+    const {navigateOptionsForQuest,setNavigateOptionsForQuest} = useNav()
 
     return (
         <>
@@ -29,6 +28,8 @@ const AsideNavigateOptionsQuest = () => {
                     {navigateOptionsForQuest === "/filter-questions" && <HomeOptiosFilterQuests />}
                     
                     {navigateOptionsForQuest === "/export-questions" && <HomeOptiosExportQuestions/>}
+
+                    {navigateOptionsForQuest === "/update" && <HomeOptiosUpdate/>}
 
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import mongoose from 'mongoose';
+import mongoose, { trusted } from 'mongoose';
 import {Schema,model} from 'mongoose';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
@@ -287,6 +287,7 @@ app.post('/questions', async (req, res) => {
 })
 
 
+
 app.get('/questions/:userId', async (req, res) => {
     const {userId} = req.params
 
@@ -307,7 +308,6 @@ app.get('/questions/:userId', async (req, res) => {
     }
     
 })
-
 
 app.post('/formatOptions/:correct', async (req, res) => {
     const options = req.body
@@ -393,6 +393,33 @@ app.delete('/questions/:questionId', async (req, res) => {
         res.status(404).json(error)
     }
 
+})
+
+app.post("/question/:id",async (req,res) => {
+    try {
+        const bearer = req.headers.authorization
+        const token = bearer.split(" ")[1]
+        const jwtResult = jwt.verify(token,process.env.JWT_SECRET)
+        const idUser = jwtResult.id
+
+        const questionbyUser = await Question.findById(req.params.id)
+
+        if (questionbyUser.userId != idUser) {return res.status(400).json({message:"Questão não pertence ao usuario"})}
+
+        const {subject, examType, question, options} = req.body
+
+        if(!subject || !examType || !question || !options){
+            return res.status(400).json({message: 'Campos obrigatórios não fornecidos'})
+        }
+
+        const quentionObject = req.body
+
+        const questionUpdate = await Question.findByIdAndUpdate(questionbyUser._id,quentionObject,{new:true})
+        
+        res.json(questionUpdate)
+    } catch (error) {
+        return res.status(400).json({message:error})
+    }
 })
 
 app.post("/gabaritoInfos", async (req,res) => {

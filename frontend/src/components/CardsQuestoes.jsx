@@ -1,16 +1,18 @@
-import { use, useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import { FaCheckCircle } from "react-icons/fa";
 import { IoReload } from "react-icons/io5";
 import LoadCircle from "./LoadCircle";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { useQuestoes } from "../contexts/QuestoesProvider";
+import { MdOutlineEdit } from "react-icons/md";
+import { useNav } from "../contexts/NavigationProvider";
 
 const CardsQuestoes = ({ card }) => {
     const [isCorrect, setIsCorrect] = useState(null)
 
     const timeOutRef = useRef(null)
-    const {DeletarQuestoesForUserId,setQuestoesForUser} = useQuestoes()
-
+    const {DeletarQuestoesForUserId,setQuestoesForUser,setQuestionForUpdate} = useQuestoes()
+    const {navigateOptionsForQuest,setNavigateOptionsForQuest} = useNav()
 
     const VerifyQuest = (option) => {
         clearTimeout(timeOutRef.current)
@@ -90,6 +92,17 @@ const CardsQuestoes = ({ card }) => {
                     <button onClick={() => {
                         setIsCorrect(null)
                         clearTimeout(timeOutRef.current)
+                        setNavigateOptionsForQuest("/update")
+                        setQuestionForUpdate(card)
+
+                    }} className="flex items-center cursor-pointer bottom-2 hover:scale-[1.03] justify-center gap-[8px] py-[2px]">
+                        <MdOutlineEdit />
+                        <span>Editar</span>
+                    </button>
+
+                    <button onClick={() => {
+                        setIsCorrect(null)
+                        clearTimeout(timeOutRef.current)
                     }} className="flex items-center cursor-pointer bottom-2 hover:scale-[1.03] justify-center gap-[8px] py-[2px]">
                         <IoReload />
                         <span>Reiniciar</span>
@@ -100,7 +113,7 @@ const CardsQuestoes = ({ card }) => {
                         clearTimeout(timeOutRef.current)
 
                         setQuestoesForUser((prev)=> prev?.filter((e) => e._id != card._id ))
-
+                        if (navigateOptionsForQuest == "/update") {setNavigateOptionsForQuest("/home")}
                         await DeletarQuestoesForUserId(card._id)
 
                     }} className="flex items-center cursor-pointer bottom-2 justify-center hover:scale-[1.03] hover:text-red-600 duration-300 items-center gap-[8px] py-[2px]">

@@ -1,3 +1,6 @@
+/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/set-state-in-effect */
 
 import { createContext, useContext, useState } from "react";
 import axios from "axios";
@@ -14,7 +17,8 @@ const QuestoesProvider = ({children}) => {
 
     const [questoesForUser, setQuestoesForUser] = useState([])
     const [questoesFilter,setQuestoesFilter] = useState([])
-    
+    const [questionForUpdate,setQuestionForUpdate] = useState([])
+
     const [gabaritoForSimulado,setGabaritoForSimulado] = useState([])
 
 
@@ -68,6 +72,7 @@ const QuestoesProvider = ({children}) => {
         try {
             const response = await axios.get(`${API_URL}/questions/${userId}`)
             const data = response.data
+            
             setQuestoesForUser(data)
         } catch (error) {
             console.error("Erro ao buscar questões:", error?.response)
@@ -91,7 +96,24 @@ const QuestoesProvider = ({children}) => {
             return error?.response
         }
     }
-    
+
+    const UpdateQuestoesForUserId = async (questionUpdate,idQuestion) => {
+        try {
+            const response = await axios.post(`${API_URL}/question/${idQuestion}`,questionUpdate,{
+                headers:{
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            
+            await BuscarQuestoesForUserId(user._id)
+            return response.data
+        } catch (error) {
+            console.error("Erro ao Deletar questão:", error.response.data)
+            return error?.response
+        }
+    }  
+
+
     useEffect(() => {
         try {
             setCategoriaTypes("Todas")
@@ -123,10 +145,9 @@ const QuestoesProvider = ({children}) => {
         
     }, [questoesForUser,categoriaTypes,categoriaMateria])
 
-
     return (
         <>
-            <QuestoesContext.Provider value={{CriarQuestoesForJSON,setGabaritoForSimulado,gabaritoForSimulado, questoesForUser,FilterQuestions, categoriaMateria,setCategoriaMateria,DeletarQuestoesForUserId,questoesFilter,setQuestoesFilter ,setQuestoesForUser,BuscarQuestoesForUserId,CriarQuestoesForUserId,FormatOptionsForQuestoes,categoriaTypes, setCategoriaTypes}}>
+            <QuestoesContext.Provider value={{UpdateQuestoesForUserId,questionForUpdate,setQuestionForUpdate,CriarQuestoesForJSON,setGabaritoForSimulado,gabaritoForSimulado, questoesForUser,FilterQuestions, categoriaMateria,setCategoriaMateria,DeletarQuestoesForUserId,questoesFilter,setQuestoesFilter ,setQuestoesForUser,BuscarQuestoesForUserId,CriarQuestoesForUserId,FormatOptionsForQuestoes,categoriaTypes, setCategoriaTypes}}>
                 {children}
             </QuestoesContext.Provider>
         </>

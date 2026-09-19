@@ -1,27 +1,17 @@
-import { Link } from "react-router-dom"
-
 import AsideNavigate from "../components/AsideNavigate";
-import { useAuth } from "../contexts/AuthProvider";
-import { useApp } from "../contexts/AppProvider";
 import AsideForHours from "../components/AsideForHours";
 import HomeTarefas from "../routes/HomeTarefas";
 import { useNav } from "../contexts/NavigationProvider";
 import { IoCaretBackOutline } from "react-icons/io5";
 
-import { AiOutlineHome } from "react-icons/ai";
-import { FaCog, FaTasks } from "react-icons/fa";
-import { CiTimer } from "react-icons/ci";
-import { CiStopwatch } from "react-icons/ci";
-
 import AsideTopLayout from "../components/AsideTopLayout";
-import { useAcess } from "../contexts/AcessibilityProvider";
 import Cronograma from "../utils/Cronograma";
 
 const Home = () => {
 
     const {
         asideDisplay, setAsideDisplay,
-        navigateInHome,setNavigateInHome
+        navigateInHome
     } = useNav()
 
 

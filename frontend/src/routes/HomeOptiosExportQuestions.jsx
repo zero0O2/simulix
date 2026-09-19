@@ -1,4 +1,3 @@
-import axios from "axios"
 import { useState } from "react"
 import { useQuestoes } from "../contexts/QuestoesProvider"
 import LoadCircle from "../components/LoadCircle"

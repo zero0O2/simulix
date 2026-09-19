@@ -1,12 +1,7 @@
-import { useEffect, useState } from "react"
-import CardsCategorias from "../components/CardsCategorias"
-import CardsQuestoes from "../components/CardsQuestoes"
+import { useEffect } from "react"
 import { useQuestoes } from "../contexts/QuestoesProvider"
 import { useAuth } from "../contexts/AuthProvider"
 import { useNav } from "../contexts/NavigationProvider"
-import OptionsForQuest from "../components/OptionsForQuest"
-import { MdOutlineCreate } from "react-icons/md";
-import typesJson from "../assets/json/typesQuestions.json"
 import AsideNavigateOptionsQuest from "../components/AsideNavigateOptionsQuest"
 import AsideCardsCategoria from "../components/AsideCardsCategoria"
 import AsideOptionsForMobile from "../components/AsideOptionsForMobile"
@@ -14,14 +9,13 @@ import { MdFullscreen } from "react-icons/md";
 import { MdFullscreenExit } from "react-icons/md";
 import DisplayFilterQuestions from "../components/DisplayFilterQuestions"
 import DisplaySimuladoQuestions from "../components/DisplaySimuladoQuestions"
-import MsgSpanConfirm from "../utils/MsgSpanConfirm"
 
 
 
 const HomeTarefas = () => {
 
-    const {questoesForUser,BuscarQuestoesForUserId,categoriaMateria ,categoriaTypes,questoesFilter,setQuestoesFilter,FilterQuestions} = useQuestoes()
-    const {navigateOptionsForQuest,setNavigateOptionsForQuest,asideDisplay,setAsideDisplay,questoesFoco,setQuestoesFoco} = useNav()
+    const {BuscarQuestoesForUserId } = useQuestoes()
+    const {navigateOptionsForQuest,asideDisplay,questoesFoco,setQuestoesFoco} = useNav()
 
 
     const {user} = useAuth()
@@ -37,8 +31,9 @@ const HomeTarefas = () => {
     
     return (
         <>
-            <div className="flex-1 min-h-0 gap-[20px] flex ">
+            <div className="flex-1 min-h-0 gap-[20px] flex">
                 <div className="flex-2 flex min-h-0 min-w-0 max-[800px]:gap-[15px] items-center flex-col gap-[20px] ">
+                    
                     {navigateOptionsForQuest !== "/simulado-questions" && <>
                         <aside className="w-full justify-between items-center gap-[20px] flex">   
                             <AsideCardsCategoria/>
@@ -52,7 +47,7 @@ const HomeTarefas = () => {
                             <DisplayFilterQuestions/>
 
                         </main>
-                    </> }
+                    </>}
 
                     {navigateOptionsForQuest === "/simulado-questions" && <>
 
