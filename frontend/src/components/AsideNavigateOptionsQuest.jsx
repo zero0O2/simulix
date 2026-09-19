@@ -5,7 +5,7 @@ import HomeOptiosFilterQuests from "../routes/HomeOptiosFilterQuests"
 import HomeOptiosExportQuestions from "../routes/HomeOptiosExportQuestions"
 import HomeOptiosUpdate from "../routes/HomeOptiosUpdate"
 
-const AsideNavigateOptionsQuest = () => {
+const   AsideNavigateOptionsQuest = () => {
 
     const {navigateOptionsForQuest,setNavigateOptionsForQuest} = useNav()
 

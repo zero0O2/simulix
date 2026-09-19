@@ -1,6 +1,3 @@
-import { useEffect, useState } from "react"
-import { useQuestoes } from "../contexts/QuestoesProvider"
-import AsideCardsCategoria from "../components/AsideCardsCategoria"
 import typesQuestions from "../assets/json/typesQuestions.json"
 import subjectQuestion from "../assets/json/subjectQuestion.json"
 import CardsCategorias from "../components/CardsCategorias"
