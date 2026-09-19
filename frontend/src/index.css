@@ -4,9 +4,60 @@
     src: url('./assets/fonts/CitizenSans-Public.otf') format("opentype");
 }
 
+/*:root{
+    --01:#F3F1F3;
+    --02:#E7E4E6;  
+    --03:#D0C8CD;
+    --04:#B8ADB4;
+    --05:#A0929C;
+    --06:#887783;
+    --07:#6D5F69;
+    --08:#52474E;
+    --09:#372F34;
+    --10:#1B181A;
+    --11:#131112;
 
+    --13:#734b5e;
+    --14:#f5d3c8;
+
+    --correct:rgb(30, 146, 55);
+    --incorrect:rgb(234, 34, 34);
+
+    --white:#ffffff;
+    --black:#000000;
+
+
+    --Citizen:'Citizen';
+}*/
 
 :root{
+    --01:#131112;
+    --02:#1B181A;
+    --03:#372F34;
+    --04:#52474E;
+    --05:#6D5F69;
+    --06:#887783;
+    --07:#A0929C;
+    --08:#B8ADB4;
+    --09:#D0C8CD;
+    --10:#E7E4E6;  
+    --11:#F3F1F3;
+
+    --13:#734b5e;
+    --14:#f5d3c8;
+
+    --correct:rgb(30, 146, 55);
+    --incorrect:rgb(234, 34, 34);
+
+    --black:#ffffff;
+    --white:#000000;
+
+
+    --Citizen:'Citizen';
+}
+
+
+/*:root{
     --verdeClaro:#ADC178;
     --verdeEscuro:#1B512D;  
     --cinza:#6D6A63;
@@ -25,10 +76,12 @@
 
 
     --Citizen:'Citizen';
-}
+}*/
 
 body{
     font-family: var(--Citizen);
+    color:var(--10);
+    background-color:var(--03);
 }
 
 .citizen{
@@ -40,22 +93,22 @@ body{
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 3px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #1f1f1f;
+    background: var(--10);
     border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #3F677F;
+    background: var(--13);
     border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #4d7d99;
+    background: var(--063);
 }
 
 .crescimentoHorizontal{

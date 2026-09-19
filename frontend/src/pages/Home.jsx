@@ -1,25 +1,27 @@
-import AsideNavigate from "../components/AsideNavigate";
-import AsideForHours from "../components/AsideForHours";
-import HomeTarefas from "../routes/HomeTarefas";
-import { useNav } from "../contexts/NavigationProvider";
-import { IoCaretBackOutline } from "react-icons/io5";
-
 import AsideTopLayout from "../components/AsideTopLayout";
-import Cronograma from "../utils/Cronograma";
+import HeaderNavigate from "../components/newComponents/HeaderNavigate";
+import { useNav } from "../contexts/NavigationProvider";
+import QuestionPage from "../routes/QuestionPage";
 
 const Home = () => {
 
-    const {
-        asideDisplay, setAsideDisplay,
-        navigateInHome
-    } = useNav()
-
-
+    const {navigateInHome} = useNav()
 
     return (
         <>
-            <div className="w-[100dvw] z-0 h-[100dvh] bg-[var(--Preto)] overflow-hidden text-[var(--textWhite)] flex">
-                Teste de update
+            <div className="w-[100dvw] h-[100dvh] flex flex-col">
+                <AsideTopLayout/>
+                <HeaderNavigate/>
+                
+                {navigateInHome == "/home" &&
+                
+                    <p>Home</p>
+                
+                }
+
+                {navigateInHome == "/questoes" &&
+                    <QuestionPage/>
+                }
 
             </div>
         </>

@@ -31,7 +31,7 @@ const CardsQuestoes = ({ card }) => {
     return (
         <>  
 
-            <div className={`w-full max-w-[1000px] flex flex-col relative border-[var(--azulEscuro)] p-[10px_20px_50px_20px] gap-[10px] border-2 rounded-[10px] ${isCorrect === true ? 'border-[var(--verdeClaro)]' : isCorrect === false ? 'border-red-600' : ''}`}>
+            <div className={` break-inside-avoid flex flex-col relative bg-[var(--02)] p-[10px_20px_50px_20px] gap-[10px] border-2  border-[var(--04)] rounded-[10px] ${isCorrect === true ? 'border-[var(--correct)]' : isCorrect === false ? 'border-[var(--incorrect)]' : ''}`}>
 
                 {card === null &&
                     <div className="flex justify-center items-center w-[40px] h-[40px]">
@@ -40,14 +40,14 @@ const CardsQuestoes = ({ card }) => {
 
                 }
 
-                <aside className="w-full flex  justify-between gap-[20px]">
-                    <h1 className="text-[18px] max-[800px]:text-[17px] min-h-[50px] font-bold flex items-center indent-[20px] max-w-[600px] whitespace-pre-wrap break-normal hyphens-auto">{card?.title || "Questão"}</h1>
+                <aside className="w-full flex h-[50px] justify-between gap-[20px]">
+                    <h1 className="text-[16px] font-bold flex items-center indent-[20px] whitespace-pre-wrap break-normal hyphens-auto">{card?.title || "Questão"}</h1>
 
                     {card?.tags && (
-                        <div className="flex max-w-[290px] max-[700px]:hidden overflow-x-auto h-[50px] justify-start items-center gap-[10px]">
+                        <div className="flex max-w-[290px] overflow-x-auto h-[50px] justify-start items-center gap-[10px]">
                             {
                                 card?.tags?.map((tag, index) => (
-                                    <span key={index} className="bg-[var(--azulEscuro)] text-nowrap text-[var(--branco)] h-[30px] flex justify-center items-center px-[10px] rounded-full text-[12px]">
+                                    <span key={index} className="bg-[var(--14)] text-nowrap text-[var(--13)] h-[30px] flex justify-center items-center px-[10px] rounded-full text-[12px]">
                                         {tag}
                                     </span>
                             ))
@@ -55,33 +55,33 @@ const CardsQuestoes = ({ card }) => {
                     </div>)}
 
                     <span className="flex justify-center h-[50px] items-center gap-[10px]">
-                        <p className="text-[14px] max-[800px]:text-[13px]">{card?.subject}</p>
-                        <p className="text-[var(--verdeClaro)]">{card?.examType}</p>
+                        <p className="text-[14px]">{card?.subject}</p>
+                        <p className="text-[var(--132)]">{card?.examType}</p>
                     </span>
                 </aside>
 
                 <div className="flex-1 min-h-0 flex gap-[20px] flex-col ">
-                    <p className="text-[19px] indent-[20px] max-w-[600px] whitespace-pre-wrap break-normal hyphens-auto max-[800px]:text-[17px]">{card?.question}</p>
+                    <p className="text-[16px] text-[var(--11)] indent-[20px] max-w-[600px] whitespace-pre-wrap break-normal hyphens-auto ">{card?.question}</p>
 
                     <div className="flex flex-1 min-h-0 ">
-                        <ul className="flex flex-1 flex-col gap-[8px] text-[18px]  text-[var(--verdeClaro)]">
+                        <ul className="flex flex-2 flex-col gap-[8px] text-[16px]  text-[var(--verdeClaro)]">
                             {card?.options?.map((option, index) => (
-                                <li onClick={() => VerifyQuest(option)} className="cursor-pointer flex items-center transition-all text-[18px] duration-300 gap-[8px] py-[2px]" key={index}>
+                                <li onClick={() => VerifyQuest(option)} className="cursor-pointer flex items-center transition-all text-[16px] duration-300 gap-[8px] py-[2px]" key={index}>
                                     {index == 0 && <p className="font-bold">A)</p>}
                                     {index == 1 && <p className="font-bold">B)</p>}
                                     {index == 2 && <p className="font-bold">C)</p>}
                                     {index == 3 && <p className="font-bold">D)</p>}
                                     {index == 4 && <p className="font-bold">E)</p>}
 
-                                    <p className={`${isCorrect === true && option.correct ? ' text-[var(--verdeClaro)]' : ' text-[var(--textWhite)]'} text-[18px] max-[800px]:text-[16px]`}>{option.text}</p>
-                                    {isCorrect === true && option.correct && <FaCheckCircle className="text-[var(--verdeClaro)]"/>}
+                                    <p className={`${isCorrect === true && option.correct ? ' text-[var(--correct)]' : ' text-[var(--09)]'} text-[15px]`}>{option.text}</p>
+                                    {isCorrect === true && option.correct && <FaCheckCircle className="text-[var(--correct)] text-[12px] min-w-[12px]"/>}
                                 </li>
                             ))}
                         </ul>
 
-                        <div className="flex-1 flex overflow-x-auto justify-start items-start max-[700px]:hidden pb-[20px]">
-                            {isCorrect === false && <p className="text-red-600 w-full text-end text-[18px]">Resposta incorreta</p>}
-                            {isCorrect === true && card?.explanation && <p className="text-[var(--verdeClaro)] w-full text-end text-[18px]">{card?.explanation} </p>} 
+                        <div className="flex-1 flex overflow-x-auto justify-start items-start  pb-[20px]">
+                            {isCorrect === false && <p className="text-[var(--incorrect)] w-full text-end text-[16px]">Resposta incorreta</p>}
+                            {isCorrect === true && card?.explanation && <p className="text-[var(--correct)] w-full text-end text-[14px]">{card?.explanation} </p>} 
                         </div>
 
                     </div>

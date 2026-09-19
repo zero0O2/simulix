@@ -1,57 +1,30 @@
 
-import { useNav } from "../contexts/NavigationProvider";
-
-import { AiOutlineHome } from "react-icons/ai";
-import { FaCog, FaTasks } from "react-icons/fa";
 import { useAuth } from "../contexts/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import AsideForHours from "../components/AsideForHours";
+
 
 const AsideTopLayout = () => {
-
-    const {navigateInHome,setNavigateInHome} = useNav()
     const {user} = useAuth()
-    const navigation = useNavigate()
 
     return (
         <>
-
-            <header className="w-full h-[60px] h-[80px] flex items-center max-[1180px]:justify-between justify-end px-[20px]">
-                <div className="min-[1180px]:hidden flex justify-center gap-[10px] items-center">
-                    <img className="object-cover w-[40px] h-[40px] rounded-[10px] " src="/images/logoSite.jpg" alt="Logo" />
+            <header className="w-full min-h-[50px] bg-[var(--01)] flex items-center justify-between px-[20px]">
+                <div className=" flex justify-center gap-[10px] items-center">
+                    <img className="object-cover w-[35px] h-[35px] rounded-[10px] " src="/images/logoSite.jpg" alt="Logo" />
                     <h1 className="text-[20px] max-[480px]:hidden">Simulix</h1>
                 </div>
-                <div className="h-full min-[1180px]:hidden min-h-[80px] py-[10px]">
-
-                    <div className="w-full h-full z-0 relative flex min-w-[110px] bg-[var(--black01)] gap-[5px] rounded-[30px] items-center overflow-hidden justify-start px-[10px]">
-                        <button onClick={()=>setNavigateInHome("/home")} className={`text-[16px] h-[45px] gap-[6px] min-w-[45px] p-[10px] flex justify-center items-center transition-all duration-300 ${navigateInHome == "/home" ? "bg-[var(--azulCeu)] text-[white]" : "bg-transparent text-[var(--azulCeu)]"} cursor-pointer rounded-full`}>
-                            <p className="flex gap-[10px]">
-                                <AiOutlineHome className="text-[18px]"/>
-                            </p>
-                            {navigateInHome == "/home" && <p className="max-[730px]:hidden">Home</p>}
-                        </button>
-                        <button onClick={()=>setNavigateInHome("/tarefas")} className={`text-[16px] gap-[6px] h-[45px] min-w-[45px] p-[10px] flex justify-center items-center transition-all duration-300 ${navigateInHome == "/tarefas" ? "bg-[var(--azulCeu)] text-[white]" : "bg-transparent text-[var(--azulCeu)]"} cursor-pointer rounded-full`}>
-                            <p className="flex gap-[10px]">
-                                <FaTasks className="text-[18px]"/>
-                            </p>
-                            {navigateInHome == "/tarefas" && <p className="max-[730px]:hidden">Tarefas</p>}
-                        </button>
-                        <button onClick={()=> navigation('configuracao')} className={`text-[16px] gap-[6px] h-[45px] min-w-[45px] p-[10px] flex justify-center items-center transition-all duration-300 ${navigateInHome == "/configs" ? "bg-[var(--azulCeu)] text-[white]" : "bg-transparent text-[var(--azulCeu)]"} cursor-pointer rounded-full`}>
-                            <p className="flex gap-[10px]">
-                                <FaCog className="text-[18px]"/>
-                            </p>
-                        </button>
-                    </div>
-
-
-                </div>
-                <div className="h-full flex items-center gap-[20px]">
+                <AsideForHours/>
+                <div className=" flex items-center">
                     <span className="text-[14px] flex gap-[10px] justify-center items-center">
-                        <p className="text-[14px] max-[660px]:hidden">Olá, como vai </p>
-                        <h1 className="text-[18px] max-[560px]:hidden">{user?.name?.split(' ').slice(0,2).join(' ')}</h1> 
-                        <img className="w-[50px] h-[50px] rounded-full object-cover " src={user?.avatar} alt="" />
+                        <p className="text-[14px] ">Olá, como vai </p>
+                        <h1 className="text-[18px]">{user?.name?.split(' ').slice(0,2).join(' ')}</h1> 
+                        <img className="w-[35px] h-[35px] rounded-full object-cover " src={user?.avatar} alt="" />
                     </span>
                 </div>
             </header>
+
+
+
         </>
     )
 }

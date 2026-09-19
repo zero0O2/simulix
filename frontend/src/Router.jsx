@@ -11,6 +11,7 @@ import Configuracao from './pages/Configuracao.jsx'
 const Router = () => {
     return (
         <>
+
             <BrowserRouter>
                 <Routes>
                     <Route 
@@ -18,7 +19,7 @@ const Router = () => {
                         element={
                             <Page404 />
                         } 
-                    />
+                        />
 
                     <Route 
                         path='/bem-vindo' 
@@ -27,16 +28,16 @@ const Router = () => {
                                 <BemVindo />
                             </PrivateRoute>
                         } 
-                    />
+                        />
 
                     <Route 
                         path='/' 
                         element={
-                        <PrivateRoute local={"/bem-vindo"} loggedIn={true}>
+                            <PrivateRoute local={"/bem-vindo"} loggedIn={true}>
                             <Home />
                         </PrivateRoute>
                         } 
-                    />
+                        />
 
                     <Route
                         path='/configuracao'
@@ -45,27 +46,27 @@ const Router = () => {
                                 <Configuracao/>
                             </PrivateRoute>
                         }
-                    >
+                        >
 
                     </Route>
 
                     <Route 
                         path='/login' 
                         element={
-                        <PrivateRoute local={"/"} loggedIn={false}>
+                            <PrivateRoute local={"/"} loggedIn={false}>
                             <Login />
                         </PrivateRoute>
                         } 
-                    />
+                        />
 
                     <Route 
                         path='/cadastro' 
                         element={
-                        <PrivateRoute local={"/"} loggedIn={false}>
+                            <PrivateRoute local={"/"} loggedIn={false}>
                             <Cadastro />
                         </PrivateRoute>
                         } 
-                    />
+                        />
 
                 </Routes>
             </BrowserRouter>
