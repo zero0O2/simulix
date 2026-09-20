@@ -126,7 +126,7 @@ IMPORTANTE:
 - Nunca use explicações antes ou depois.
 - Nunca use markdown ou blocos de código.
 - Não invente informações que não estejam na questão.
-- Nunca permita que aspas presentes no conteúdo original quebrem a estrutura do JSON.`}
+- Nunca permita que aspas presentes no conteúdo original quebrem a estrutura do JSON.(Caso tenha presença de " trocar por ')`}
 </p>
 
             </div>
