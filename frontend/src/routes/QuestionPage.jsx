@@ -19,8 +19,12 @@ const QuestionPage= () => {
                 <div className="flex p-[10px] min-h-0 flex-1 flex-col gap-[6px] rounded-[8px]">
                     <aside className="flex h-[30px] items-center justify-between">
                         <h1 className="text-[17x] ">Questions -</h1>
-                        <nav>
-                            <button onClick={() => setNewQuestions(prev => !prev)} className={`${newQuestions ? "" : "rotate-180"} duration-[.1s] text-[30px] border-0 outline-0 bg-[var(--cor04)] rounded-[5px] text-[var(--cor01)] h-[30px] w-[30px] cursor-pointer`}><GoChevronUp/></button>
+                        <nav className="relative">
+                            <button onClick={() => setNewQuestions(prev => !prev)} className={`peer ${newQuestions ? "" : "rotate-180"} duration-[.1s] text-[30px] border-0 outline-0 bg-[var(--cor04)] rounded-[5px] text-[var(--cor01)] h-[30px] w-[30px] cursor-pointer`}><GoChevronUp/></button>
+                            <span className="peer-hover:opacity-100 rounded-[4px] duration-200 opacity-0 pointer-events-none absolute bg-[var(--04)] text-[var(--cor10)] -top-1/1 -left-1/2 p-[5px_10px] shadow-[0px_0px_5px_#00000032]">
+                                {newQuestions && <p>Novas</p>}
+                                {!newQuestions && <p>Antigas</p>}
+                            </span>
                         </nav>
                     </aside>
 
