@@ -7,9 +7,11 @@ import HomeOptiosUpdate from "./HomeOptiosUpdate"
 import { useNav } from "../contexts/NavigationProvider"
 import DisplayFilterQuestions from "../components/DisplayFilterQuestions"
 import { GoChevronUp } from "react-icons/go";
+import { MdOutlineCleaningServices } from "react-icons/md";
+
 
 const QuestionPage= () => {
-    const {newQuestions,setNewQuestions} = useQuestoes()
+    const {newQuestions,setNewQuestions,setCategoriaTypes,setCategoriaMateria} = useQuestoes()
     const {navigateOptionsForQuest,setNavigateOptionsForQuest} = useNav()
 
 
@@ -18,13 +20,30 @@ const QuestionPage= () => {
             <div className="flex min-h-0 flex-1 text-[var(--09)] justify-between gap-[10px] ">
                 <div className="flex p-[10px] min-h-0 flex-1 flex-col gap-[6px] rounded-[8px]">
                     <aside className="flex h-[30px] items-center justify-between">
-                        <h1 className="text-[17x] ">Questions -</h1>
-                        <nav className="relative">
-                            <button onClick={() => setNewQuestions(prev => !prev)} className={`peer ${newQuestions ? "" : "rotate-180"} duration-[.1s] text-[30px] border-0 outline-0 bg-[var(--cor04)] rounded-[5px] text-[var(--cor01)] h-[30px] w-[30px] cursor-pointer`}><GoChevronUp/></button>
-                            <span className="peer-hover:opacity-100 rounded-[4px] duration-200 opacity-0 pointer-events-none absolute bg-[var(--04)] text-[var(--cor10)] -top-1/1 -left-1/2 p-[5px_10px] shadow-[0px_0px_5px_#00000032]">
-                                {newQuestions && <p>Novas</p>}
-                                {!newQuestions && <p>Antigas</p>}
-                            </span>
+                        <h1 className="text-[17x] ">Questões -</h1>
+                        <nav className="flex justify-center gap-[10px] items-center">
+
+                            <div className="relative ">
+                                <button onClick={() => {
+                                    setCategoriaMateria([])
+                                    setCategoriaTypes("Todas")
+                                }} className={`peer duration-[.1s] flex justify-center items-center text-[20px] border-0 outline-0 bg-[var(--cor04)] rounded-[5px] text-[var(--cor01)] h-[30px] w-[30px] cursor-pointer`}>
+                                    <MdOutlineCleaningServices/>
+                                </button>
+                                <span className="peer-hover:opacity-100 rounded-[4px] duration-200 opacity-0 pointer-events-none absolute bg-[var(--04)] text-[var(--cor10)] bottom-1/1 -left-1/2 p-[5px_10px] shadow-[0px_0px_5px_#00000032]">
+                                    <p className="">Limpar Filtros</p>
+                                </span>
+                            </div>
+                            
+                            <div className="relative">
+                                <button onClick={() => setNewQuestions(prev => !prev)} className={`peer ${newQuestions ? "" : "rotate-180"} flex justify-center items-center duration-[.1s] text-[30px] border-0 outline-0 bg-[var(--cor04)] rounded-[5px] text-[var(--cor01)] h-[30px] w-[30px] cursor-pointer`}>
+                                    <GoChevronUp/>
+                                </button>
+                                <span className="peer-hover:opacity-100 rounded-[4px] duration-200 opacity-0 pointer-events-none absolute bg-[var(--04)] text-[var(--cor10)] bottom-1/1 -left-1/2 p-[5px_10px] shadow-[0px_0px_5px_#00000032]">
+                                    {newQuestions && <p>Novas</p>}
+                                    {!newQuestions && <p>Antigas</p>}
+                                </span>
+                            </div>
                         </nav>
                     </aside>
 

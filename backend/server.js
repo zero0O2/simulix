@@ -286,16 +286,6 @@ app.post('/questions', async (req, res) => {
 
 })
 
-app.delete('/questions', async (req, res) => {
-
-        
-        await Question.deleteMany({userId:"6a039e4cedbdeae4f4de9bcb"})
-
-    
-})
-
-
-
 app.get('/questions/:userId', async (req, res) => {
     const {userId} = req.params
 

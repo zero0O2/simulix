@@ -4,6 +4,7 @@ import { useAcess } from "../contexts/AcessibilityProvider";
 import { useNav } from "../contexts/NavigationProvider";
 import QuestionPage from "../routes/QuestionPage";
 import SimuladoPage from "../routes/SimuladoPage";
+import DashBoardPage from "../routes/DashBoardPage";
 
 const Home = () => {
 
@@ -19,7 +20,7 @@ const Home = () => {
                 
                 {navigateInHome == "/home" &&
                 
-                    <p>Home</p>
+                    <DashBoardPage/>
                 
                 }
 
