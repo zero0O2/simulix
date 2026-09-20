@@ -10,6 +10,7 @@ const HomeOptiosExportQuestions = () => {
     const [jsonQuestions,setJsonQuestions] = useState("")
 
     const Submit = async () => {
+        if(load) return
         setLoad(true)
         try {
             const questions = await CriarQuestoesForJSON(JSON.parse(jsonQuestions))
