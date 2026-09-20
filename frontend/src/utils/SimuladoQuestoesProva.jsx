@@ -1,12 +1,13 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from "react"
 import { MdNavigateNext } from "react-icons/md";
-import { BiBookBookmark, BiLoaderCircle } from "react-icons/bi";
+import { BiBookBookmark } from "react-icons/bi";
 import axios from "axios";
 import { useApp } from "../contexts/AppProvider";
 import LoadCircle from "../components/LoadCircle";
 
 
-const SimuladoQuestoesProva = ({questoes}) => {
+const SimuladoQuestoesProva = ({questoes,setQuestionarioDisplay}) => {
     const [indexQuestao,setIndexQuestao] = useState(0)
     const [questaoAtual,setQuestaoAtual] = useState({})
     const [gabaritoDisplay,setGabaritoDisplay] = useState(false)
@@ -51,85 +52,92 @@ const SimuladoQuestoesProva = ({questoes}) => {
 
     return(
         <>
+        <div className="absolute flex justify-center w-full h-full bg-[var(--03)]">
+            {!gabaritoDisplay && 
+                <div className="flex z-0 absolute flex-col bg-[var(--01)] left-1/2 -translate-1/2 top-1/2 max-w-[800px] min-h-[600px] h-min  p-[14px_20px] gap-[20px] w-full rounded-[6px] text-[var(--11)]">
+                    <main className="flex-1 flex flex-col gap-[20px]">
 
-            {!gabaritoDisplay && <div className="flex z-0 flex-col bg-[var(--black01)] max-w-[800px] min-h-[600px] h-min  p-[14px_20px] gap-[20px] w-full rounded-[12px] text-[var(--whiteCream)]">
-                <main className="flex-1 flex flex-col gap-[20px]">
+                        <aside className=" flex justify-between text-[var(--08)] items-center w-full">
+                            <h1 className="text-[15px]"> <span className="text-[20px]">{indexQuestao + 1}º</span> {questaoAtual.subject}</h1>
+                            <h2 className="text-[14px] text-[var(--cor04)]">{questaoAtual.examType}</h2>
+                        </aside>
 
-                    <aside className=" flex justify-between items-center w-full">
-                        <h1 className="text-[16px]"> <span className="text-[20px]">{indexQuestao + 1}º</span> {questaoAtual.subject}</h1>
-                        <h2 className="text-[14px] text-[var(--verdeClaro)]">{questaoAtual.examType}</h2>
-                    </aside>
-
-                    <div className=" flex flex-col w-full wrap-break-word gap-[10px]">
-                        <h1 className="text-[20px] font-bold hyphens-auto" >{questaoAtual.title}</h1>
-                        <p className="whitespace-pre-wrap text-[17px] hyphens-auto">
-                            {questaoAtual.question}
-                        </p>
-                    </div>
-
-                    <form onSubmit={null} id="optionsForm" key={questaoAtual._id} className=" flex flex-col gap-[10px]">
-                        {
-                            questaoAtual?.options?.map((option,index)=>(
-                                <label key={index}>
-                                    <input onChange={()=>setGabarito(prev => {
-                                        const filter = prev.filter(e=>{ return e.id !== questaoAtual._id })
-
-                                        return [...filter,{id:questaoAtual._id,check:option.id}]
-
-                                    })} className="peer hidden" checked={optionCorrect === option.id} type="radio" name={questaoAtual._id} id={option.id} />
-                                    <p className="peer-checked:bg-[var(--verdeClaro)] peer-checked:text-[var(--textBlack)] duration-200 text-[18px] gap-[10px] flex items-center backdrop-brightness-70 p-[10px] hyphens-auto rounded-[6px] cursor-pointer">
-                                        {index == 0 && <span className="font-bold">A)</span>}
-                                        {index == 1 && <span className="font-bold">B)</span>}
-                                        {index == 2 && <span className="font-bold">C)</span>}
-                                        {index == 3 && <span className="font-bold">D)</span>}
-                                        {index == 4 && <span className="font-bold">E)</span>}
-
-                                        {option.text}
-                                    </p>
-                                </label>
-                            ))  
-                        }
-                    </form>
-
-                </main>
-                <div className="flex items-center h-[45px] relative justify-center gap-[10px] w-full ">
-
-                    <button onClick={()=>{
-                        setIndexQuestao(prev => prev === 0 ? questoes.length - 1 : prev - 1)
-                    }} className="border-2 rounded-full p-[5px] absolute left-0 text-[30px] cursor-pointer rotate-[180deg]"><MdNavigateNext/></button>
-
-                    <div className=" flex gap-[5px] justify-center items-center">
-                        {questoes?.map((e,index)=>(
-                            <div key={index} className={`${e?._id === questaoAtual?._id ? "bg-[var(--whiteCream)]" : "bg-transparent"} duration-150 border-2 w-[10px] aspect-square rounded-full`}></div>
-                        ))}
-                    </div>
-
-                    <div className="flex items-center justify-center absolute right-0 gap-[20px]">
-                        <div className="relative">
-                            <div onClick={()=>EnviarGabarito()} className="peer relative z-30 p-[10px_15px] cursor-pointer hover:bg-[var(--azulCeu)] duration-300 bg-[var(--azulEscuro)] rounded-full"> {load ? <LoadCircle/> : "Enviar Gabarito"} </div>
-                            <span className="absolute z-[-10] peer-hover:z-10 peer-hover:opacity-100 duration-200 peer-hover:bottom-[calc(100%+5px)] bottom-[calc(40%+5px)] opacity-0 bg-[var(--bege)] rounded-[8px] text-[14px] text-[var(--textBlack)] p-[6px_10px] w-[200px]">Envie o gabarito após fazer todas as questões, Todas serão avaliadas</span>
+                        <div className=" flex flex-col w-full wrap-break-word gap-[10px]">
+                            <h1 className="text-[17px] text-[var(--10)] font-bold hyphens-auto" >{questaoAtual.title}</h1>
+                            <p className="whitespace-pre-wrap text-[16px] text-[var(--09)] hyphens-auto">
+                                {questaoAtual.question}
+                            </p>
                         </div>
 
+                        <form onSubmit={null} id="optionsForm" key={questaoAtual._id} className=" flex flex-col gap-[10px]">
+                            {
+                                questaoAtual?.options?.map((option,index)=>(
+                                    <label key={index}>
+                                        <input onChange={()=>setGabarito(prev => {
+                                            const filter = prev.filter(e=>{ return e.id !== questaoAtual._id })
+                                            
+                                            return [...filter,{id:questaoAtual._id,check:option.id}]
+                                            
+                                        })} className="peer hidden" checked={optionCorrect === option.id} type="radio" name={questaoAtual._id} id={option.id} />
+                                        <p className="peer-checked:bg-[var(--cor03)] peer-checked:text-[var(--black)] text-[var(--cor05)] duration-200 text-[16px] gap-[10px] flex items-center bg-[var(--cor01)] hover:border-[var(--cor03)] border-2 p-[10px] border-transparent hyphens-auto rounded-[6px] cursor-pointer">
+                                            {index == 0 && <span className="font-bold">A)</span>}
+                                            {index == 1 && <span className="font-bold">B)</span>}
+                                            {index == 2 && <span className="font-bold">C)</span>}
+                                            {index == 3 && <span className="font-bold">D)</span>}
+                                            {index == 4 && <span className="font-bold">E)</span>}
+
+                                            {option.text}
+                                        </p>
+                                    </label>
+                                ))  
+                            }
+                        </form>
+
+                    </main>
+                    <div className="flex items-center h-[45px] relative justify-center gap-[10px] w-full ">
+
                         <button onClick={()=>{
-                            setIndexQuestao(prev => questoes.length - 1 == prev ? 0 : prev + 1)
-                        }} className="border-2 relative rounded-full p-[5px] text-[30px] cursor-pointer"><MdNavigateNext/></button>
+                            setIndexQuestao(prev => prev === 0 ? questoes.length - 1 : prev - 1)
+                        }} className="border-2 rounded-full p-[5px] absolute left-0 text-[30px] cursor-pointer text-[var(--08)] rotate-[180deg]"><MdNavigateNext/></button>
+
+                        <div className=" flex gap-[5px] justify-center items-center">
+                            {questoes?.map((e,index)=>(
+                                <div key={index} className={`${e?._id === questaoAtual?._id ? "bg-[var(--cor05)]" : "bg-transparent"} duration-150 border-1 w-[10px] aspect-square rounded-full`}></div>
+                            ))}
+                        </div>
+
+                        <div className="flex items-center justify-center absolute right-0 gap-[20px]">
+                            <div className="relative">
+                                <div onClick={()=>EnviarGabarito()} className="peer relative z-30 p-[10px_15px] cursor-pointer hover:bg-[var(--cor04)] duration-300 bg-[var(--cor05)] text-[var(--cor01)] rounded-full"> {load ? <LoadCircle/> : "Enviar Gabarito"} </div>
+                                <span className="absolute z-[-10] peer-hover:z-10 peer-hover:opacity-100 duration-200 peer-hover:bottom-[calc(100%+5px)] bottom-[calc(40%+5px)] opacity-0 bg-[var(--03)] rounded-[8px] text-[14px] text-[var(--textBlack)] p-[6px_10px] w-[200px]">Envie o gabarito após fazer todas as questões, Todas serão avaliadas</span>
+                            </div>
+
+                            <button onClick={()=>{
+                                setIndexQuestao(prev => questoes.length - 1 == prev ? 0 : prev + 1)
+                            }} className="border-2 relative rounded-full p-[5px] text-[30px] text-[var(--08)] cursor-pointer"><MdNavigateNext/></button>
+                        </div>
+
                     </div>
-
                 </div>
-            </div>}
+            }
 
 
-            {gabaritoDisplay && <div className="flex flex-col max-w-[800px] min-h-[600px] h-min  gap-[20px] w-full rounded-[12px] text-[var(--whiteCream)]">
+            {gabaritoDisplay && 
+            
+            <div className="flex flex-1 flex-col bg-[var(--01)] p-[20px] m-[10px] gap-[20px] max-w-[700px] rounded-[6px] min-h-0 overflow-y-auto text-[var(--11)]">
                 
                 <header className="flex justify-between">
-                    <h1 className="text-[22px]">Desempenho</h1>
-                    <h1 className="text-[25px] text-[var(--verdeClaro)]"><BiBookBookmark/></h1>
+                    <h1 className="text-[18px]">Desempenho</h1>
+                    <span className="flex justify-center text-[var(--08)] items-center gap-[5px]">
+                        <button onClick={()=> setQuestionarioDisplay(false)} className="cursor-pointer">Voltar</button>
+                        <h1 className="text-[25px] text-[var(--cor03)]"><BiBookBookmark/></h1>
+                    </span>
                 </header>
                 
                 <main className="w-full">
-                    <h1 className="text-[18px] flex items-center gap-[10px]">
+                    <h1 className="text-[16px] text-[var(--09))] flex items-center gap-[10px]">
                         <span>Porcentagem de Acertos:</span>
-                        <span className="text-[20px] text-[var(--verdeClaro)]">  {dadosDesempenho.correctCount}/{dadosDesempenho.correctCount + dadosDesempenho.incorrectCount} | {Number.parseInt((dadosDesempenho.correctCount * 100) / (dadosDesempenho.correctCount + dadosDesempenho.incorrectCount))}%</span>
+                        <span className="text-[20px] text-[var(--cor04)]">  {dadosDesempenho.correctCount}/{dadosDesempenho.correctCount + dadosDesempenho.incorrectCount} | {Number.parseInt((dadosDesempenho.correctCount * 100) / (dadosDesempenho.correctCount + dadosDesempenho.incorrectCount))}%</span>
                     </h1>
                 </main>
 
@@ -141,20 +149,20 @@ const SimuladoQuestoesProva = ({questoes}) => {
                         const checkResposta = question?.options?.find(option => option?.id === e?.optionCheck)
                         
                         return (
-                            <div key={index} className={`w-full ${correctResposta === checkResposta ? "border-[var(--verdeClaro)] border-2" : ""} bg-[var(--black01)] flex flex-col gap-[20px] p-[10px] rounded-[8px]`}>
+                            <div key={index} className={`w-full ${correctResposta === checkResposta ? "border-[var(--correct)] border-2" : ""} bg-[var(--02)] flex flex-col gap-[20px] p-[10px] rounded-[6px]`}>
                                 <div className="w-full flex justify-between">
 
-                                    <p className="text-[14px] gap-[10px] flex">
+                                    <p className="text-[16px] gap-[10px] flex">
                                         <span>{question.subject}</span>
-                                        <span className="text-[var(--verdeClaro)]">{question.examType}</span>
+                                        <span className="text-[var(--cor04)]">{question.examType}</span>
                                     </p>
                                 </div>
 
-                                <h1 className="whitespace-pre-wrap text-[16px] hyphens-auto line-clamp-10">{question?.question}</h1>
+                                <h1 className="whitespace-pre-wrap text-[16px] hyphens-auto text-[var(--10)] line-clamp-10">{question?.question}</h1>
                                 
-                                <div className="flex flex-col backdrop-brightness-70 p-[10px] rounded-[8px] gap-[5px]">
-                                    <p className="text-[18px] text-[var(--verdeClaro)] whitespace-pre-wrap hyphens-auto">Resposta correta: {correctResposta?.text}</p>
-                                    <p className={`text-[18px] whitespace-pre-wrap hyphens-auto ${correctResposta === checkResposta ? "text-[var(--verdeClaro)]" : "text-[#f62828]"}`}>Sua resposta: {checkResposta?.text || "Não respondido"}</p>
+                                <div className="flex flex-col p-[10px] rounded-[8px] gap-[5px]">
+                                    <p className="text-[16px] text-[var(--08)] whitespace-pre-wrap hyphens-auto">Resposta correta: {correctResposta?.text}</p>
+                                    <p className={`text-[16px] whitespace-pre-wrap hyphens-auto bg-[var(--03)] rounded-[6px] p-[2px_10px] ${correctResposta === checkResposta ? "text-[var(--correct)]" : "text-[var(--incorrect)]"}`}>Sua resposta: {checkResposta?.text || "Não respondido"}</p>
                                 </div>
 
                             </div>
@@ -163,8 +171,10 @@ const SimuladoQuestoesProva = ({questoes}) => {
                 </main>
 
 
-            </div>}
+            </div>
+            }
 
+        </div>
         </>
     )
 }

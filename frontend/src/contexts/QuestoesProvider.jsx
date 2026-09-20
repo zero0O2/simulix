@@ -18,6 +18,8 @@ const QuestoesProvider = ({children}) => {
     const [questoesForUser, setQuestoesForUser] = useState([])
     const [questoesFilter,setQuestoesFilter] = useState([])
     const [questionForUpdate,setQuestionForUpdate] = useState([])
+    const [newQuestions,setNewQuestions] = useState(false)
+    const [newHistoricoSimulado,setNewHistoricoSimulado] = useState(false)
 
     const [gabaritoForSimulado,setGabaritoForSimulado] = useState([])
 
@@ -136,6 +138,10 @@ const QuestoesProvider = ({children}) => {
             arrayQuestions = arrayQuestions?.filter(questao => categoriaMateria?.includes(questao.subject))
         }
 
+        if(newQuestions){
+            arrayQuestions = [...arrayQuestions].reverse()
+        }
+
         setQuestoesFilter(arrayQuestions)
     }
 
@@ -143,11 +149,15 @@ const QuestoesProvider = ({children}) => {
         
         FilterQuestions()
         
-    }, [questoesForUser,categoriaTypes,categoriaMateria])
+    }, [questoesForUser,categoriaTypes,categoriaMateria,newQuestions])
 
     return (
         <>
-            <QuestoesContext.Provider value={{UpdateQuestoesForUserId,questionForUpdate,setQuestionForUpdate,CriarQuestoesForJSON,setGabaritoForSimulado,gabaritoForSimulado, questoesForUser,FilterQuestions, categoriaMateria,setCategoriaMateria,DeletarQuestoesForUserId,questoesFilter,setQuestoesFilter ,setQuestoesForUser,BuscarQuestoesForUserId,CriarQuestoesForUserId,FormatOptionsForQuestoes,categoriaTypes, setCategoriaTypes}}>
+            <QuestoesContext.Provider value={{
+                newHistoricoSimulado,setNewHistoricoSimulado,
+                newQuestions,setNewQuestions,
+                UpdateQuestoesForUserId,questionForUpdate,
+                setQuestionForUpdate,CriarQuestoesForJSON,setGabaritoForSimulado,gabaritoForSimulado, questoesForUser,FilterQuestions, categoriaMateria,setCategoriaMateria,DeletarQuestoesForUserId,questoesFilter,setQuestoesFilter ,setQuestoesForUser,BuscarQuestoesForUserId,CriarQuestoesForUserId,FormatOptionsForQuestoes,categoriaTypes, setCategoriaTypes}}>
                 {children}
             </QuestoesContext.Provider>
         </>

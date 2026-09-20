@@ -1,29 +1,54 @@
-import CardsQuestoes from "../components/CardsQuestoes"
-import DisplayFilterQuestions from "../components/DisplayFilterQuestions"
 import { useQuestoes } from "../contexts/QuestoesProvider"
+import HomeOptiosForQuest from "./HomeOptiosForQuest"
+import HomeOptiosCreateQuest from "./HomeOptiosCreateQuest"
+import HomeOptiosFilterQuests from "./HomeOptiosFilterQuests"
+import HomeOptiosExportQuestions from "./HomeOptiosExportQuestions"
+import HomeOptiosUpdate from "./HomeOptiosUpdate"
+import { useNav } from "../contexts/NavigationProvider"
+import DisplayFilterQuestions from "../components/DisplayFilterQuestions"
+import { GoChevronUp } from "react-icons/go";
 
 const QuestionPage= () => {
-    const {questoesForUser} = useQuestoes()
+    const {newQuestions,setNewQuestions} = useQuestoes()
+    const {navigateOptionsForQuest,setNavigateOptionsForQuest} = useNav()
+
 
     return (
         <>
-            <div className="flex min-h-0 flex-1 justify-between gap-[10px] ">
+            <div className="flex min-h-0 flex-1 text-[var(--09)] justify-between gap-[10px] ">
                 <div className="flex p-[10px] min-h-0 flex-1 flex-col gap-[6px] rounded-[8px]">
-                    <aside className="flex">
-                        <h1 className="text-[17x]">All Questions -</h1>
+                    <aside className="flex h-[30px] items-center justify-between">
+                        <h1 className="text-[17x] ">Questions -</h1>
+                        <nav>
+                            <button onClick={() => setNewQuestions(prev => !prev)} className={`${newQuestions ? "" : "rotate-180"} duration-[.1s] text-[30px] border-0 outline-0 bg-[var(--cor04)] rounded-[5px] text-[var(--cor01)] h-[30px] w-[30px] cursor-pointer`}><GoChevronUp/></button>
+                        </nav>
                     </aside>
 
                     <div className="flex min-h-0 flex-col flex-1 overflow-y-auto">
                         <div className="columns-2  space-y-2">
-                            {questoesForUser?.map((e,index)=> (
-                                <CardsQuestoes card={e} key={index}/>
-                            ))}
+                            <DisplayFilterQuestions/>
                         </div>
                     </div>
                 </div>
 
-                <div className="bg-amber-400 flex-1 max-w-[400px]">
+                <div className="bg-[var(--01)] m-[5px] flex flex-col flex-1 min-h-0 max-w-[400px]">
+                    <aside className="flex h-[40px] text-[var(--09)] gap-[10px] items-center justify-center">
+                        <h1>Controle Total da sua prepareção</h1>
+                        {navigateOptionsForQuest !== "/home" && (
+                            <button onClick={()=>setNavigateOptionsForQuest("/home")} className="bg-[var(--cor03)] hover:bg-[var(--cor04)] text-[var(--white)] duration-300 cursor-pointer p-[2px_10px] rounded-[5px]">Voltar</button>
+                        )}
+                    </aside>
+                    <div className="flex flex-1 overflow-y-auto">
+                        {navigateOptionsForQuest === "/home" && <HomeOptiosForQuest />}
+                    
+                        {navigateOptionsForQuest === "/create-quest" && <HomeOptiosCreateQuest />}
+                    
+                        {navigateOptionsForQuest === "/filter-questions" && <HomeOptiosFilterQuests />}
+                    
+                        {navigateOptionsForQuest === "/export-questions" && <HomeOptiosExportQuestions/>}
 
+                        {navigateOptionsForQuest === "/update" && <HomeOptiosUpdate/>}
+                    </div>
                 </div>
             </div>
         </>

@@ -8,14 +8,14 @@ const HomeOptiosFilterQuests = () => {
     return (
         <>
             <div className="w-full h-full flex flex-col px-[20px] overflow-y-scroll gap-[10px] items-center">
-                <h1 className="text-[24px] w-full">Filtargem</h1>
+                <h1 className="text-[16px] w-full">Filtargem</h1>
 
-                <div className="flex min-w-0 gap-[10px] backdrop-brightness-50 p-[10px] rounded-[10px] flex-wrap">
+                <div className="flex min-w-0 gap-[10px] bg-[var(--cor01)] p-[10px] rounded-[10px] flex-wrap">
                     {typesQuestions?.types?.map(types => (
                         <CardsCategorias key={types} option={types}/>
                     ))}
                 </div>
-                <div className="flex min-w-0 gap-[10px] backdrop-brightness-50 p-[10px] rounded-[10px] flex-wrap">
+                <div className="flex min-w-0 gap-[10px] bg-[var(--cor01)] p-[10px] rounded-[10px] flex-wrap">
                     {subjectQuestion?.subject?.map(types => (
                         <CardsCategoriasMaterias key={types} option={types}/>
                     ))}

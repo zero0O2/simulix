@@ -23,8 +23,8 @@ const HeaderAccess = () => {
                         </span>
                     ) : (
                         <span className="flex justify-center items-center gap-[15px]">
-                            <button onClick={() => navigation("/cadastro")} className="border-[var(--azulCeu)] hover:border-[var(--azulEscuro)] border-2 hover:scale-[1.05] duration-300 cursor-pointer h-[40px] w-[120px] rounded-full outline-none text-[20px]">Cadastrar</button>
-                            <button onClick={() => navigation("/login")} className="bg-[var(--azulCeu)] hover:scale-[1.05] hover:bg-[var(--azulEscuro)] duration-300 cursor-pointer h-[40px] w-[120px] rounded-full outline-none text-[20px]">Entrar</button>
+                            <button onClick={() => navigation("/cadastro")} className="border-[var(--02)] hover:border-[var(--azulEscuro)] border-2 hover:scale-[1.05] duration-300 cursor-pointer h-[40px] w-[120px] rounded-full outline-none text-[20px]">Cadastrar</button>
+                            <button onClick={() => navigation("/login")} className="bg-[var(--cor03)] hover:scale-[1.05] hover:bg-[var(--cor02)] duration-300 hover:text-[var(--cor05)] cursor-pointer h-[40px] w-[120px] rounded-full outline-none text-[20px]">Entrar</button>
                         </span>
                     )}
                 </nav>

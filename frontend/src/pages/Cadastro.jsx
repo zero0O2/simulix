@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../contexts/AuthProvider.jsx"
-import HeaderAccess from "../components/HeaderAccess.jsx"
 import { useState } from "react"
 
 const Cadastro = () => {
@@ -38,11 +37,11 @@ const Cadastro = () => {
     
     return (
         <>
-            <div className="w-[100dvw] z-0 h-[100dvh] bg-[var(--cinza)] flex items-center justify-center">
-                <div className="w-full h-full relative bg-[var(--verdeClaro)] overflow-hidden flex items-center justify-center">
+            <div className="w-[100dvw] z-0 h-[100dvh] bg-[var(--07)] flex items-center justify-center">
+                <div className="w-full h-full relative bg-[var(--07)] overflow-hidden flex items-center justify-center">
                     <img className="w-full h-full absolute top-0 left-0 object-cover" src="./images/fundo.jpeg" alt="" />
                     <div className="w-full h-full absolute backdrop-brightness-60"></div>
-                    <div className="z-10 w-full h-full flex-col citizen flex text-[var(--textWhite)]">
+                    <div className="z-10 w-full h-full flex-col citizen flex text-[var(--02)]">
                         
                         <main className=" flex flex-1 flex justify-end">
                             <div className="w-full h-full flex items-center flex-col justify-center">
@@ -65,7 +64,7 @@ const Cadastro = () => {
                                             <input onChange={(e)=>{
                                                 setNameUser(e.target.value)
                                                 setErros(prev => ({...prev, name: undefined}))
-                                                }} value={nameUser} className="peer w-full border-2 border-[var(--verdeClaro)] outline-none rounded-[10px] h-[45px] px-[10px]" type="text" />
+                                                }} value={nameUser} className="peer w-full border-2 border-[var(--cor01)] outline-none rounded-[10px] h-[45px] px-[10px]" type="text" />
                                             <h1 className={`absolute text-[18px] top-1/2 -translate-y-1/2 peer-focus:top-[-12px] peer-focus:left-[0px] ${nameUser ? 'left-[0px] top-[-12px]' : 'left-[10px]'} transition-all duration-300 px-[5px]`}>Nome(completo)</h1>
                                             {erros.name && <p className="text-red-500 absolute -bottom-1/2 text-[14px]">{erros?.name}</p>}
                                         </label>
@@ -74,7 +73,7 @@ const Cadastro = () => {
                                             <input onChange={(e)=>{
                                                 setEmailUser(e.target.value)
                                                 setErros(prev => ({...prev, email: undefined}))
-                                                }} value={emailUser} className="peer w-full border-2 border-[var(--verdeClaro)] outline-none rounded-[10px] h-[45px] px-[10px]" type="text" />
+                                                }} value={emailUser} className="peer w-full border-2 border-[var(--cor01)] outline-none rounded-[10px] h-[45px] px-[10px]" type="text" />
                                             <h1 className={`absolute text-[18px] top-1/2 -translate-y-1/2 peer-focus:top-[-12px] peer-focus:left-[0px] ${emailUser ? 'left-[0px] top-[-12px]' : 'left-[10px]'} transition-all duration-300 px-[5px]`}>Email</h1>
                                             {erros.email && <p className="text-red-500 absolute -bottom-1/2 text-[14px]">{erros?.email}</p>}
                                         </label>
@@ -83,7 +82,7 @@ const Cadastro = () => {
                                             <input onChange={(e)=>{
                                                 setSenhaUser(e.target.value)
                                                 setErros(prev => ({...prev, password: undefined}))
-                                                }} value={senhaUser} className="peer w-full border-2 border-[var(--verdeClaro)] outline-none rounded-[10px] h-[45px] px-[10px]" type="password" />
+                                                }} value={senhaUser} className="peer w-full border-2 border-[var(--cor01)] outline-none rounded-[10px] h-[45px] px-[10px]" type="password" />
                                             <h1 className={`absolute text-[18px] top-1/2 -translate-y-1/2 peer-focus:top-[-12px] peer-focus:left-[0px] ${senhaUser ? 'left-[0px] top-[-12px]' : 'left-[10px]'} transition-all duration-300 px-[5px]`}>Senha</h1>
                                             {erros.password && <p className="text-red-500 absolute -bottom-1/2 text-[14px]">{erros?.password}</p>}
                                         </label>
@@ -92,12 +91,12 @@ const Cadastro = () => {
                                             <input onChange={(e)=> {
                                                 setConfirmarSenhaUser(e.target.value)
                                                 setErros(prev => ({...prev, passwordConfirm: undefined}))
-                                                }} value={confirmarSenhaUser} className="peer w-full border-2 border-[var(--verdeClaro)] outline-none rounded-[10px] h-[45px] px-[10px]" type="password" />
+                                                }} value={confirmarSenhaUser} className="peer w-full border-2 border-[var(--cor01)] outline-none rounded-[10px] h-[45px] px-[10px]" type="password" />
                                             <h1 className={`absolute text-[18px] top-1/2 -translate-y-1/2 peer-focus:top-[-12px] peer-focus:left-[0px] ${confirmarSenhaUser ? 'left-[0px] top-[-12px]' : 'left-[10px]'} transition-all duration-300 px-[5px]`}>Confirmar Senha</h1>
                                             {erros.passwordConfirm && <p className="text-red-500 absolute -bottom-1/2 text-[14px]">{erros?.passwordConfirm}</p>}
                                         </label>
                                         
-                                        <button type="submit" className="w-[300px] border-[var(--azulCeu)] h-[40px] border-2 rounded-[10px] hover:bg-[var(--azulEscuro)] duration-300 cursor-pointer">Criar conta</button>
+                                        <button type="submit" className="w-[300px] border-[var(--cor05)] h-[40px] border-2 rounded-[10px] hover:bg-[var(--cor04)] duration-300 cursor-pointer">Criar conta</button>
                                     </form>
 
                                     <p>Já tem uma conta? <Link to="/login" className="text-[var(--verde)] hover:underline">Entre</Link></p>

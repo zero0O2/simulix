@@ -6,19 +6,18 @@ const DisplayFilterQuestions = () => {
 
     const {questoesFilter} = useQuestoes()
     
-    const questaoFilterReverse = [...questoesFilter].reverse()
 
     return (
         <>
 
             {questoesFilter?.length > 0 &&
-                questaoFilterReverse?.map((questao) => (
+                questoesFilter?.map((questao) => (
                     <CardsQuestoes key={questao._id} card={questao} />
                 ))
             }
 
             {questoesFilter?.length === 0 && (
-                <div className="flex justify-center">
+                <div className="flex justify-center text-[var(--08)]">
                     <p>Nenhuma questão encontrada</p>
                 </div>
             )}

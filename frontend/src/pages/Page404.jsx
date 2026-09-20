@@ -1,11 +1,8 @@
-import { Link, useNavigate } from "react-router-dom"
-import { useAuth } from "../contexts/AuthProvider.jsx"
 import HeaderAccess from "../components/HeaderAccess.jsx"
 
 const Page404 = () => {
     const path = window.location.pathname
 
-    const navigation = useNavigate()
 
     return (
         <>

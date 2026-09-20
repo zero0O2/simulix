@@ -5,7 +5,7 @@ const HomeAsideRedirect = ({ path, text, children }) => {
     console.log(navigateInHome)
     return (
         <>
-            <div onClick={()=>setNavigateInHome(path)} className={` ${navigateInHome === path ? 'text-[var(--13)]' : ''} flex cursor-pointer items-center gap-[4px] text-[14px] text-[var(--06)] hover:text-[var(--08)] duration-300`}>
+            <div onClick={()=>setNavigateInHome(path)} className={` ${navigateInHome === path ? 'text-[var(--13)] underline' : ''} flex cursor-pointer items-center gap-[4px] text-[14px] text-[var(--06)] hover:text-[var(--08)] duration-300`}>
                 {children}
                 <span>{text}</span>
             </div>

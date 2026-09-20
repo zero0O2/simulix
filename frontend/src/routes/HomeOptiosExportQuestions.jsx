@@ -32,22 +32,22 @@ const HomeOptiosExportQuestions = () => {
 
     return(
         <>
-            <div className="w-full h-full overflow-y-scroll flex flex-col gap-[10px] p-[20px_30px]">
+            <div className="w-full h-full overflow-y-scroll flex flex-col gap-[10px] p-[20px]">
 
-                <h1 className="text-[var(--white)] text-[17px]">Cole o JSON aqui :</h1>
-                <p className="text-[14px]">(Se precisar copie o prompt e envie as questões que precisar.)</p>
+                <h1 className="text-[var(--11)] text-[17px]">Cole o JSON aqui :</h1>
+                <p className="text-[14px] text-[var(--10)]">(Se precisar copie o prompt e envie as questões que precisar.)</p>
 
                 <form className="w-full flex flex-col">
                     <label>
-                        <textarea onChange={(e) => setJsonQuestions(e.target.value)} value={jsonQuestions} className="resize-none h-[300px] outline-none border-0 w-full bg-[var(--whiteCream)] text-[var(--textBlack)]"></textarea>
+                        <textarea onChange={(e) => setJsonQuestions(e.target.value)} value={jsonQuestions} className="resize-none h-[300px] outline-none border-0 text-[14px] rounded-[5px] p-[5px] w-full bg-[var(--03)] text-[var(--09)]"></textarea>
                     </label>
                     <button onClick={(e)=>{
                         e.preventDefault()
                         Submit()
-                    }} className="hover:bg-[var(--azulEscuro)] cursor-pointer duration-100 flex self-start p-[5px_25px] rounded-[5px] bg-[var(--azulCeu)] text-[var(--white)]">Enviar {load && <LoadCircle/>}</button>
+                    }} className="hover:bg-[var(--cor04)] cursor-pointer duration-100 flex self-start p-[5px_25px] rounded-[5px] bg-[var(--cor05)] text-[var(--cor01)]">Enviar {load && <LoadCircle/>}</button>
                 </form>
 
-<p className="whitespace-pre-wrap text-sm text-gray-300">
+<p className="whitespace-pre-wrap text-sm text-[var(--11)]">
 {`Sempre que eu enviar uma ou várias questões, transforme TODAS elas para o formato JSON especificado abaixo.
 
 REGRAS:

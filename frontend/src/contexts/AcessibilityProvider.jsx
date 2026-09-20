@@ -1,4 +1,5 @@
-import { createContext, useContext, useRef, useState } from "react"
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext, useEffect, useRef, useState } from "react"
 
 const AcessibilityContext = createContext()
 
@@ -8,7 +9,22 @@ const AcessibilityProvider = ({children}) => {
 
     const [cronometroExist,setCronometroExist] = useState(false)
     const [timerExist,setTimerExist] = useState(false)
-    
+
+    const [theme,setTheme] = useState(()=>{
+        const theme = localStorage.getItem("theme")
+        if(theme) return theme
+        return 'white'
+    })
+
+
+
+    const Theme = () => {
+        localStorage.setItem('theme',theme)
+    }
+
+    useEffect(()=>{
+        Theme()
+    },[theme])
     
     // ===========  Cronometro ============
     
@@ -57,8 +73,8 @@ const AcessibilityProvider = ({children}) => {
                 hoursCronometro,minutosCronometro,secondsCronometro,
                 buttonCronometro,setButtonCronometro,
                 cronometroExist,
-                timerExist,setTimerExist
-                
+                timerExist,setTimerExist,
+                theme,setTheme
             }}>
             {children}
         </AcessibilityContext.Provider>

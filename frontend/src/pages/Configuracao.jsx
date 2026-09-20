@@ -1,11 +1,9 @@
-import { useNav } from "../contexts/NavigationProvider";
 import { AiOutlineHome } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom';
 
 
 const Configuracao = () => {
 
-    const {asideDisplay, setAsideDisplay,navigateInHome,setNavigateInHome} = useNav()
     const navigation = useNavigate()
 
     return (

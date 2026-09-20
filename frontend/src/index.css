@@ -4,7 +4,7 @@
     src: url('./assets/fonts/CitizenSans-Public.otf') format("opentype");
 }
 
-/*:root{
+:root{
     --01:#F3F1F3;
     --02:#E7E4E6;  
     --03:#D0C8CD;
@@ -20,6 +20,12 @@
     --13:#734b5e;
     --14:#f5d3c8;
 
+    --cor01:#e8d7f1;
+    --cor02:#d3bccc;
+    --cor03:#a167a5;
+    --cor04:#4a306d;
+    --cor05:#0e273c;
+
     --correct:rgb(30, 146, 55);
     --incorrect:rgb(234, 34, 34);
 
@@ -28,9 +34,9 @@
 
 
     --Citizen:'Citizen';
-}*/
+}
 
-:root{
+[datatheme="dark"]{
     --01:#131112;
     --02:#1B181A;
     --03:#372F34;
@@ -46,6 +52,12 @@
     --13:#734b5e;
     --14:#f5d3c8;
 
+    --cor05:#e8d7f1;
+    --cor04:#d3bccc;
+    --cor03:#a167a5;
+    --cor02:#4a306d;
+    --cor01:#0e273c;
+
     --correct:rgb(30, 146, 55);
     --incorrect:rgb(234, 34, 34);
 
@@ -56,27 +68,6 @@
     --Citizen:'Citizen';
 }
 
-
-/*:root{
-    --verdeClaro:#ADC178;
-    --verdeEscuro:#1B512D;  
-    --cinza:#6D6A63;
-    --bege:#E8CA94;
-    --marromEscuro:#271a12;
-    --Preto:#070707;
-    --azulCeu:#3F677F;
-    --azulEscuro:#2C344B;
-    
-    --black01:#2C2C2C;
-
-    --white:#efefef;
-    --whiteCream:#F8EFDA;
-    --textWhite:#bebebe;
-    --textBlack:#181818;
-
-
-    --Citizen:'Citizen';
-}*/
 
 body{
     font-family: var(--Citizen);
@@ -98,17 +89,17 @@ body{
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--10);
+    background: var(--01);
     border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--13);
+    background: var(--08);
     border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--063);
+    background: var(--06);
 }
 
 .crescimentoHorizontal{
