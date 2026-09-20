@@ -5,6 +5,9 @@ import { GoHomeFill } from "react-icons/go";
 import { IoMoonOutline } from "react-icons/io5";
 import { IoSunnyOutline } from "react-icons/io5";
 import { useAcess } from "../../contexts/AcessibilityProvider";
+import { GoTasklist } from "react-icons/go";
+import { FaRegObjectUngroup } from "react-icons/fa";
+
 const HeaderNavigate = () => {
     const {setTheme,theme} = useAcess()
     return (
@@ -16,10 +19,10 @@ const HeaderNavigate = () => {
                         <GoHomeFill />
                     </HomeAsideRedirect>
                     <HomeAsideRedirect  path="/questoes" text="Questões">
-                        <GoHomeFill />
+                        <GoTasklist />
                     </HomeAsideRedirect>
                     <HomeAsideRedirect  path="/simulado" text="Simulado">
-                        <GoHomeFill />
+                        <FaRegObjectUngroup />
                     </HomeAsideRedirect>
 
                 </span>
