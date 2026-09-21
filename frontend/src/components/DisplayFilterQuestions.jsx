@@ -5,7 +5,6 @@ import { useQuestoes } from "../contexts/QuestoesProvider"
 const DisplayFilterQuestions = () => {
 
     const {questoesFilter} = useQuestoes()
-    
 
     return (
         <>

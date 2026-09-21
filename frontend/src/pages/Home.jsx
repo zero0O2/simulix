@@ -19,9 +19,7 @@ const Home = () => {
                 <HeaderNavigate/>
                 
                 {navigateInHome == "/home" &&
-                
                     <DashBoardPage/>
-                
                 }
 
                 {navigateInHome == "/questoes" &&

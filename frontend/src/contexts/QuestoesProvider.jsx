@@ -23,7 +23,6 @@ const QuestoesProvider = ({children}) => {
 
     const [gabaritoForSimulado,setGabaritoForSimulado] = useState([])
 
-
     const [categoriaTypes, setCategoriaTypes] = useState("Todas")
     const [categoriaMateria, setCategoriaMateria] = useState([])
 

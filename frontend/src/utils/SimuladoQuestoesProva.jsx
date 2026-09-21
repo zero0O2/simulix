@@ -100,9 +100,9 @@ const SimuladoQuestoesProva = ({questoes,setQuestionarioDisplay}) => {
                             setIndexQuestao(prev => prev === 0 ? questoes.length - 1 : prev - 1)
                         }} className="border-2 rounded-full p-[5px] absolute left-0 text-[30px] cursor-pointer text-[var(--08)] rotate-[180deg]"><MdNavigateNext/></button>
 
-                        <div className=" flex gap-[5px] justify-center items-center">
+                        <div className=" flex gap-[5px] max-w-[320px] justify-center items-center">
                             {questoes?.map((e,index)=>(
-                                <div key={index} className={`${e?._id === questaoAtual?._id ? "bg-[var(--cor05)]" : "bg-transparent"} duration-150 border-1 w-[10px] aspect-square rounded-full`}></div>
+                                <div key={index} className={`${e?._id === questaoAtual?._id ? "bg-[var(--cor05)] " : "bg-transparent"} duration-150 border-1 w-[10px] aspect-square rounded-full`}></div>
                             ))}
                         </div>
 
