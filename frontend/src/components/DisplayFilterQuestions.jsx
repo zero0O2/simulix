@@ -1,8 +1,9 @@
 import CardsQuestoes from "../components/CardsQuestoes"
 import { useQuestoes } from "../contexts/QuestoesProvider"
+import CardsQuestoesLinha from "./newComponents/CardsQuestoesLinha"
 
 
-const DisplayFilterQuestions = () => {
+const DisplayFilterQuestions = ({typeList = "cards"}) => {
 
     const {questoesFilter} = useQuestoes()
 
@@ -10,9 +11,10 @@ const DisplayFilterQuestions = () => {
         <>
 
             {questoesFilter?.length > 0 &&
-                questoesFilter?.map((questao) => (
-                    <CardsQuestoes key={questao._id} card={questao} />
-                ))
+                questoesFilter?.map((questao) => {
+                    if (typeList == "cards") return <CardsQuestoes key={questao._id} card={questao} />
+                    if (typeList == "linha") return <CardsQuestoesLinha key={questao._id} card={questao} />
+                })
             }
 
             {questoesFilter?.length === 0 && (

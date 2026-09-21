@@ -20,6 +20,7 @@ const QuestoesProvider = ({children}) => {
     const [questionForUpdate,setQuestionForUpdate] = useState([])
     const [newQuestions,setNewQuestions] = useState(false)
     const [newHistoricoSimulado,setNewHistoricoSimulado] = useState(false)
+    const [listagemType,setListagemType] = useState("cards")
 
     const [gabaritoForSimulado,setGabaritoForSimulado] = useState([])
 
@@ -90,7 +91,7 @@ const QuestoesProvider = ({children}) => {
                 }
             })
             
-            await BuscarQuestoesForUserId(user._id)
+            //await BuscarQuestoesForUserId(user._id)
             return response.data
         } catch (error) {
             console.error("Erro ao Deletar questão:", error.response.data)
@@ -153,6 +154,7 @@ const QuestoesProvider = ({children}) => {
     return (
         <>
             <QuestoesContext.Provider value={{
+                listagemType,setListagemType,
                 newHistoricoSimulado,setNewHistoricoSimulado,
                 newQuestions,setNewQuestions,
                 UpdateQuestoesForUserId,questionForUpdate,
