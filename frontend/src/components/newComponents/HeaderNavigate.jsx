@@ -15,9 +15,9 @@ const HeaderNavigate = () => {
             <header className="w-full min-h-[30px] bg-[var(--02)] flex items-center justify-between px-[20px] gap-[10px]">
                 <span className="flex items-center gap-[10px]">
 
-                    <HomeAsideRedirect  path="/home" text="Home">
+                    {/* <HomeAsideRedirect  path="/home" text="Home">
                         <GoHomeFill />
-                    </HomeAsideRedirect>
+                    </HomeAsideRedirect> */}
                     <HomeAsideRedirect  path="/questoes" text="Questões">
                         <GoTasklist />
                     </HomeAsideRedirect>

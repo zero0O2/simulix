@@ -6,7 +6,7 @@ const NavigationContext = createContext();
 
 const NavigationProvider = ({children}) => {
 
-    const [navigateInHome, setNavigateInHome] = useState("/home")
+    const [navigateInHome, setNavigateInHome] = useState("/questoes")
     const [navigateOptionsForQuest, setNavigateOptionsForQuest] = useState("/home")
     const [asideDisplay, setAsideDisplay] = useState(true)
     const [questoesFoco, setQuestoesFoco] = useState(false)
