@@ -70,7 +70,7 @@ const SimuladoPage= () => {
                             <CardsHistoricoSimulado/>
                         </main>
                     </div>
-                    <div className="bg-[var(--06)] rounded-[8px] flex-1 min-h-0">
+                    <div className="bg-[var(--04)] rounded-[8px] flex-1 min-h-0">
 
                     </div>
                 </div>

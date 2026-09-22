@@ -30,7 +30,6 @@ const Home = () => {
                     <SimuladoPage/>
                 }
 
-
             </div>
         </>
     )
