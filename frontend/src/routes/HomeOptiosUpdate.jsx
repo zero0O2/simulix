@@ -1,8 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useState } from "react"
 import typeQuestion from "../assets/json/typesQuestions.json"
-import subjectQuestion from "../assets/json/subjectQuestion.json"
-import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowDown, IoMdCheckmark } from "react-icons/io";
 import { useQuestoes } from "../contexts/QuestoesProvider";
 import { IoMdAdd } from "react-icons/io";
 import { FaCheck } from "react-icons/fa";
@@ -13,11 +12,14 @@ import { useNav } from "../contexts/NavigationProvider";
 
 const HomeOptiosUpdate = () => {
     const [displayMateria, setDisplayMateria] = useState(false)
-    const {FormatOptionsForQuestoes, UpdateQuestoesForUserId,questionForUpdate} = useQuestoes()
+    const {FormatOptionsForQuestoes, UpdateQuestoesForUserId,questionForUpdate,materiasDisplay} = useQuestoes()
     const {setNavigateOptionsForQuest} = useNav()
     const [adicionarTag, setAdicionarTag] = useState("")
     const [adicionarTagDisplay, setAdicionarTagDisplay] = useState(false)
     const [load, setLoad] = useState(false)
+    const [newMateria, setNewMateria] = useState(false)
+    const [inputNewMateria, setInputNewMateria] = useState('')
+
 
     const [title, setTitle] = useState(questionForUpdate.title || '')
     const [question, setQuestion] = useState(questionForUpdate.question || '')
@@ -150,7 +152,7 @@ const HomeOptiosUpdate = () => {
                         <div className={`flex flex-wrap w-full bg-[var(--02)] justify-between z-[-10] rounded-[6px] border-0 p-[20px]  absolute transition-all duration-400
                          gap-[10px] ${!displayMateria ? 'hidden top-[-100%]' : ' top-[100%]'}`}>
 
-                            {subjectQuestion && subjectQuestion?.subject?.map((item) => {
+                            {materiasDisplay && materiasDisplay?.map((item) => {
                                 return (
                                     <label className="flex" key={item}>
                                         <input onChange={() => {
@@ -162,6 +164,22 @@ const HomeOptiosUpdate = () => {
                                     </label>
                                 )
                             })}
+
+                            <label className="flex gap-[2px] items-center">
+                                {newMateria && 
+                                    <input onChange={(e) => setInputNewMateria(e.target.value)} className="peer-checked:bg-[var(--cor02)] cursor-pointer border-2 border-[var(--cor03)] outline-0 rounded-full peer-checked:text-[var(--cor05)] text-[var(--10)] text-[16px] p-[5px_10px]"/>  
+                                }
+                                <div onClick={() => {
+                                    if (inputNewMateria.length == 0) return setNewMateria(prev => !prev)
+                                    
+                                    setSubject(inputNewMateria)
+                                    setNewMateria(false)
+                                    setInputNewMateria('')
+
+                                }} className="cursor-pointer border-2 border-[var(--cor03)] rounded-full text-[var(--10)] aspect-square w-[30px] h-[30px] flex justify-center items-center text-[20px]">
+                                    {newMateria ? <IoMdCheckmark/> : <IoMdAdd/>}
+                                </div>
+                            </label>
 
                         </div>
                     </ul>

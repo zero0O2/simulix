@@ -5,34 +5,34 @@ import CardsHistoricoSimulado from "../components/newComponents/CardsHistoricoSi
 import CardsCategorias from "../components/CardsCategorias"
 import CardsCategoriasMaterias from "../components/CardsCategoriasMaterias"
 import typesQuestions from "../assets/json/typesQuestions.json"
-import subjectQuestion from "../assets/json/subjectQuestion.json"
 import { useState } from "react"
 
 const SimuladoPage= () => {
-    const {newHistoricoSimulado,setNewHistoricoSimulado,questoesFilter} = useQuestoes()
+    const {newHistoricoSimulado,setNewHistoricoSimulado,questoesFilter,materiasDisplay} = useQuestoes()
     const [questionarioDisplay,setQuestionarioDisplay] = useState(false)
     const [questoesForQuestionario,setQuestoesForQuestionario] = useState([])
 
+    
     const IniciarQuestionario = () => {
         if(!questoesFilter.length > 0) return window.alert("Nenhuma questão disponivel")
-
+            
         let questoesEmbaralhadas = [...questoesFilter]
-
+        
         for(let i = 0 ; i <= questoesEmbaralhadas.length - 1 ; i++){
             let numberAleatorio = Math.floor(Math.random()*questoesEmbaralhadas.length)
-
+            
             let e = questoesEmbaralhadas[i]
             questoesEmbaralhadas[i] = questoesEmbaralhadas[numberAleatorio]
             questoesEmbaralhadas[numberAleatorio] = e
             
         }
-
+        
         questoesEmbaralhadas = questoesEmbaralhadas?.map(e => {
             let options = [...e.options]
             
             for(let i = 0 ; i <= options.length - 1 ; i++){
                 let r = Math.floor(Math.random()*options.length)
-
+                
                 let e = options[i]
                 options[i] = options[r]
                 options[r] = e
@@ -40,12 +40,12 @@ const SimuladoPage= () => {
             
             return {...e,options}
         })
-
+        
         setQuestoesForQuestionario(questoesEmbaralhadas)
         setQuestionarioDisplay(true)
-
+        
     }
-
+    
     return (
         <>
             <div className="flex relative min-h-0 flex-1 text-[var(--10)]">
@@ -88,7 +88,7 @@ const SimuladoPage= () => {
                         <div className="flex flex-col p-[10px]">
                             <h1 className="text-[var(--09)]">Materia -</h1>
                             <div className="flex min-w-0 gap-[8px]   flex-wrap">
-                                {subjectQuestion?.subject?.map(types => (
+                                {materiasDisplay?.map(types => (
                                     <CardsCategoriasMaterias key={types} option={types}/>
                                 ))}
                             </div>

@@ -26,7 +26,6 @@ const UserSchema = new Schema({
     role:{type : String, required : true, default : 'user'},
 },{timestamps : true}) 
 
-const User = model('User', UserSchema)
 
 const OptionSchema = new Schema({
     
@@ -34,41 +33,41 @@ const OptionSchema = new Schema({
         type: Number,
         required: true,
     },
-
+    
     text: {
         type: String,
         required: true
     },
-
+    
     correct: {
         type: Boolean,
         required: true,
         default: false
     }
-
+    
 }, { _id: false })
 
 
 
 const QuestionSchema = new Schema({
-
+    
     userId: {
         type: Schema.Types.ObjectId,
         ref: "User",
         required: true
     },
-
+    
     title: {
         type: String,
         trim: true
     },
-
+    
     subject: {
         type: String,
         required: true,
         trim: true
     },
-
+    
     examType: {
         type: String,
         required: true,
@@ -80,12 +79,12 @@ const QuestionSchema = new Schema({
             "Outro"
         ]
     },
-
+    
     question: {
         type: String,
         required: true
     },
-
+    
     options: {
         type: [OptionSchema],
         validate: {
@@ -93,21 +92,22 @@ const QuestionSchema = new Schema({
             message: "A questão deve possuir pelo menos 2 alternativas"
         }
     },
-
+    
     explanation: {
         type: String,
         default: ""
     },
-
+    
     tags: {
         type: [String],
         default: []
     }
-
+    
 }, {
     timestamps: true
 })
 
+const User = model('User', UserSchema)
 const Question = model('Question', QuestionSchema)
 
 
@@ -305,6 +305,33 @@ app.get('/questions/:userId', async (req, res) => {
         res.status(404).json(error)
     }
     
+})
+
+app.get("/materias", async (req,res) => {
+    const {id} = req.params
+    let userId = null
+    try {
+        const bearer = req.headers.authorization
+        if (!bearer) {
+            return res.status(401).json({ message: 'Token não fornecido' })
+        }
+        const tokenJwt = bearer.split(' ')[1]
+        
+        if (!tokenJwt) {
+            return res.status(401).json({ message: 'Token mal formatado' })
+        }
+        
+        const token = jwt.verify(tokenJwt, process.env.JWT_SECRET)
+        
+        userId = token.id
+
+    } catch (error) {
+        res.status(400).json(error)
+    }
+    
+    const materias = await Question.find({userId}).distinct('subject')
+    
+    res.json(materias)
 })
 
 app.post('/formatOptions/:correct', async (req, res) => {

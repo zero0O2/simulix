@@ -27,6 +27,9 @@ const QuestoesProvider = ({children}) => {
     const [categoriaTypes, setCategoriaTypes] = useState("Todas")
     const [categoriaMateria, setCategoriaMateria] = useState([])
 
+    const [materiasDisplay,setMateriasDisplay] = useState([])
+    
+
 
     const CriarQuestoesForUserId = async (dadosForQuest) => {
         try {
@@ -41,6 +44,19 @@ const QuestoesProvider = ({children}) => {
         } catch (error) {
             console.error("Erro ao Criar questão:", error.response)
             return error?.response
+        }
+    }
+    const ArrayMateriasForUser = async() => {
+        try{
+            const response = await axios.get(`${API_URL}/materias`,{
+                headers:{
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            setMateriasDisplay(response.data)
+            return response.data
+        }catch(error){
+            console.error("Erro ao receber materias:", error.response)
         }
     }
 
@@ -148,12 +164,20 @@ const QuestoesProvider = ({children}) => {
     useEffect(() => {
         
         FilterQuestions()
-        
+
     }, [questoesForUser,categoriaTypes,categoriaMateria,newQuestions])
+
+    useEffect(() => {
+        
+        ArrayMateriasForUser()
+        
+    }, [questoesForUser,newQuestions])
 
     return (
         <>
             <QuestoesContext.Provider value={{
+                ArrayMateriasForUser,
+                materiasDisplay,setMateriasDisplay,
                 listagemType,setListagemType,
                 newHistoricoSimulado,setNewHistoricoSimulado,
                 newQuestions,setNewQuestions,

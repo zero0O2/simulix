@@ -1,9 +1,12 @@
 import typesQuestions from "../assets/json/typesQuestions.json"
-import subjectQuestion from "../assets/json/subjectQuestion.json"
 import CardsCategorias from "../components/CardsCategorias"
 import CardsCategoriasMaterias from "../components/CardsCategoriasMaterias"
+import { useQuestoes } from "../contexts/QuestoesProvider"
 
 const HomeOptiosFilterQuests = () => {
+    const {materiasDisplay} = useQuestoes()
+
+
 
     return (
         <>
@@ -16,7 +19,7 @@ const HomeOptiosFilterQuests = () => {
                     ))}
                 </div>
                 <div className="flex min-w-0 gap-[10px] bg-[var(--cor01)] p-[10px] rounded-[10px] flex-wrap">
-                    {subjectQuestion?.subject?.map(types => (
+                    {materiasDisplay?.map(types => (
                         <CardsCategoriasMaterias key={types} option={types}/>
                     ))}
                 </div>
