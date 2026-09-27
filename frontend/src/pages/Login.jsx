@@ -48,18 +48,18 @@ const Login = () => {
                     <div className="z-10 w-full h-full flex-col citizen flex text-[var(--02)]">
                         
                         <main className=" flex flex-1 flex justify-end">
-                            <div className="w-full h-full flex items-center text-shadow-[0_0_10px_rgba(0,0,0,0.4)] flex-col justify-center">
+                            <div className="w-full h-full max-[850px]:hidden flex items-center text-shadow-[0_0_10px_rgba(0,0,0,0.4)] flex-col justify-center">
                                 <h1 className="text-[40px]">Bem-vindo de volta</h1>
                                 <h1 className="text-[30px] max-w-[720px] text-center">Cada questão resolvida te aproxima da aprovação.</h1>
                             </div>
-                            <div className="w-full relative z-0 max-w-[550px] h-full flex ">
+                            <div className="w-full relative z-0 max-w-[550px] max-[850px]:max-w-full h-full flex ">
                                 <div className="absolute  w-full h-full"></div>
                                 <div className="absolute backdrop-blur-[15px] backdrop-brightness-60 w-full h-full"></div>
 
                                 <div className="flex flex-col p-[30px] flex-1 z-10 gap-[30px] py-[50px]">
 
                                     <header className="w-full justify-center items-center flex">
-                                        <h1 className="text-[40px]">Entre na sua conta</h1>
+                                        <h1 className="text-[40px] text-center">Entre na sua conta</h1>
                                     </header>
 
                                     <form onSubmit={Submit} className="w-full relative flex flex-col items-center gap-[35px]" >
