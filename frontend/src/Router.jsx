@@ -8,6 +8,7 @@ import Cadastro from './pages/Cadastro.jsx'
 
 
 const Router = () => {
+
     return (
         <>
 

@@ -2,6 +2,7 @@
 import OptionsForQuest from "../components/OptionsForQuest"
 import { MdOutlineCreate } from "react-icons/md";
 import { CiFilter } from "react-icons/ci";
+import { CiExport } from "react-icons/ci";
 
 const HomeOptiosForQuest = () => {
 
@@ -13,7 +14,7 @@ const HomeOptiosForQuest = () => {
                     <MdOutlineCreate className="text-[20px]" />
                 </OptionsForQuest>
                 <OptionsForQuest text="Exportar questões" path="/export-questions" info={"Para exportação de questões é necessario o uso de um txt em formato json"}>
-                    <MdOutlineCreate className="text-[20px]" />
+                    <CiExport className="text-[20px]" />
                 </OptionsForQuest>
                 <OptionsForQuest text="Filtrar Questões" path="/filter-questions">
                     <CiFilter className="text-[20px]" />
