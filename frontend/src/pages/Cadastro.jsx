@@ -62,7 +62,7 @@ const Cadastro = () => {
                                         <h1 className="text-[40px] text-center">Crie sua conta</h1>
                                     </header>
 
-                                    <form onSubmit={Submit} className="w-full flex flex-col items-center gap-[50px]" >
+                                    <form onSubmit={Submit} className="w-full flex flex-col items-center gap-[35px]" >
 
                                         <label className="w-full flex flex-col relative justify-center">
                                             <input onChange={(e)=>{
