@@ -9,14 +9,14 @@ const BemVindo = () => {
                 <div className="w-full h-full relative bg-[var(--08)] overflow-hidden flex items-center justify-center">
                     <img className="w-full h-full absolute top-0 left-0 object-cover" src="./images/fundo.jpeg" alt="" />
                     <div className="w-full h-full absolute backdrop-brightness-60"></div>
-                    <div className="z-10 w-full h-full flex-col p-[20px] citizen flex text-[var(--02)]">
+                    <div className="z-10 w-full h-full flex-col p-[10px] citizen flex text-[var(--02)]">
 
                         <HeaderAccess/>
                         
                         <main className="flex-1 flex justify-center items-center">
                             <div className="max-w-[650px] w-full text-center">
-                                <h1 className="text-[50px]">Entre e faça a diferença nos estudos</h1>
-                                <p className="text-[24px]">Junte-se a nós e transforme sua jornada educacional</p>
+                                <h1 className="text-[50px] text-shadow-[0_0_10px_rgba(0,0,0,0.4)]">Entre e faça a diferença nos estudos</h1>
+                                <p className="text-[24px] text-shadow-[0_0_10px_rgba(0,0,0,0.4)]">Junte-se a nós e transforme sua jornada educacional</p>
                             </div>
                         </main>
 

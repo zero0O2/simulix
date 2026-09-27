@@ -8,13 +8,13 @@ const Page404 = () => {
         <>
             <div className="w-[100dvw] z-0 h-[100dvh] bg-[var(--cinza)] flex items-center justify-center">
                 <div className="w-full h-full relative bg-[var(--verdeClaro)] overflow-hidden flex items-center justify-center">
-                    <img className="w-full h-full absolute top-0 left-0 object-cover" src="./images/fundo.jpeg" alt="" />
+                    <img className="w-full h-full absolute top-0 left-0 object-cover" src="/images/fundo.jpeg" alt="" />
                     <div className="w-full h-full absolute backdrop-brightness-45"></div>
-                    <div className="z-10 w-full h-full flex-col p-[20px] citizen flex text-[var(--textWhite)]">
+                    <div className="z-10 w-full h-full flex-col p-[20px] citizen flex text-[var(--02)]">
 
                         <HeaderAccess/>
 
-                        <main className="flex-1 flex justify-center items-center">
+                        <main className="flex-1 flex justify-center text-shadow-[0_0_10px_rgba(0,0,0,0.4)] items-center">
                             <div className="max-w-[650px] w-full text-center">
                                 <h1 className="text-[60px]">Erro 404</h1>
                                 <p className="text-[20px]">A página {path} não foi encontrada</p>

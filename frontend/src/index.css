@@ -26,6 +26,12 @@
     --cor04:#4a306d;
     --cor05:#0e273c;
 
+    --coffee-bean: #715845ff;
+    --khaki-beige: #C5AA95ff;
+    --camel: #BA8F6Aff;
+    --ash-brown: #5C4B42ff;
+    --ash-brown-2: #554132ff;
+
     --correct:rgb(30, 146, 55);
     --incorrect:rgb(234, 34, 34);
 
@@ -58,6 +64,12 @@
     --cor02:#4a306d;
     --cor01:#0e273c;
 
+    --coffee-bean: #715845ff;
+    --khaki-beige: #C5AA95ff;
+    --camel: #BA8F6Aff;
+    --ash-brown: #5C4B42ff;
+    --ash-brown-2: #554132ff;
+
     --correct:rgb(30, 146, 55);
     --incorrect:rgb(234, 34, 34);
 
@@ -71,8 +83,8 @@
 
 body{
     font-family: var(--Citizen);
-    color:var(--10);
-    background-color:var(--03);
+    color:var(--03);
+    background-color:var(--09);
 }
 
 .citizen{
