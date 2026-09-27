@@ -123,6 +123,7 @@ const HomeOptiosUpdate = () => {
                          gap-[10px]">
 
                             {typeQuestion && typeQuestion?.types?.map((type) => {
+                                if (type == "Todas") return
                                 return (
                                     <label className="flex" key={type}>
                                         <input onChange={() => {
