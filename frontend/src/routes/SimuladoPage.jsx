@@ -6,26 +6,39 @@ import CardsCategorias from "../components/CardsCategorias"
 import CardsCategoriasMaterias from "../components/CardsCategoriasMaterias"
 import typesQuestions from "../assets/json/typesQuestions.json"
 import { useState } from "react"
+import { MdOutlineCleaningServices } from "react-icons/md"
 
 const SimuladoPage= () => {
-    const {newHistoricoSimulado,setNewHistoricoSimulado,questoesFilter,materiasDisplay} = useQuestoes()
+    const {newHistoricoSimulado,setNewHistoricoSimulado,questoesFilter,materiasDisplay,setCategoriaTypes,setCategoriaMateria,displayLimitador,setDisplayLimitador,limitador,setLimitador} = useQuestoes()
     const [questionarioDisplay,setQuestionarioDisplay] = useState(false)
     const [questoesForQuestionario,setQuestoesForQuestionario] = useState([])
-
     
     const IniciarQuestionario = () => {
         if(!questoesFilter.length > 0) return window.alert("Nenhuma questão disponivel")
-            
         let questoesEmbaralhadas = [...questoesFilter]
-        
+
+        // LIMITADOR DA QUANTIDADE DE QUESTOES retorna questoes aleatorias
+            
+        if(displayLimitador && limitador > 0 && questoesFilter.length >= limitador){
+            const questoesAleatorias = []
+            for (var i = 1; questoesAleatorias.length < limitador ; i++ ) {
+                let nrandom = parseInt(Math.random() * questoesFilter.length)
+                if (!questoesAleatorias.includes(questoesFilter[nrandom])) {questoesAleatorias.push(questoesFilter[nrandom])}
+            }
+            questoesEmbaralhadas = questoesAleatorias
+        }
+
+        // EMBARALHADOR DE QUESTOES
+                
         for(let i = 0 ; i <= questoesEmbaralhadas.length - 1 ; i++){
             let numberAleatorio = Math.floor(Math.random()*questoesEmbaralhadas.length)
             
             let e = questoesEmbaralhadas[i]
             questoesEmbaralhadas[i] = questoesEmbaralhadas[numberAleatorio]
             questoesEmbaralhadas[numberAleatorio] = e
-            
         }
+
+        // EMBARALHAR AS ALTERNATIVAS
         
         questoesEmbaralhadas = questoesEmbaralhadas?.map(e => {
             let options = [...e.options]
@@ -95,9 +108,45 @@ const SimuladoPage= () => {
                         </div>
                     </div>
                     <div className="flex flex-col flex-1 min-h-0">
-                        <header className=" flex justify-between p-[10px] items-center  h-[30px] w-full">
+                        <header className=" flex justify-between p-[10px] items-center h-[40px] w-full">
                             <p className="text-[var(--09)]">{questoesFilter.length} questoes disponiveis</p>
-                                
+
+                            <nav className="flex gap-[10px] items-center">
+                                <div className="relative ">
+                                    
+                                    <button onClick={() => {
+                                        setDisplayLimitador(prev => !prev)
+                                    }} className={`peer duration-[.1s] flex justify-center items-center text-[20px] border-0 outline-0 bg-[var(--cor04)] rounded-[5px] text-[var(--cor01)] h-[30px] cursor-pointer`}>
+                                        {displayLimitador && (
+                                            <input onClick={(e) => {e.stopPropagation()}} onChange={(e) =>{
+                                                let input = e.target.value
+                                                if (input < 0) return window.alert("Nao é possivel receber valores negativos")
+                                                setLimitador(input)
+                                            }} value={limitador} type="number" className={`peer duration-[.1s] flex justify-center  items-center text-[20px] border-0 px-[5px] outline-0 border-[var(--cor03)] border-2 rounded-[5px] text-[var(--cor01)] h-[30px] w-[60px] cursor-pointer`}/>                                        
+                                        )}
+                                        <p className="text-[var(--cor01)] min-w-[30px] ">L</p>
+                                    </button>
+
+                                    <span className="peer-hover:opacity-100 rounded-[4px] max-w-[250px] w-max duration-200 opacity-0 pointer-events-none absolute bg-[var(--04)] text-[var(--cor10)] bottom-[calc(100%+5px)] right-1 p-[5px_10px] shadow-[0px_0px_5px_#00000032]">
+                                        <p className="">Limita quantidade de questões</p>
+                                    </span>
+                                </div>
+
+                                <div className="relative ">
+                                    <button onClick={() => {
+                                        setCategoriaMateria([])
+                                        setCategoriaTypes("Todas")
+                                    }} className={`peer duration-[.1s] flex justify-center items-center text-[20px] border-0 outline-0 bg-[var(--cor04)] rounded-[5px] text-[var(--cor01)] h-[30px] w-[30px] cursor-pointer`}>
+                                        <MdOutlineCleaningServices/>
+                                    </button>
+                                    <span className="peer-hover:opacity-100 rounded-[4px] max-w-[250px] w-max duration-200 opacity-0 pointer-events-none absolute bg-[var(--04)] text-[var(--cor10)] bottom-[calc(100%+5px)] right-1 p-[5px_10px] shadow-[0px_0px_5px_#00000032]">
+                                        <p className="">Limpar Filtros</p>
+                                    </span>
+                                </div>
+
+
+
+                            </nav>
                         </header>
                         <main className="flex flex-col flex flex-1 gap-[10px] min-h-0 overflow-y-auto">
                             {questoesFilter.map((e,index) => (
@@ -115,7 +164,9 @@ const SimuladoPage= () => {
 
                         </main>
                         <footer className=" flex justify-center items-center mt-[10px] h-[60px]">
-                            <button onClick={()=>IniciarQuestionario()} className="bg-[var(--cor05)] cursor-pointer hover:bg-[var(--cor04)] duration-200 p-[10px_30px] rounded-[5px] text-[var(--cor01)]">Iniciar Simulado</button>
+                            <button onClick={()=>{
+                                IniciarQuestionario()
+                            }} className="bg-[var(--cor05)] cursor-pointer hover:bg-[var(--cor04)] duration-200 p-[10px_30px] rounded-[5px] text-[var(--cor01)]">Iniciar Simulado</button>
                         </footer>
                     </div>
                 </div>

@@ -15,18 +15,19 @@ const HomeOptiosExportQuestions = () => {
         try {
             const questions = await CriarQuestoesForJSON(JSON.parse(jsonQuestions))
             
-            await Promise.all(
-                questions.map(async (e) => {
-                    console.log(e)
-                    await CriarQuestoesForUserId(e)
-                })
-            )
+            questions.map(async (e) => {
+                await CriarQuestoesForUserId(e)
+            })
+
+            
             
         } catch (error) {
             console.log(error)
+            alert("Erro ao enviar questões, verifique se o JSON está correto.")
         }
-        setLoad(false)
+
         setJsonQuestions("")
+        setLoad(false)
             
     }
 
@@ -127,6 +128,7 @@ IMPORTANTE:
 - Nunca use explicações antes ou depois.
 - Nunca use markdown ou blocos de código.
 - Não invente informações que não estejam na questão.
+- Sempre tenha ao menos uma questao correta (caso resposta nao seja especifiada responda corretamente)
 - Nunca permita que aspas presentes no conteúdo original quebrem a estrutura do JSON.(Caso tenha presença de " trocar por ')`}
 </p>
 

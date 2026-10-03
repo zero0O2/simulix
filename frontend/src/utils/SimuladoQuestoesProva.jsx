@@ -43,23 +43,27 @@ const SimuladoQuestoesProva = ({questoes,setQuestionarioDisplay}) => {
             
         } catch (error) {
             console.log(error)
+            window.alert("Erro ao enviar o gabarito do simulado")
             setLoad(false)
         }
         setLoad(false)
     }
     
-
+    console.log(dadosDesempenho)
 
     return(
         <>
-        <div className="absolute flex justify-center w-full h-full bg-[var(--03)]">
+        <div className="absolute flex justify-center items-center w-full overflow-y-auto p-[20px] h-full bg-[var(--03)]">
             {!gabaritoDisplay && 
-                <div className="flex z-0 absolute flex-col bg-[var(--01)] left-1/2 -translate-1/2 top-1/2 max-w-[800px] min-h-[600px] h-min  p-[14px_20px] gap-[20px] w-full rounded-[6px] text-[var(--11)]">
+                <div className="flex z-0 flex-col bg-[var(--01)] max-w-[800px] min-h-[600px] my-auto h-min p-[14px_20px] gap-[20px] w-full rounded-[6px] text-[var(--11)]">
                     <main className="flex-1 flex flex-col gap-[20px]">
 
                         <aside className=" flex justify-between text-[var(--08)] items-center w-full">
                             <h1 className="text-[15px]"> <span className="text-[20px]">{indexQuestao + 1}º</span> {questaoAtual.subject}</h1>
-                            <h2 className="text-[14px] text-[var(--cor04)]">{questaoAtual.examType}</h2>
+                            <span className="flex justify-center items-center gap-[10px]">
+                                <button onClick={()=> setQuestionarioDisplay(false)} className="text-[14px] underline cursor-pointer">Voltar</button>
+                                <h2 className="text-[14px] text-[var(--cor04)]">{questaoAtual.examType}</h2>
+                            </span>
                         </aside>
 
                         <div className=" flex flex-col w-full wrap-break-word gap-[10px]">
@@ -100,9 +104,9 @@ const SimuladoQuestoesProva = ({questoes,setQuestionarioDisplay}) => {
                             setIndexQuestao(prev => prev === 0 ? questoes.length - 1 : prev - 1)
                         }} className="border-2 rounded-full p-[5px] absolute left-0 text-[30px] cursor-pointer text-[var(--08)] rotate-[180deg]"><MdNavigateNext/></button>
 
-                        <div className=" flex gap-[5px] max-w-[320px] justify-center items-center">
+                        <div className=" flex gap-[5px] max-w-[320px] overflow-y-auto m-auto items-center">
                             {questoes?.map((e,index)=>(
-                                <div key={index} className={`${e?._id === questaoAtual?._id ? "bg-[var(--cor05)] " : "bg-transparent"} duration-150 border-1 w-[10px] aspect-square rounded-full`}></div>
+                                <div key={index} className={`${e?._id === questaoAtual?._id ? "bg-[var(--cor05)] " : "bg-transparent"} duration-150 min-w-[10px] border-1 aspect-square rounded-full`}></div>
                             ))}
                         </div>
 
@@ -124,7 +128,7 @@ const SimuladoQuestoesProva = ({questoes,setQuestionarioDisplay}) => {
 
             {gabaritoDisplay && 
             
-            <div className="flex flex-1 flex-col bg-[var(--01)] p-[20px] m-[10px] gap-[20px] max-w-[700px] rounded-[6px] min-h-0 overflow-y-auto text-[var(--11)]">
+            <div className="flex flex-1 flex-col bg-[var(--01)] p-[20px] my-auto gap-[20px] max-w-[700px] rounded-[6px] h-min text-[var(--11)]">
                 
                 <header className="flex justify-between">
                     <h1 className="text-[18px]">Desempenho</h1>

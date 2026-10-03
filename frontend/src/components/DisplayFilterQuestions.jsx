@@ -17,11 +17,11 @@ const DisplayFilterQuestions = ({typeList = "cards"}) => {
                 })
             }
 
-            {questoesFilter?.length === 0 && (
-                <div className="flex justify-center text-[var(--08)]">
-                    <p>Nenhuma questão encontrada</p>
-                </div>
-            )}
+            {questoesFilter?.length === 0 && 
+                    <div className="flex justify-center text-[var(--08)]">
+                        <p>Nenhuma questão encontrada</p>
+                    </div>
+            }
 
         </>
     )

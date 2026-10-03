@@ -21,6 +21,10 @@ const QuestoesProvider = ({children}) => {
     const [newQuestions,setNewQuestions] = useState(false)
     const [newHistoricoSimulado,setNewHistoricoSimulado] = useState(false)
     const [listagemType,setListagemType] = useState("cards")
+    const [limitador,setLimitador] = useState(0)
+    const [displayLimitador,setDisplayLimitador] = useState(false)
+
+
 
     const [gabaritoForSimulado,setGabaritoForSimulado] = useState([])
 
@@ -67,6 +71,9 @@ const QuestoesProvider = ({children}) => {
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             })
+            if(!response.ok){
+                return window.alert(response?.data?.message)
+            }
             
             return response.data
         } catch (error) {
@@ -133,13 +140,15 @@ const QuestoesProvider = ({children}) => {
 
 
     useEffect(() => {
-        try {
-            setCategoriaTypes("Todas")
-            setCategoriaMateria([])
+        if (user !== null) {
+            try {
+                setCategoriaTypes("Todas")
+                setCategoriaMateria([])
 
-            BuscarQuestoesForUserId(user._id)
-        } catch (error) {
-            setQuestoesForUser([])
+                BuscarQuestoesForUserId(user._id)
+            } catch (error) {
+                setQuestoesForUser([])
+            }
         }
     }, [user,access])
 
@@ -163,19 +172,33 @@ const QuestoesProvider = ({children}) => {
 
     useEffect(() => {
         
+        if(categoriaMateria.length > 0 && questoesFilter == 0){
+            setCategoriaMateria([])
+        }
+
         FilterQuestions()
 
     }, [questoesForUser,categoriaTypes,categoriaMateria,newQuestions])
 
     useEffect(() => {
         
+        if(categoriaMateria.length > 0 && questoesFilter == 0){
+            setCategoriaMateria([])
+        }
+
+
+    }, [materiasDisplay])
+
+    useEffect(() => {
+        
         ArrayMateriasForUser()
         
-    }, [questoesForUser,newQuestions])
+    }, [questoesFilter])
 
     return (
         <>
             <QuestoesContext.Provider value={{
+                displayLimitador,setDisplayLimitador,limitador,setLimitador,
                 ArrayMateriasForUser,
                 materiasDisplay,setMateriasDisplay,
                 listagemType,setListagemType,

@@ -35,7 +35,7 @@ const HomeOptiosUpdate = () => {
     const [options5, setOptions5] = useState(questionForUpdate.options[4]?.text || '')
     
     const correctDefault = questionForUpdate.options.find((e) => e.correct)
-    const [correct, setCorrect] = useState(correctDefault.id || null)
+    const [correct, setCorrect] = useState(correctDefault?.id || null)
     const ResetForm = () => {
         setTitle(questionForUpdate.title)
         setQuestion(questionForUpdate.question)
@@ -51,7 +51,7 @@ const HomeOptiosUpdate = () => {
         setOptions3(questionForUpdate.options[2]?.text || '')
         setOptions4(questionForUpdate.options[3]?.text || '')
         setOptions5(questionForUpdate.options[4]?.text || '')
-        setCorrect(correctDefault.id || null)
+        setCorrect(correctDefault?.id || null)
     }
  
 

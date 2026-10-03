@@ -465,6 +465,8 @@ app.post("/gabaritoInfos", async (req,res) => {
 
         const desempenho = questoesInGabarito.map(questao => {
             const correct = questao.options.find(option => option.correct === true)
+            if(!correct) {return res.status(401).json({message:"Questao com opção correta não especificada"})}
+
             const gabaritoForQuest = gabaritoArray.find(e => e.id === questao._id.toString())
             const isCorrect = correct.id === gabaritoForQuest.check
 
@@ -514,9 +516,13 @@ app.post("/jsonQuestions",(req,res)=>{
 
     const questionsJsonFormated = questionsJson.map((e)=>{
         const optionsFormated = e.options.map((e,index) => ({id:index + 1,...e}))
-
+        const optcorret = optionsFormated.filter(e => e.correct == true)
+        if(optcorret.length == 0) {
+            return res.json({message:"Questão(ões) com opção correta não especificada"})
+        }
         return {...e, options:optionsFormated}
     })
+    
 
     res.status(202).json(questionsJsonFormated)
 })

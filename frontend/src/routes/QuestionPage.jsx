@@ -28,7 +28,7 @@ const QuestionPage= () => {
                                 }} className={`peer duration-[.1s] flex justify-center items-center text-[20px] border-0 outline-0 bg-[var(--cor04)] rounded-[5px] text-[var(--cor01)] h-[30px] w-[30px] cursor-pointer`}>
                                     <BsListNested/>
                                 </button>
-                                <span className="peer-hover:opacity-100 rounded-[4px] duration-200 opacity-0 pointer-events-none absolute bg-[var(--04)] text-[var(--cor10)] bottom-1/1 -left-1/2 p-[5px_10px] shadow-[0px_0px_5px_#00000032]">
+                                <span className="peer-hover:opacity-100 rounded-[4px] duration-200 max-w-[250px] w-max opacity-0 pointer-events-none absolute bg-[var(--04)] text-[var(--cor10)] bottom-1/1 -left-1/2 p-[5px_10px] shadow-[0px_0px_5px_#00000032]">
                                     <p className="">Listagem</p>
                                 </span>
                             </div>
@@ -40,7 +40,7 @@ const QuestionPage= () => {
                                 }} className={`peer duration-[.1s] flex justify-center items-center text-[20px] border-0 outline-0 bg-[var(--cor04)] rounded-[5px] text-[var(--cor01)] h-[30px] w-[30px] cursor-pointer`}>
                                     <MdOutlineCleaningServices/>
                                 </button>
-                                <span className="peer-hover:opacity-100 rounded-[4px] duration-200 opacity-0 pointer-events-none absolute bg-[var(--04)] text-[var(--cor10)] bottom-1/1 -left-1/2 p-[5px_10px] shadow-[0px_0px_5px_#00000032]">
+                                <span className="peer-hover:opacity-100 rounded-[4px] max-w-[250px] w-max duration-200 opacity-0 pointer-events-none absolute bg-[var(--04)] text-[var(--cor10)] bottom-1/1 -left-1/2 p-[5px_10px] shadow-[0px_0px_5px_#00000032]">
                                     <p className="">Limpar Filtros</p>
                                 </span>
                             </div>
@@ -49,7 +49,7 @@ const QuestionPage= () => {
                                 <button onClick={() => setNewQuestions(prev => !prev)} className={`peer ${newQuestions ? "" : "rotate-180"} flex justify-center items-center duration-[.1s] text-[30px] border-0 outline-0 bg-[var(--cor04)] rounded-[5px] text-[var(--cor01)] h-[30px] w-[30px] cursor-pointer`}>
                                     <GoChevronUp/>
                                 </button>
-                                <span className="peer-hover:opacity-100 rounded-[4px] duration-200 opacity-0 pointer-events-none absolute bg-[var(--04)] text-[var(--cor10)] bottom-1/1 -left-1/2 p-[5px_10px] shadow-[0px_0px_5px_#00000032]">
+                                <span className="peer-hover:opacity-100 rounded-[4px] duration-200 max-w-[250px] w-max opacity-0 pointer-events-none absolute bg-[var(--04)] text-[var(--cor10)] bottom-1/1 -left-1/2 p-[5px_10px] shadow-[0px_0px_5px_#00000032]">
                                     {newQuestions && <p>Novas</p>}
                                     {!newQuestions && <p>Antigas</p>}
                                 </span>
