@@ -187,7 +187,6 @@ const QuestoesProvider = ({children}) => {
             setCategoriaMateria([])
         }
 
-
     }, [materiasDisplay])
 
     useEffect(() => {

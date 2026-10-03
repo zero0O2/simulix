@@ -7,6 +7,8 @@ import CardsCategoriasMaterias from "../components/CardsCategoriasMaterias"
 import typesQuestions from "../assets/json/typesQuestions.json"
 import { useState } from "react"
 import { MdOutlineCleaningServices } from "react-icons/md"
+import { GrChapterAdd } from "react-icons/gr";
+import { IoMdClose } from "react-icons/io";
 
 const SimuladoPage= () => {
     const {newHistoricoSimulado,setNewHistoricoSimulado,questoesFilter,materiasDisplay,setCategoriaTypes,setCategoriaMateria,displayLimitador,setDisplayLimitador,limitador,setLimitador} = useQuestoes()
@@ -124,7 +126,7 @@ const SimuladoPage= () => {
                                                 setLimitador(input)
                                             }} value={limitador} type="number" className={`peer duration-[.1s] flex justify-center  items-center text-[20px] border-0 px-[5px] outline-0 border-[var(--cor03)] border-2 rounded-[5px] text-[var(--cor01)] h-[30px] w-[60px] cursor-pointer`}/>                                        
                                         )}
-                                        <p className="text-[var(--cor01)] min-w-[30px] ">L</p>
+                                        <p className="text-[var(--cor01)] w-[30px] flex justify-center items-center">{displayLimitador ? <IoMdClose/> : <GrChapterAdd/>}</p>
                                     </button>
 
                                     <span className="peer-hover:opacity-100 rounded-[4px] max-w-[250px] w-max duration-200 opacity-0 pointer-events-none absolute bg-[var(--04)] text-[var(--cor10)] bottom-[calc(100%+5px)] right-1 p-[5px_10px] shadow-[0px_0px_5px_#00000032]">
