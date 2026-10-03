@@ -76,7 +76,7 @@ const QuestoesProvider = ({children}) => {
                 window.alert(response?.data?.message)
             }
             
-            return response.data
+            return response?.data
         } catch (error) {
             console.error("Erro ao Ler JSON da questão:", error.response)
             return error?.response
