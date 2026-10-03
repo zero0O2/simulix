@@ -18,8 +18,6 @@ const HomeOptiosExportQuestions = () => {
             questions.map(async (e) => {
                 await CriarQuestoesForUserId(e)
             })
-
-            
             
         } catch (error) {
             console.log(error)

@@ -71,8 +71,9 @@ const QuestoesProvider = ({children}) => {
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             })
-            if(!response.ok){
-                return window.alert(response?.data?.message)
+
+            if(response?.data?.message){
+                window.alert(response?.data?.message)
             }
             
             return response.data
